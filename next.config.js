@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+const nextConfig = {
+  sassOptions: {
+    prependData: `@use 'src/styles/variables' as *;`,
+  },
+};
+
+module.exports = nextConfig;
