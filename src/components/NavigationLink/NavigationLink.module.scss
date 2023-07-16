@@ -1,0 +1,18 @@
+.link {
+  color: $gray;
+  font-size: 16px;
+
+  transition: color linear 0.2s;
+
+  &:not(&:first-child) {
+    margin-left: 42px;
+  }
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.active {
+  color: $white;
+}

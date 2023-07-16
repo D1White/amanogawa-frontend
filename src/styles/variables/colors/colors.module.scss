@@ -1,0 +1,22 @@
+// Do not import to colors/_index.scss
+
+:export {
+  white: $white;
+  primary: $primary;
+  primaryLight: $primary-light;
+  primaryDark: $primary-dark;
+
+  purple: $purple;
+  purpleLight: $purple-light;
+  purpleDark: $purple-dark;
+
+  yellow: $yellow;
+
+  black: $black;
+
+  gray: $gray;
+  grayLight: $gray-light;
+  grayDark: $gray-dark;
+
+  error: $error;
+}

@@ -1,0 +1,11 @@
+.flexCenteredHorizontally {
+  @include flexCenteredHorizontally;
+}
+
+.flexCenteredVertically {
+  @include flexCenteredVertically;
+}
+
+.flexCentered {
+  @include flexCentered;
+}

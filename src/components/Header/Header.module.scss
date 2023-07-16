@@ -1,0 +1,46 @@
+.header {
+  width: 100%;
+  padding: 28px 0;
+  background-color: rgba($black, 0.8);
+  backdrop-filter: blur(30px);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  :global .container {
+    flex-direction: row;
+    @include flexCentered;
+    position: relative;
+  }
+}
+
+.navigation {
+  @include flexCenteredVertically;
+}
+
+.logo {
+  display: flex;
+  margin: 0 calc(56px - 42px) 0 56px;
+}
+
+.actionButtons {
+  @include flexCenteredVertically;
+
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.searchButton {
+  @include flexCentered;
+}
+
+.userButton {
+  @include flexCentered;
+  padding: 10px;
+  border-radius: 50%;
+  background: linear-gradient(220deg, $gray-dark 0%, rgba($gray-dark, 0) 100%);
+  margin-left: 40px;
+}

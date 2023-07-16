@@ -1,0 +1,10 @@
+@mixin square($size, $unit: 'px', $isImportant: false) {
+  $rule: '';
+
+  @if $isImportant == true {
+    $rule: '!important';
+  }
+
+  width: #{$size}#{$unit} #{$rule};
+  height: #{$size}#{$unit} #{$rule};
+}
