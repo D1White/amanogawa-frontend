@@ -1,0 +1,39 @@
+.footer {
+  width: 100%;
+  padding: 24px 0 64px;
+  background-color: $black;
+
+  :global .container {
+    flex-direction: row;
+    @include flexCenteredVertically;
+    justify-content: space-between;
+  }
+}
+
+.text {
+  font-size: 16px;
+
+  &__link {
+    margin-left: 6px;
+    @include colorTransition;
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__info {
+    margin-left: 40px;
+  }
+
+  &__role {
+    color: $gray;
+  }
+}
+
+.teamBlock {
+  @include flexCenteredVertically;
+
+  @include notFirst {
+    margin-left: 40px;
+  }
+}

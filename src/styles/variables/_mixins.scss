@@ -8,3 +8,13 @@
   width: #{$size}#{$unit} #{$rule};
   height: #{$size}#{$unit} #{$rule};
 }
+
+@mixin notFirst() {
+  &:not(&:first-child) {
+    @content;
+  }
+}
+
+@mixin colorTransition() {
+  transition: color linear 0.2s;
+}

@@ -2,7 +2,7 @@
   color: $gray;
   font-size: 16px;
 
-  transition: color linear 0.2s;
+  @include colorTransition;
 
   &:not(&:first-child) {
     margin-left: 42px;

@@ -5,7 +5,7 @@ import cn from 'classnames';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import { Header } from '@/components/Header';
+import { Footer, Header } from '@/components';
 
 const fixel = localFont({
   src: [
@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn(fixel.variable, kyivRegion.variable)}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
