@@ -1,9 +1,17 @@
+import { AnimeCard } from '@/components';
+import { AnimeStatusEnum } from '@/types';
+
 export default function Home() {
   return (
-    <main>
-      <h1>Title H1</h1>
-      <h2>Title H2</h2>
-      <h3>Title H3</h3>
+    <main className="container">
+      <AnimeCard
+        title="Doctor Stone: New World"
+        episodes={40}
+        image="https://amanogawa.fra1.cdn.digitaloceanspaces.com/chainsaw-man/poster.jpg"
+        status={AnimeStatusEnum.ongoing}
+        slug="test"
+        score={4.7}
+      />
     </main>
   );
 }

@@ -9,7 +9,7 @@
   height: #{$size}#{$unit} #{$rule};
 }
 
-@mixin notFirst() {
+@mixin notFirstChild() {
   &:not(&:first-child) {
     @content;
   }

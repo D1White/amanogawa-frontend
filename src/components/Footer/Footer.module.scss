@@ -33,7 +33,7 @@
 .teamBlock {
   @include flexCenteredVertically;
 
-  @include notFirst {
+  @include notFirstChild {
     margin-left: 40px;
   }
 }

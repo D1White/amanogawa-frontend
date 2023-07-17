@@ -1,0 +1,33 @@
+.badge {
+  @include flexCenteredVertically;
+  padding: 4px 12px 2px;
+  border-radius: 99px;
+  background: $primary;
+
+  &__black {
+    background: $black;
+  }
+
+  &__gray {
+    background: $gray-dark;
+  }
+
+  &__red {
+    background: $error-dark;
+
+    &.text {
+      color: $error;
+    }
+  }
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.star {
+  @include square(16);
+  margin-right: 2px;
+}
