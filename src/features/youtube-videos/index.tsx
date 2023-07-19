@@ -12,7 +12,7 @@ export const YoutubeVideos = async () => {
   return (
     <YoutubeVideosContextProvider>
       <section className={styles.section}>
-        <div className="container">
+        <div className={styles.header}>
           <h2 className="section-title">Latest anime videos:</h2>
 
           <VideosNavigate />
