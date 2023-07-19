@@ -1,0 +1,20 @@
+.section {
+  width: 100%;
+  padding: 24px 0 64px;
+  margin-top: 150px;
+  background-color: $black;
+
+  display: flex;
+  flex-direction: column;
+
+  :global .container {
+    flex-direction: row;
+    @include flexCenteredVertically;
+    justify-content: space-between;
+  }
+}
+
+.sliderWrapper {
+  width: 100%;
+  margin-top: 40px;
+}

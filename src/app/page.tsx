@@ -1,4 +1,7 @@
+import 'swiper/css';
+
 import { AnimeCard } from '@/components';
+import { YoutubeVideos } from '@/features';
 import { AnimeStatusEnum } from '@/types';
 
 export default function Home() {
@@ -12,6 +15,8 @@ export default function Home() {
         slug="test"
         score={4.7}
       />
+
+      <YoutubeVideos />
     </main>
   );
 }

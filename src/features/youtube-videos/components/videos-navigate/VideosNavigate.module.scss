@@ -1,0 +1,47 @@
+.navButton {
+  @include square(44);
+  @include flexCentered;
+  border-radius: 50%;
+
+  transition: background linear 0.2s;
+
+  &:hover {
+    background: $primary !important;
+  }
+
+  &.next {
+    background: linear-gradient(90deg, rgba($primary, 0.2) 0%, $primary 100%);
+    margin-left: 16px;
+  }
+  &.prev {
+    background: linear-gradient(-90deg, rgba($primary, 0.4) 0%, $primary 100%);
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:disabled {
+    &.next {
+      background: linear-gradient(90deg, rgba($gray-dark, 0.2) 0%, $gray-dark 100%) !important;
+    }
+    &.prev {
+      background: linear-gradient(-90deg, rgba($gray-dark, 0.4) 0%, $gray-dark 100%) !important;
+    }
+
+    svg > path {
+      stroke: $gray-dark;
+    }
+  }
+
+  .content {
+    @include square(42);
+    @include flexCentered;
+    border-radius: 50%;
+    background-color: $black;
+  }
+
+  svg > path {
+    stroke: $primary;
+  }
+}

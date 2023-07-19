@@ -15,6 +15,12 @@
   }
 }
 
+@mixin notLastChild() {
+  &:not(&:last-child) {
+    @content;
+  }
+}
+
 @mixin colorTransition() {
   transition: color linear 0.2s;
 }
