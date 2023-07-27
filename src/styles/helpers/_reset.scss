@@ -152,6 +152,10 @@ a {
   text-decoration: none;
 }
 
+mark {
+  background: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

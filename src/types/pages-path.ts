@@ -1,6 +1,6 @@
 export enum PagesPath {
   home = '/',
-  anime = '/amime',
+  anime = '/anime',
   myList = '/my-list',
   account = '/account',
 }

@@ -21,6 +21,7 @@ export enum AnimeSeasonEnum {
 }
 
 export interface IAnime {
+  _id: string;
   title: string;
   title_english: string;
   title_japanese: string;
@@ -39,4 +40,6 @@ export interface IAnime {
   myanime_id?: number;
   score?: number;
   views?: number;
+  created_at: string;
+  updated_at: string;
 }

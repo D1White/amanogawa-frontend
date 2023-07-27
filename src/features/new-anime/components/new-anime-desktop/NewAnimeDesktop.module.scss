@@ -1,0 +1,82 @@
+.section {
+  width: 100%;
+  padding: 150px 70px;
+
+  @include flexCenteredVertically;
+  position: relative;
+}
+
+.background {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.05;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.poster {
+  width: 358px;
+  height: 507px;
+  object-fit: cover;
+  border-radius: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+}
+
+.title {
+  font-family: $ff-k;
+  font-size: 56px;
+  font-weight: 500;
+}
+
+.synopsis {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 16px;
+  max-width: 600px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.details {
+  @include flexCenteredVertically;
+  margin-top: 90px;
+}
+
+.detail {
+  font-size: 16px;
+  font-weight: 500;
+  color: $gray;
+  text-align: center;
+
+  mark {
+    font-size: 18px;
+    color: $white;
+    text-transform: capitalize;
+    margin-left: 6px;
+  }
+
+  @include notFirstChild {
+    margin-left: 70px;
+  }
+}
+
+.actionButtons {
+  @include flexCenteredVertically;
+  margin-top: 90px;
+  gap: 12px;
+}
