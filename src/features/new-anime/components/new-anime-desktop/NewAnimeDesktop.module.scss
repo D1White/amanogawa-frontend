@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  padding: 150px 70px;
+  padding: 150px 70px 160px;
 
   @include flexCenteredVertically;
   position: relative;
@@ -13,11 +13,20 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.backgroundImage {
+  z-index: -1;
   object-fit: cover;
-  z-index: 0;
   opacity: 0.05;
   filter: blur(3px);
-  pointer-events: none;
+}
+
+.backgroundGradient {
+  z-index: 0;
+
+  background: linear-gradient(180deg, rgba($black, 0) 90%, rgba($black, 1) 100%);
 }
 
 .poster {
@@ -25,12 +34,14 @@
   height: 507px;
   object-fit: cover;
   border-radius: 40px;
+  position: relative;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   margin-left: 70px;
+  position: relative;
 }
 
 .title {

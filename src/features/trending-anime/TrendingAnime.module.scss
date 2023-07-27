@@ -1,0 +1,66 @@
+.section {
+  width: 100%;
+  background-color: $black;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  @include flexCenteredVertically;
+  justify-content: space-between;
+}
+
+.title {
+  color: $gray-light;
+  font-family: $ff-k;
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.cards {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  @include flexCenteredVertically;
+  padding: 14px 24px;
+  border-radius: 99px;
+  border: 1px solid $gray-dark;
+
+  transition: 0.2s linear border;
+
+  svg {
+    margin-left: 8px;
+    transition: 0.2s linear transform;
+
+    path {
+      stroke: $gray-dark;
+      transition: 0.2s linear stroke;
+    }
+  }
+
+  &__text {
+    color: $gray-light;
+    font-family: $ff-f;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  &:hover {
+    border: 1px solid $gray-light;
+
+    svg {
+      transform: translateX(6px);
+      path {
+        stroke: $gray-light;
+      }
+    }
+  }
+}

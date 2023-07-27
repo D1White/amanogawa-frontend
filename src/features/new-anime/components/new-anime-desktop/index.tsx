@@ -1,5 +1,6 @@
 'use client';
 
+import cn from 'classnames';
 import React, { FC, useContext, useEffect } from 'react';
 
 import { PlayIcon, SaveIcon } from '@/assets/jsx-icons';
@@ -28,8 +29,10 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
       <img
         src={activeSlideData.image}
         alt="background anime poster"
-        className={styles.background}
+        className={cn(styles.background, styles.backgroundImage)}
       />
+
+      <div className={cn(styles.background, styles.backgroundGradient)} />
 
       <img src={activeSlideData.image} alt={activeSlideData.title} className={styles.poster} />
 
