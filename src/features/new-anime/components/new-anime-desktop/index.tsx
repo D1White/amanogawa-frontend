@@ -51,9 +51,9 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
         </div>
 
         <div className={styles.details}>
-          {activeSlideData?.score && (
+          {activeSlideData?.rating && (
             <span className={styles.detail}>
-              Rating:<mark>{activeSlideData.score}</mark>
+              Rating:<mark>{activeSlideData.rating}</mark>
             </span>
           )}
 
@@ -64,12 +64,12 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
             Season:<mark>{activeSlideData.season}</mark>
           </span>
 
-          {activeSlideData?.episodes_total && activeSlideData.episodes?.length && (
+          {activeSlideData?.episodes_total && activeSlideData.episodes?.length ? (
             <span className={styles.detail}>
               Episodes:
               <mark>{`${activeSlideData.episodes?.length} / ${activeSlideData.episodes_total}`}</mark>
             </span>
-          )}
+          ) : null}
         </div>
       </div>
 

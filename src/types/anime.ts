@@ -1,3 +1,6 @@
+import { IEpisode } from './episode';
+import { IGenre } from './genre';
+
 export enum AnimeTypeEnum {
   tv = 'tv',
   movie = 'movie',
@@ -20,7 +23,7 @@ export enum AnimeSeasonEnum {
   autumn = 'autumn',
 }
 
-export interface IAnime {
+interface IAnimeBase {
   _id: string;
   title: string;
   title_english: string;
@@ -30,16 +33,24 @@ export interface IAnime {
   synopsis: string;
   type: AnimeTypeEnum;
   status: AnimeStatusEnum;
-  genres: string[];
   year: number;
   season: AnimeSeasonEnum;
   group?: string;
   name_in_group?: string;
   episodes_total?: string;
-  episodes?: string[];
   myanime_id?: number;
-  score?: number;
+  rating?: number;
   views?: number;
   created_at: string;
   updated_at: string;
+}
+
+export interface IAnime extends IAnimeBase {
+  genres: string[];
+  episodes?: string[];
+}
+
+export interface IAnimeFull extends IAnimeBase {
+  genres: IGenre[];
+  episodes?: IEpisode[];
 }

@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  padding: 150px 70px 160px;
+  padding: 200px 70px 160px;
 
   @include flexCenteredVertically;
   position: relative;
@@ -48,6 +48,12 @@
   font-family: $ff-k;
   font-size: 56px;
   font-weight: 500;
+
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .synopsis {

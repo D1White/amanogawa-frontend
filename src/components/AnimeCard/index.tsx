@@ -9,12 +9,12 @@ import { IAnime, PagesPath } from '@/types';
 import { Badge } from '../Badge';
 import styles from './AnimeCard.module.scss';
 
-interface AnimeCardProps extends Pick<IAnime, 'title' | 'image' | 'status' | 'score' | 'slug'> {
+interface AnimeCardProps extends Pick<IAnime, 'title' | 'image' | 'status' | 'rating' | 'slug'> {
   episodes?: number;
 }
 
 export const AnimeCard: FC<AnimeCardProps> = (props) => {
-  const { title, image, status, score, slug, episodes } = props;
+  const { title, image, status, rating, slug, episodes } = props;
 
   return (
     <Link href={`${PagesPath.anime}/${slug}`} className={styles.card}>
@@ -35,12 +35,14 @@ export const AnimeCard: FC<AnimeCardProps> = (props) => {
 
         <Badge text={status} className={cn(styles.badge, styles.badge__type)} />
 
-        {score && <Badge text={score} className={cn(styles.badge, styles.badge__score)} withStar />}
+        {!!rating && (
+          <Badge text={rating} className={cn(styles.badge, styles.badge__score)} withStar />
+        )}
       </div>
 
       <p className={styles.title}>{title}</p>
 
-      {episodes && <p className={styles.subtitle}>{`${episodes} episodes`}</p>}
+      {!!episodes && <p className={styles.subtitle}>{`${episodes} episodes`}</p>}
     </Link>
   );
 };

@@ -3,11 +3,20 @@ import React from 'react';
 
 import { ArrowRightIcon } from '@/assets/jsx-icons';
 import { AnimeCard } from '@/components';
-import { AnimeStatusEnum, PagesPath } from '@/types';
+import { PagesPath } from '@/types';
+import { getAnime } from '@/utils/api';
 
 import styles from './TrendingAnime.module.scss';
 
-export const TrendingAnime = () => {
+export const TrendingAnime = async () => {
+  const anime = await getAnime({
+    limit: 5,
+  });
+
+  if (!anime?.items) {
+    return null;
+  }
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -23,15 +32,15 @@ export const TrendingAnime = () => {
       </div>
 
       <div className={styles.cards}>
-        {new Array(5).fill(null).map((_, idx) => (
+        {anime.items.map((item) => (
           <AnimeCard
-            title="Doctor Stone: New World"
-            episodes={40}
-            image="https://amanogawa.fra1.cdn.digitaloceanspaces.com/chainsaw-man/poster.jpg"
-            status={AnimeStatusEnum.ongoing}
-            slug="test"
-            score={4.7}
-            key={idx}
+            title={item.title}
+            episodes={item.episodes?.length || 0}
+            image={item.image}
+            status={item.status}
+            slug={item.slug}
+            rating={item?.rating}
+            key={item.slug}
           />
         ))}
       </div>
