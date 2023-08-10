@@ -1,0 +1,74 @@
+.select {
+  @include flexCenteredVertically;
+  cursor: pointer;
+}
+
+.label {
+  color: $gray;
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 16px;
+}
+
+.dropdown {
+  @include flexCenteredVertically;
+  justify-content: space-between;
+  min-width: 205px;
+  padding: 14px 24px;
+  border-radius: 99px;
+  border: 1px solid $primary;
+
+  position: relative;
+}
+
+.selectedOption {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.arrow {
+  @include square(24);
+  margin-left: 16px;
+  transform: rotate(90deg);
+
+  transition: transform 0.15s linear;
+
+  &.rotate {
+    transform: rotate(270deg);
+  }
+}
+
+.optionsWrapper {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  transform: translateY(100%);
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 14px 24px;
+  border-radius: 16px;
+  border: 1px solid $primary;
+}
+
+.option {
+  font-size: 18px;
+  font-weight: 500;
+  color: $gray;
+
+  transition: color 0.2s linear;
+
+  @include notFirstChild {
+    margin-top: 6px;
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  &.selected {
+    color: $white;
+  }
+}

@@ -1,0 +1,39 @@
+.wrapper {
+  @include flexCentered;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  gap: 16px;
+}
+
+.filter {
+  @include flexCenteredVertically;
+  padding: 14px 20px 14px 24px;
+  border-radius: 99px;
+  border: 1px solid $gray-dark;
+
+  p {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.removeButton {
+  @include flexCentered;
+  @include square(24);
+  margin-left: 16px;
+
+  svg {
+    @include square(100, '%');
+
+    path {
+      stroke: $gray;
+      transition: stroke 0.2s linear;
+    }
+  }
+
+  &:hover {
+    svg > path {
+      stroke: $white;
+    }
+  }
+}

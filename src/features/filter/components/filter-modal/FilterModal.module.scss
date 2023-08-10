@@ -1,0 +1,34 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background-color: rgba($black, 0.96);
+
+  :global .container {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.title {
+  color: $gray-light;
+  font-family: $ff-k;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.filtersRowBlock {
+  width: 100%;
+  @include flexCenteredVertically;
+  justify-content: space-evenly;
+  margin-top: 80px;
+}
+
+.yearTitle {
+  margin-bottom: 35px;
+}

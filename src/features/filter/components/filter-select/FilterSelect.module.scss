@@ -1,0 +1,50 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+
+  &.center {
+    align-items: center;
+  }
+
+  @include notFirstChild {
+    margin-top: 80px;
+  }
+
+  &.noSpacing {
+    margin-top: 0 !important;
+  }
+}
+
+.title {
+  color: $gray-light;
+  font-family: $ff-k;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  width: fit-content;
+}
+
+.selectBlock {
+  @include flexCentered;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.select {
+  @include flexCenteredVertically;
+  padding: 14px 24px;
+  border-radius: 99px;
+  border: 1px solid $gray-dark;
+
+  transition:
+    border 0.2s linear,
+    background-color 0.2s linear;
+
+  &.active {
+    background-color: $purple;
+    border: 1px solid $purple;
+  }
+}

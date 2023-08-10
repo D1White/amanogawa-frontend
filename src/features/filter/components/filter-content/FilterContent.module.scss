@@ -1,0 +1,35 @@
+.filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  width: 100%;
+  @include flexCenteredVertically;
+  justify-content: space-between;
+}
+
+.filterButton {
+  @include flexCenteredVertically;
+  padding: 14px 24px;
+  border-radius: 99px;
+  border: 1px solid $primary;
+  background: none;
+
+  position: relative;
+  z-index: 51;
+
+  color: $white;
+  font-size: 18px;
+  font-weight: 500;
+
+  svg {
+    @include square(24);
+    margin-right: 8px;
+  }
+
+  &.open {
+    border: 1px solid $gray-dark;
+  }
+}

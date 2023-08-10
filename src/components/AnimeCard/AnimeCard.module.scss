@@ -15,10 +15,15 @@
 }
 
 .title {
-  overflow: hidden;
   font-size: 18px;
   font-weight: 500;
   margin-top: 16px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .subtitle {

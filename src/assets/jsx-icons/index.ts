@@ -1,8 +1,10 @@
 export { AmanogawaLogoIcon } from './AmanogawaLogoIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
+export { CloseIcon } from './CloseIcon';
 export { PaginationActiveCircle, PaginationCircle } from './PaginationCircle';
 export { PlayIcon } from './PlayIcon';
 export { SaveIcon } from './SaveIcon';
 export { SearchIcon } from './SearchIcon';
+export { SettingsIcon } from './SettingsIcon';
 export { StarIcon } from './StarIcon';
 export { UserIcon } from './UserIcon';
