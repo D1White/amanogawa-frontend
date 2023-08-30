@@ -1,0 +1,52 @@
+.pagination {
+  @include flexCenteredVertically;
+  gap: 16px;
+  margin: 0 auto;
+}
+
+.pageButton {
+  @include flexCentered;
+  width: 48px;
+  height: 36px;
+  border-radius: 99px;
+  border: 1px solid $black;
+
+  color: $gray;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  transition:
+    color 0.2s linear,
+    border 0.2s linear;
+
+  &.active {
+    color: $white;
+    border: 1px solid $gray-light;
+  }
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.arrowButton {
+  @include square(24);
+  @include flexCentered;
+
+  & > svg {
+    @include square(100, '%');
+    stroke: $gray;
+    transition: stroke 0.2s linear;
+  }
+
+  &:hover {
+    & > svg {
+      stroke: $white;
+    }
+  }
+
+  &.rotate {
+    transform: rotate(180deg);
+  }
+}

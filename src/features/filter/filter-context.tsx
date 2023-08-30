@@ -1,7 +1,15 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { createContext, Dispatch, FC, PropsWithChildren, useCallback, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  FC,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 
 import { SelectValue } from '@/components/Select';
 import { IGenre } from '@/types';
@@ -12,36 +20,48 @@ type FilterContextType = {
   types: SelectValue[];
   setTypes: Dispatch<SelectValue[]>;
   removeType: (value: SelectValue) => void;
+
   genres: SelectValue[];
   setGenres: Dispatch<SelectValue[]>;
   removeGenre: (value: SelectValue) => void;
+
   status: SelectValue[];
   setStatus: Dispatch<SelectValue[]>;
   removeStatus: (value: SelectValue) => void;
+
   yearLimit: typeof yearOptions;
   setYearLimit: Dispatch<typeof yearOptions>;
   resetFromYearLimit: () => void;
   resetToYearLimit: () => void;
+
   genresData: IGenre[];
-  updateRouteByFilters: () => void;
+
+  isFilterOpen: boolean;
+  setIsFilterOpen: Dispatch<boolean>;
 };
 
 export const FilterContext = createContext<FilterContextType>({
   types: [],
   setTypes: () => {},
   removeType: () => {},
+
   genres: [],
   setGenres: () => {},
   removeGenre: () => {},
+
   status: [],
   setStatus: () => {},
   removeStatus: () => {},
+
   yearLimit: yearOptions,
   setYearLimit: () => {},
   resetFromYearLimit: () => {},
   resetToYearLimit: () => {},
+
   genresData: [],
-  updateRouteByFilters: () => {},
+
+  isFilterOpen: false,
+  setIsFilterOpen: () => {},
 });
 
 interface FilterContextProviderProps extends PropsWithChildren {
@@ -56,6 +76,7 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
   const [status, setStatus] = useState<SelectValue[]>([]);
   const [genres, setGenres] = useState<SelectValue[]>([]);
   const [yearLimit, setYearLimit] = useState(yearOptions);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const removeType = useCallback(
     (value: SelectValue) => {
@@ -89,7 +110,9 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
     setYearLimit((prev) => ({ ...prev, max: yearOptions.max }));
   }, []);
 
-  const updateRouteByFilters = () => {
+  useEffect(() => {
+    if (isFilterOpen) return;
+
     const typeUrlParams = types.length > 0 ? 'type=' + types.join(',') : '';
     const statusUrlParams = status.length > 0 ? 'status=' + status.join(',') : '';
     const genresUrlParams = genres.length > 0 ? 'genres=' + genres.join(',') : '';
@@ -110,8 +133,10 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
 
     if (urlParams) {
       router.push(`${pathname}?${urlParams}`);
+    } else {
+      router.push(pathname);
     }
-  };
+  }, [types, status, genres, yearLimit, yearLimit, isFilterOpen]);
 
   return (
     <FilterContext.Provider
@@ -130,7 +155,8 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
         resetFromYearLimit,
         resetToYearLimit,
         genresData,
-        updateRouteByFilters,
+        isFilterOpen,
+        setIsFilterOpen,
       }}
     >
       {children}

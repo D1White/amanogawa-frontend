@@ -1,5 +1,6 @@
 export { AmanogawaLogoIcon } from './AmanogawaLogoIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
+export { ArrowRightPipeIcon } from './ArrowRightPipeIcon';
 export { CloseIcon } from './CloseIcon';
 export { PaginationActiveCircle, PaginationCircle } from './PaginationCircle';
 export { PlayIcon } from './PlayIcon';

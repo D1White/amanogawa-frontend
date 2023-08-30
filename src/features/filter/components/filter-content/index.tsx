@@ -1,18 +1,19 @@
 'use client';
 
 import cn from 'classnames';
-import React, { FC, useState } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { SettingsIcon } from '@/assets/jsx-icons';
+import { FilterContext } from '@/features/filter/filter-context';
 
 import { FilterModal, SelectedFilters, SortBy } from '../index';
 import styles from './FilterContent.module.scss';
 
 export const FilterContent: FC = () => {
-  const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
+  const { isFilterOpen, setIsFilterOpen } = useContext(FilterContext);
 
   const handleFiltersOpenSwitch = () => {
-    setIsFiltersModalOpen((prev) => !prev);
+    setIsFilterOpen(!isFilterOpen);
   };
 
   return (
@@ -20,11 +21,11 @@ export const FilterContent: FC = () => {
       <div className={styles.filter}>
         <div className={styles.actions}>
           <button
-            className={cn(styles.filterButton, { [styles.open]: isFiltersModalOpen })}
+            className={cn(styles.filterButton, { [styles.open]: isFilterOpen })}
             onClick={handleFiltersOpenSwitch}
           >
             <SettingsIcon />
-            {isFiltersModalOpen ? 'Close Filter' : 'Filter'}
+            {isFilterOpen ? 'Close Filter' : 'Filter'}
           </button>
 
           <SortBy />
@@ -33,7 +34,7 @@ export const FilterContent: FC = () => {
         <SelectedFilters />
       </div>
 
-      {isFiltersModalOpen && <FilterModal />}
+      {isFilterOpen && <FilterModal />}
     </>
   );
 };
