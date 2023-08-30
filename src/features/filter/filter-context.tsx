@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
 import { createContext, Dispatch, FC, PropsWithChildren, useCallback, useState } from 'react';
 
 import { SelectValue } from '@/components/Select';
@@ -22,6 +23,7 @@ type FilterContextType = {
   resetFromYearLimit: () => void;
   resetToYearLimit: () => void;
   genresData: IGenre[];
+  updateRouteByFilters: () => void;
 };
 
 export const FilterContext = createContext<FilterContextType>({
@@ -39,6 +41,7 @@ export const FilterContext = createContext<FilterContextType>({
   resetFromYearLimit: () => {},
   resetToYearLimit: () => {},
   genresData: [],
+  updateRouteByFilters: () => {},
 });
 
 interface FilterContextProviderProps extends PropsWithChildren {
@@ -46,6 +49,9 @@ interface FilterContextProviderProps extends PropsWithChildren {
 }
 
 export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children, genresData }) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
   const [types, setTypes] = useState<SelectValue[]>([]);
   const [status, setStatus] = useState<SelectValue[]>([]);
   const [genres, setGenres] = useState<SelectValue[]>([]);
@@ -83,6 +89,30 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
     setYearLimit((prev) => ({ ...prev, max: yearOptions.max }));
   }, []);
 
+  const updateRouteByFilters = () => {
+    const typeUrlParams = types.length > 0 ? 'type=' + types.join(',') : '';
+    const statusUrlParams = status.length > 0 ? 'status=' + status.join(',') : '';
+    const genresUrlParams = genres.length > 0 ? 'genres=' + genres.join(',') : '';
+
+    // [TO DO] update backend
+    const yearMinUrlParams = yearLimit.min > yearOptions.min ? 'yearMin=' + yearLimit.min : '';
+    const yearMaxUrlParams = yearLimit.max < yearOptions.max ? 'yearMax=' + yearLimit.max : '';
+
+    const urlParams = [
+      typeUrlParams,
+      statusUrlParams,
+      genresUrlParams,
+      yearMinUrlParams,
+      yearMaxUrlParams,
+    ]
+      .filter((param) => !!param)
+      .join('&');
+
+    if (urlParams) {
+      router.push(`${pathname}?${urlParams}`);
+    }
+  };
+
   return (
     <FilterContext.Provider
       value={{
@@ -100,6 +130,7 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
         resetFromYearLimit,
         resetToYearLimit,
         genresData,
+        updateRouteByFilters,
       }}
     >
       {children}

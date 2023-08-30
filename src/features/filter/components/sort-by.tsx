@@ -1,9 +1,10 @@
 'use client';
 
-import { Select, SelectOption, SelectValue } from '@/components/Select';
-import { AnimeSortField } from '@/utils/api';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useMemo } from 'react';
+
+import { Select, SelectOption, SelectValue } from '@/components/Select';
+import { AnimeSortField } from '@/utils/api';
 
 const sortOptions: SelectOption[] = [
   { label: 'Release Date', value: AnimeSortField.createdAt },

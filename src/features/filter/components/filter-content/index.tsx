@@ -11,7 +11,9 @@ import styles from './FilterContent.module.scss';
 export const FilterContent: FC = () => {
   const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
 
-  const handleFiltersOpenSwitch = () => setIsFiltersModalOpen((prev) => !prev);
+  const handleFiltersOpenSwitch = () => {
+    setIsFiltersModalOpen((prev) => !prev);
+  };
 
   return (
     <>

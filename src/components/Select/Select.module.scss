@@ -43,6 +43,7 @@
   bottom: -10px;
   left: 0;
   transform: translateY(100%);
+  z-index: 99;
 
   width: 100%;
   display: flex;
@@ -51,6 +52,7 @@
   padding: 14px 24px;
   border-radius: 16px;
   border: 1px solid $primary;
+  background-color: $black;
 }
 
 .option {
