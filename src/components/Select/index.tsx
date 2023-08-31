@@ -9,6 +9,7 @@ import { useClickOutside } from '@/hooks';
 import styles from './Select.module.scss';
 
 export type SelectValue = string | number;
+export type SelectValueOrNull = SelectValue | null;
 
 export interface SelectOption {
   label: string;

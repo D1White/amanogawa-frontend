@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
+import qs from 'query-string';
 import {
   createContext,
   Dispatch,
@@ -11,23 +12,23 @@ import {
   useState,
 } from 'react';
 
-import { SelectValue } from '@/components/Select';
+import { SelectValue, SelectValueOrNull } from '@/components/Select';
 import { IGenre } from '@/types';
 
 import { yearOptions } from './filter-data';
 
 type FilterContextType = {
-  types: SelectValue[];
-  setTypes: Dispatch<SelectValue[]>;
-  removeType: (value: SelectValue) => void;
+  type: SelectValueOrNull;
+  setType: Dispatch<SelectValueOrNull>;
+  removeType: () => void;
 
   genres: SelectValue[];
   setGenres: Dispatch<SelectValue[]>;
   removeGenre: (value: SelectValue) => void;
 
-  status: SelectValue[];
-  setStatus: Dispatch<SelectValue[]>;
-  removeStatus: (value: SelectValue) => void;
+  status: SelectValueOrNull;
+  setStatus: Dispatch<SelectValueOrNull>;
+  removeStatus: () => void;
 
   yearLimit: typeof yearOptions;
   setYearLimit: Dispatch<typeof yearOptions>;
@@ -41,15 +42,15 @@ type FilterContextType = {
 };
 
 export const FilterContext = createContext<FilterContextType>({
-  types: [],
-  setTypes: () => {},
+  type: null,
+  setType: () => {},
   removeType: () => {},
 
   genres: [],
   setGenres: () => {},
   removeGenre: () => {},
 
-  status: [],
+  status: null,
   setStatus: () => {},
   removeStatus: () => {},
 
@@ -72,27 +73,19 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
   const pathname = usePathname();
   const router = useRouter();
 
-  const [types, setTypes] = useState<SelectValue[]>([]);
-  const [status, setStatus] = useState<SelectValue[]>([]);
+  const [type, setType] = useState<SelectValueOrNull>(null);
+  const [status, setStatus] = useState<SelectValueOrNull>(null);
   const [genres, setGenres] = useState<SelectValue[]>([]);
   const [yearLimit, setYearLimit] = useState(yearOptions);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const removeType = useCallback(
-    (value: SelectValue) => {
-      const filterTypes = types.filter((type) => type !== value);
-      setTypes(filterTypes);
-    },
-    [types],
-  );
+  const removeType = useCallback(() => {
+    setType(null);
+  }, []);
 
-  const removeStatus = useCallback(
-    (value: SelectValue) => {
-      const filterStatus = status.filter((item) => item !== value);
-      setStatus(filterStatus);
-    },
-    [status],
-  );
+  const removeStatus = useCallback(() => {
+    setStatus(null);
+  }, []);
 
   const removeGenre = useCallback(
     (value: SelectValue) => {
@@ -113,36 +106,32 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
   useEffect(() => {
     if (isFilterOpen) return;
 
-    const typeUrlParams = types.length > 0 ? 'type=' + types.join(',') : '';
-    const statusUrlParams = status.length > 0 ? 'status=' + status.join(',') : '';
-    const genresUrlParams = genres.length > 0 ? 'genres=' + genres.join(',') : '';
+    const params = {
+      type,
+      status,
+      genres,
+      yearMin: yearLimit.min > yearOptions.min ? yearLimit.min : null,
+      yearMax: yearLimit.max < yearOptions.max ? yearLimit.max : null,
+    };
 
-    // [TO DO] update backend
-    const yearMinUrlParams = yearLimit.min > yearOptions.min ? 'yearMin=' + yearLimit.min : '';
-    const yearMaxUrlParams = yearLimit.max < yearOptions.max ? 'yearMax=' + yearLimit.max : '';
-
-    const urlParams = [
-      typeUrlParams,
-      statusUrlParams,
-      genresUrlParams,
-      yearMinUrlParams,
-      yearMaxUrlParams,
-    ]
-      .filter((param) => !!param)
-      .join('&');
+    const urlParams = qs.stringify(params, {
+      arrayFormat: 'bracket',
+      skipNull: true,
+      skipEmptyString: true,
+    });
 
     if (urlParams) {
       router.push(`${pathname}?${urlParams}`);
     } else {
       router.push(pathname);
     }
-  }, [types, status, genres, yearLimit, yearLimit, isFilterOpen]);
+  }, [type, status, genres, yearLimit, yearLimit, isFilterOpen]);
 
   return (
     <FilterContext.Provider
       value={{
-        types,
-        setTypes,
+        type,
+        setType,
         removeType,
         genres,
         setGenres,

@@ -12,6 +12,7 @@
     "classnames": "^2.3.2",
     "next": "13.4.10",
     "normalize.css": "^8.0.1",
+    "query-string": "^8.1.0",
     "rc-slider": "^10.2.1",
     "rc-tooltip": "^6.0.1",
     "react": "18.2.0",

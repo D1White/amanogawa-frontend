@@ -33,7 +33,7 @@ const FilterChips: FC<FilterChipsProps> = ({ label, value, onClick }) => {
 
 export const SelectedFilters = () => {
   const {
-    types,
+    type,
     genres,
     genresData,
     status,
@@ -46,12 +46,12 @@ export const SelectedFilters = () => {
   } = useContext(FilterContext);
 
   const typesFilters = useMemo(
-    () => animeTypesOptions.filter((option) => types.includes(option.value)),
-    [types],
+    () => animeTypesOptions.filter((option) => type === option.value),
+    [type],
   );
 
   const statusFilters = useMemo(
-    () => animeStatusOptions.filter((option) => status.includes(option.value)),
+    () => animeStatusOptions.filter((option) => status === option.value),
     [status],
   );
 

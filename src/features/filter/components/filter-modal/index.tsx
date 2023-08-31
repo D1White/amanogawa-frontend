@@ -4,19 +4,19 @@ import cn from 'classnames';
 import React, { memo, useContext, useMemo } from 'react';
 
 import { MultiRangeSlider, MultiRangeSliderOnChangeValue } from '@/components';
-import { SelectOption, SelectValue } from '@/components/Select';
+import { SelectOption, SelectValue, SelectValueOrNull } from '@/components/Select';
 import { FilterContext } from '@/features/filter/filter-context';
 import { animeStatusOptions, animeTypesOptions, yearOptions } from '@/features/filter/filter-data';
 
-import { FilterSelect } from '../filter-select';
+import { MultipleFilterSelect, SingleFilterSelect } from '../filter-select';
 import filterSelectStyles from '../filter-select/FilterSelect.module.scss';
 import styles from './FilterModal.module.scss';
 
 export const FilterModal = memo(() => {
   const {
     genresData,
-    types,
-    setTypes,
+    type,
+    setType,
     genres,
     setGenres,
     status,
@@ -34,15 +34,15 @@ export const FilterModal = memo(() => {
     [genresData],
   );
 
-  const handleTypesChange = (value: SelectValue[]) => {
-    setTypes(value);
+  const handleTypesChange = (value: SelectValueOrNull) => {
+    setType(value);
   };
 
   const handleGenreChange = (value: SelectValue[]) => {
     setGenres(value);
   };
 
-  const handleStatusChange = (value: SelectValue[]) => {
+  const handleStatusChange = (value: SelectValueOrNull) => {
     setStatus(value);
   };
 
@@ -53,14 +53,14 @@ export const FilterModal = memo(() => {
   return (
     <div className={styles.modal}>
       <div className="container">
-        <FilterSelect
+        <SingleFilterSelect
           title="Type"
-          values={types}
+          value={type}
           options={animeTypesOptions}
           onChange={handleTypesChange}
         />
 
-        <FilterSelect
+        <MultipleFilterSelect
           title="Genre"
           values={genres}
           options={genresOptions}
@@ -68,9 +68,9 @@ export const FilterModal = memo(() => {
         />
 
         <div className={styles.filtersRowBlock}>
-          <FilterSelect
+          <SingleFilterSelect
             title="Status"
-            values={status}
+            value={status}
             options={animeStatusOptions}
             onChange={handleStatusChange}
             centered={false}
