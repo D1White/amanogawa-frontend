@@ -11,8 +11,6 @@ export const getAnime = async (params?: IAnimeParams): Promise<IAnimeResponse> =
     },
   );
 
-  console.log({ params });
-
   if (!res.ok) {
     console.log(res);
 

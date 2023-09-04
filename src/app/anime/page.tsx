@@ -2,7 +2,6 @@ import cn from 'classnames';
 
 import { Filter } from '@/features';
 import { AnimeGrid } from '@/features/anime-grid';
-import { AnimeTypeEnum } from '@/types';
 import { getAnime } from '@/utils/api';
 
 export default async function AllAnime({

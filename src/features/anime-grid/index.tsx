@@ -24,7 +24,9 @@ export const AnimeGrid: FC<{ data: IAnimeResponse }> = ({ data }) => {
         ))}
       </section>
 
-      <Pagination activePage={data.page} pages={data.pages} setPage={() => {}} />
+      {data?.pages > 1 && (
+        <Pagination activePage={data.page} pages={data.pages} setPage={() => {}} />
+      )}
     </>
   );
 };

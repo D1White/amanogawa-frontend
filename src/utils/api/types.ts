@@ -16,7 +16,8 @@ export interface IAnimeParams {
   type?: AnimeTypeEnum;
   status?: AnimeStatusEnum;
   season?: AnimeSeasonEnum;
-  year?: number;
+  min_year?: number;
+  max_year?: number;
   genres?: string[];
   search?: string;
   sort_field?: AnimeSortField;

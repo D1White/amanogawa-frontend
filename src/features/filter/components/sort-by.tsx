@@ -1,10 +1,11 @@
 'use client';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useMemo } from 'react';
+import React, { useContext } from 'react';
 
 import { Select, SelectOption, SelectValue } from '@/components/Select';
 import { AnimeSortField } from '@/utils/api';
+
+import { FilterContext } from '../filter-context';
 
 const sortOptions: SelectOption[] = [
   { label: 'Release Date', value: AnimeSortField.createdAt },
@@ -12,19 +13,10 @@ const sortOptions: SelectOption[] = [
 ];
 
 export const SortBy = () => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const sortFiled = useMemo(() => {
-    const searchSortBy = searchParams.get('sort_by');
-    return searchSortBy && sortOptions.some((option) => option.value === searchSortBy)
-      ? searchSortBy
-      : AnimeSortField.createdAt;
-  }, [searchParams]);
+  const { sortFiled, setSortFiled } = useContext(FilterContext);
 
   const handleSortChange = (value: SelectValue) => {
-    router.push(`${pathname}?sort_by=${value}`);
+    setSortFiled(value as AnimeSortField);
   };
 
   return (

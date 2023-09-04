@@ -14,6 +14,7 @@ import {
 
 import { SelectValue, SelectValueOrNull } from '@/components/Select';
 import { IGenre } from '@/types';
+import { AnimeSortField } from '@/utils/api';
 
 import { yearOptions } from './filter-data';
 
@@ -35,13 +36,16 @@ type FilterContextType = {
   resetFromYearLimit: () => void;
   resetToYearLimit: () => void;
 
+  sortFiled: AnimeSortField;
+  setSortFiled: Dispatch<AnimeSortField>;
+
   genresData: IGenre[];
 
   isFilterOpen: boolean;
   setIsFilterOpen: Dispatch<boolean>;
 };
 
-export const FilterContext = createContext<FilterContextType>({
+const defaultContextState: FilterContextType = {
   type: null,
   setType: () => {},
   removeType: () => {},
@@ -59,11 +63,16 @@ export const FilterContext = createContext<FilterContextType>({
   resetFromYearLimit: () => {},
   resetToYearLimit: () => {},
 
+  sortFiled: AnimeSortField.createdAt,
+  setSortFiled: () => {},
+
   genresData: [],
 
   isFilterOpen: false,
   setIsFilterOpen: () => {},
-});
+};
+
+export const FilterContext = createContext<FilterContextType>(defaultContextState);
 
 interface FilterContextProviderProps extends PropsWithChildren {
   genresData: IGenre[];
@@ -73,11 +82,12 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
   const pathname = usePathname();
   const router = useRouter();
 
-  const [type, setType] = useState<SelectValueOrNull>(null);
-  const [status, setStatus] = useState<SelectValueOrNull>(null);
-  const [genres, setGenres] = useState<SelectValue[]>([]);
-  const [yearLimit, setYearLimit] = useState(yearOptions);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [type, setType] = useState<SelectValueOrNull>(defaultContextState.type);
+  const [status, setStatus] = useState<SelectValueOrNull>(defaultContextState.status);
+  const [genres, setGenres] = useState<SelectValue[]>(defaultContextState.genres);
+  const [yearLimit, setYearLimit] = useState(defaultContextState.yearLimit);
+  const [sortFiled, setSortFiled] = useState(defaultContextState.sortFiled);
+  const [isFilterOpen, setIsFilterOpen] = useState(defaultContextState.isFilterOpen);
 
   const removeType = useCallback(() => {
     setType(null);
@@ -110,8 +120,9 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
       type,
       status,
       genres,
-      yearMin: yearLimit.min > yearOptions.min ? yearLimit.min : null,
-      yearMax: yearLimit.max < yearOptions.max ? yearLimit.max : null,
+      min_year: yearLimit.min > yearOptions.min ? yearLimit.min : null,
+      max_year: yearLimit.max < yearOptions.max ? yearLimit.max : null,
+      sort_field: sortFiled !== defaultContextState.sortFiled ? sortFiled : null,
     };
 
     const urlParams = qs.stringify(params, {
@@ -125,7 +136,7 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
     } else {
       router.push(pathname);
     }
-  }, [type, status, genres, yearLimit, yearLimit, isFilterOpen]);
+  }, [type, status, genres, yearLimit, yearLimit, sortFiled, isFilterOpen]);
 
   return (
     <FilterContext.Provider
@@ -143,6 +154,8 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
         setYearLimit,
         resetFromYearLimit,
         resetToYearLimit,
+        sortFiled,
+        setSortFiled,
         genresData,
         isFilterOpen,
         setIsFilterOpen,
