@@ -1,14 +1,10 @@
 import cn from 'classnames';
 
-import { Filter } from '@/features';
-import { AnimeGrid } from '@/features/anime-grid';
+import { AnimeGrid, Filter } from '@/features';
+import { SearchParams } from '@/types';
 import { getAnime } from '@/utils/api';
 
-export default async function AllAnime({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+export default async function AllAnime({ searchParams }: SearchParams) {
   const anime = await getAnime(searchParams);
 
   return (
