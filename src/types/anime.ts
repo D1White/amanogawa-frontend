@@ -54,3 +54,9 @@ export interface IAnimeFull extends IAnimeBase {
   genres: IGenre[];
   episodes?: IEpisode[];
 }
+
+export interface IAnimeGroup
+  extends Pick<
+    IAnimeBase,
+    '_id' | 'title' | 'slug' | 'year' | 'season' | 'group' | 'name_in_group' | 'created_at'
+  > {}

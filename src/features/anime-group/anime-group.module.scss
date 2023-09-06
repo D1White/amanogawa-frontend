@@ -1,0 +1,27 @@
+.wrapper {
+  @include flexCenteredVertically;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 100px;
+}
+
+.link {
+  @include flexCenteredVertically;
+  padding: 14px 24px;
+  border-radius: 99px;
+  border: 1px solid $gray-dark;
+
+  transition:
+    background-color 0.2s linear,
+    border 0.2s linear;
+
+  &:hover {
+    border: 1px solid $primary;
+    background-color: $primary;
+  }
+
+  &.active {
+    border: 1px solid $primary;
+    background-color: $primary;
+  }
+}

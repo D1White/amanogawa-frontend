@@ -1,6 +1,6 @@
 import qs from 'query-string';
 
-import { IAnime, IAnimeFull } from '@/types';
+import { IAnimeFull, IAnimeGroup } from '@/types';
 
 import { IAnimeParams, IAnimeResponse } from './types';
 
@@ -23,6 +23,20 @@ export const getAnime = async (params?: IAnimeParams): Promise<IAnimeResponse> =
 export const getOneAnime = async (slug: string): Promise<IAnimeFull> => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime/${slug}/full`, {
     cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch anime data');
+  }
+
+  return res.json();
+};
+
+export const getAnimeByGroup = async (group: string): Promise<IAnimeGroup[]> => {
+  const revalidateInSeconds = 3 * 60 * 60;
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime/group/${group}`, {
+    next: { revalidate: revalidateInSeconds },
   });
 
   if (!res.ok) {

@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 
-import { AnimeHero } from '@/features';
+import { AnimeGroup, AnimeHero } from '@/features';
 import type { MetadataProps, PageParams } from '@/types';
 import { getMetaTitle } from '@/utils';
 import { getOneAnime } from '@/utils/api';
@@ -23,6 +23,8 @@ export default async function AnimePage({ params }: PageParams) {
   return (
     <main className="container">
       <AnimeHero anime={anime} />
+
+      {anime?.group && <AnimeGroup groupName={anime.group} animeId={anime._id} />}
     </main>
   );
 }
