@@ -15,7 +15,7 @@ interface AnimeGroupProps {
 export const AnimeGroup: FC<AnimeGroupProps> = async ({ groupName, animeId }) => {
   const animeGroup = await getAnimeByGroup(groupName);
 
-  if (!animeGroup) {
+  if (!animeGroup || animeGroup?.length < 2) {
     return null;
   }
 

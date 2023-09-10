@@ -8,6 +8,7 @@ export interface IEpisode {
   low?: string;
   subtitles: string;
   subtitles_full?: string;
+  thumbnail?: string;
   created_at: string;
   updatedAt: string;
 }
