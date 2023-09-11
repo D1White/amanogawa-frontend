@@ -1,4 +1,5 @@
 export { AmanogawaLogoIcon } from './AmanogawaLogoIcon';
+export { ArrowNarrowLeftIcon } from './ArrowNarrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
 export { ArrowRightPipeIcon } from './ArrowRightPipeIcon';
 export { CloseIcon } from './CloseIcon';

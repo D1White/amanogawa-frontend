@@ -5,6 +5,7 @@ import { AmanogawaLogoIcon, SearchIcon, UserIcon } from '@/assets/jsx-icons';
 import { PagesPath } from '@/types';
 
 import { NavigationLink } from '../NavigationLink';
+import { EpisodeBackButton } from './EpisodeBackButton';
 import styles from './Header.module.scss';
 import { leftNavigationLinks, rigthNavigationLinks } from './header-data';
 
@@ -12,6 +13,8 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className="container">
+        <EpisodeBackButton />
+
         <nav className={styles.navigation}>
           {leftNavigationLinks.map((link) => (
             <NavigationLink href={link.href} key={link.href}>

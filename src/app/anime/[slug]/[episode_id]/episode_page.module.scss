@@ -1,0 +1,56 @@
+.playerWrapper {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.content {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 90px;
+}
+
+.animeTitle {
+  color: $gray-light;
+  font-family: $ff-k;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.episodeTitle {
+  color: $white;
+  font-family: $ff-f;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-top: 32px;
+}
+
+.episodes {
+  display: flex;
+}
+
+.episode {
+  display: flex;
+  flex-direction: column;
+
+  &.end {
+    align-items: flex-end;
+    margin-left: 20px;
+  }
+}
+
+.navigateText {
+  color: $gray-light;
+  font-family: $ff-k;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
