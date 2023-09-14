@@ -9,12 +9,13 @@ import {
   PropsWithChildren,
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 
 import { SelectValue, SelectValueOrNull } from '@/components/Select';
 import { IGenre } from '@/types';
-import { AnimeSortField } from '@/utils/api';
+import { AnimeSortField, IAnimeYearsResponse } from '@/utils/api';
 
 import { yearOptions } from './filter-data';
 
@@ -35,6 +36,7 @@ type FilterContextType = {
   setYearLimit: Dispatch<typeof yearOptions>;
   resetFromYearLimit: () => void;
   resetToYearLimit: () => void;
+  defaultYearLimit: typeof yearOptions;
 
   sortFiled: AnimeSortField;
   setSortFiled: Dispatch<AnimeSortField>;
@@ -62,6 +64,7 @@ const defaultContextState: FilterContextType = {
   setYearLimit: () => {},
   resetFromYearLimit: () => {},
   resetToYearLimit: () => {},
+  defaultYearLimit: yearOptions,
 
   sortFiled: AnimeSortField.createdAt,
   setSortFiled: () => {},
@@ -76,16 +79,29 @@ export const FilterContext = createContext<FilterContextType>(defaultContextStat
 
 interface FilterContextProviderProps extends PropsWithChildren {
   genresData: IGenre[];
+  yearsData: IAnimeYearsResponse;
 }
 
-export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children, genresData }) => {
+export const FilterContextProvider: FC<FilterContextProviderProps> = ({
+  children,
+  genresData,
+  yearsData,
+}) => {
   const pathname = usePathname();
   const router = useRouter();
+
+  const defaultYearLimit = useMemo(
+    () => ({
+      min: yearsData?.min_year || defaultContextState.yearLimit.min,
+      max: yearsData?.max_year || defaultContextState.yearLimit.max,
+    }),
+    [yearsData],
+  );
 
   const [type, setType] = useState<SelectValueOrNull>(defaultContextState.type);
   const [status, setStatus] = useState<SelectValueOrNull>(defaultContextState.status);
   const [genres, setGenres] = useState<SelectValue[]>(defaultContextState.genres);
-  const [yearLimit, setYearLimit] = useState(defaultContextState.yearLimit);
+  const [yearLimit, setYearLimit] = useState(defaultYearLimit);
   const [sortFiled, setSortFiled] = useState(defaultContextState.sortFiled);
   const [isFilterOpen, setIsFilterOpen] = useState(defaultContextState.isFilterOpen);
 
@@ -106,12 +122,12 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
   );
 
   const resetFromYearLimit = useCallback(() => {
-    setYearLimit((prev) => ({ ...prev, min: yearOptions.min }));
-  }, []);
+    setYearLimit((prev) => ({ ...prev, min: defaultYearLimit.min }));
+  }, [defaultYearLimit]);
 
   const resetToYearLimit = useCallback(() => {
-    setYearLimit((prev) => ({ ...prev, max: yearOptions.max }));
-  }, []);
+    setYearLimit((prev) => ({ ...prev, max: defaultYearLimit.max }));
+  }, [defaultYearLimit]);
 
   useEffect(() => {
     if (isFilterOpen) return;
@@ -120,8 +136,8 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
       type,
       status,
       genres,
-      min_year: yearLimit.min > yearOptions.min ? yearLimit.min : null,
-      max_year: yearLimit.max < yearOptions.max ? yearLimit.max : null,
+      min_year: yearLimit.min > defaultYearLimit.min ? yearLimit.min : null,
+      max_year: yearLimit.max < defaultYearLimit.max ? yearLimit.max : null,
       sort_field: sortFiled !== defaultContextState.sortFiled ? sortFiled : null,
     };
 
@@ -136,7 +152,7 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
     } else {
       router.push(pathname);
     }
-  }, [type, status, genres, yearLimit, yearLimit, sortFiled, isFilterOpen]);
+  }, [type, status, genres, yearLimit, yearLimit, sortFiled, isFilterOpen, defaultYearLimit]);
 
   return (
     <FilterContext.Provider
@@ -154,6 +170,7 @@ export const FilterContextProvider: FC<FilterContextProviderProps> = ({ children
         setYearLimit,
         resetFromYearLimit,
         resetToYearLimit,
+        defaultYearLimit,
         sortFiled,
         setSortFiled,
         genresData,

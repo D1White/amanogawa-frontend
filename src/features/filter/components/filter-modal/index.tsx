@@ -6,7 +6,7 @@ import React, { memo, useContext, useMemo } from 'react';
 import { MultiRangeSlider, MultiRangeSliderOnChangeValue } from '@/components';
 import { SelectOption, SelectValue, SelectValueOrNull } from '@/components/Select';
 import { FilterContext } from '@/features/filter/filter-context';
-import { animeStatusOptions, animeTypesOptions, yearOptions } from '@/features/filter/filter-data';
+import { animeStatusOptions, animeTypesOptions } from '@/features/filter/filter-data';
 
 import { MultipleFilterSelect, SingleFilterSelect } from '../filter-select';
 import filterSelectStyles from '../filter-select/FilterSelect.module.scss';
@@ -23,6 +23,7 @@ export const FilterModal = memo(() => {
     setStatus,
     yearLimit,
     setYearLimit,
+    defaultYearLimit,
   } = useContext(FilterContext);
 
   const genresOptions: SelectOption[] = useMemo(
@@ -80,8 +81,8 @@ export const FilterModal = memo(() => {
             <p className={cn(filterSelectStyles.title, styles.yearTitle)}>Year</p>
 
             <MultiRangeSlider
-              min={yearOptions.min}
-              max={yearOptions.max}
+              min={defaultYearLimit.min}
+              max={defaultYearLimit.max}
               value={yearLimit}
               onChange={handleYearChange}
             />
