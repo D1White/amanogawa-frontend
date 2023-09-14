@@ -30,10 +30,27 @@ export const VideoJSIcons = () => (
         <path d="M24 2C14.06 2 6 10.06 6 20v14c0 3.31 2.69 6 6 6h6V24h-8v-4c0-7.73 6.27-14 14-14s14 6.27 14 14v4h-8v16h6c3.31 0 6-2.69 6-6V20c0-9.94-8.06-18-18-18z"></path>
       </symbol>
       <symbol viewBox="0 0 24 24" id="vjs-icon-captions">
-        {/* <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-        <path d="M10 10.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0"></path>
-        <path d="M17 10.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0"></path> */}
+        <path
+          d="M3 7C3 6.46957 3.21071 5.96086 3.58579 5.58579C3.96086 5.21071 4.46957 5 5 5H19C19.5304 5 20.0391 5.21071 20.4142 5.58579C20.7893 5.96086 21 6.46957 21 7V17C21 17.5304 20.7893 18.0391 20.4142 18.4142C20.0391 18.7893 19.5304 19 19 19H5C4.46957 19 3.96086 18.7893 3.58579 18.4142C3.21071 18.0391 3 17.5304 3 17V7Z"
+          stroke={colors.white}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10 10.5C10 10.1022 9.84196 9.72064 9.56066 9.43934C9.27936 9.15804 8.89782 9 8.5 9C8.10218 9 7.72064 9.15804 7.43934 9.43934C7.15804 9.72064 7 10.1022 7 10.5V13.5C7 13.8978 7.15804 14.2794 7.43934 14.5607C7.72064 14.842 8.10218 15 8.5 15C8.89782 15 9.27936 14.842 9.56066 14.5607C9.84196 14.2794 10 13.8978 10 13.5"
+          stroke={colors.white}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M17 10.5C17 10.1022 16.842 9.72064 16.5607 9.43934C16.2794 9.15804 15.8978 9 15.5 9C15.1022 9 14.7206 9.15804 14.4393 9.43934C14.158 9.72064 14 10.1022 14 10.5V13.5C14 13.8978 14.158 14.2794 14.4393 14.5607C14.7206 14.842 15.1022 15 15.5 15C15.8978 15 16.2794 14.842 16.5607 14.5607C16.842 14.2794 17 13.8978 17 13.5"
+          stroke={colors.white}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </symbol>
       <symbol viewBox="0 0 24 24" id="vjs-icon-subtitles">
         <path
@@ -86,7 +103,7 @@ export const VideoJSIcons = () => (
         <path d="M20 33l12-9-12-9v18zm4-29C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16z"></path>
       </symbol>
       <symbol viewBox="0 0 48 48" id="vjs-icon-volume-mute">
-        <g clip-path="url(#clip0_2306_479)">
+        <g clipPath="url(#clip0_2306_479)">
           <path
             d="M30 16C31.4966 17.1225 32.6484 18.6423 33.3244 20.3867C34.0004 22.1311 34.1735 24.0301 33.824 25.868M31.07 31.072C30.7357 31.4062 30.3782 31.7163 30 32"
             stroke={colors.white}
@@ -240,11 +257,11 @@ export const VideoJSIcons = () => (
       </symbol>
       <symbol viewBox="0 0 24 24" id="vjs-icon-picture-in-picture-enter">
         <g
-          stroke-width="2"
+          strokeWidth="2"
           stroke={colors.white}
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M11 19h-6a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4"></path>
@@ -255,11 +272,11 @@ export const VideoJSIcons = () => (
       </symbol>
       <symbol viewBox="0 0 24 24" id="vjs-icon-picture-in-picture-exit">
         <g
-          stroke-width="2"
+          strokeWidth="2"
           stroke={colors.white}
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M11 19h-6a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4"></path>
