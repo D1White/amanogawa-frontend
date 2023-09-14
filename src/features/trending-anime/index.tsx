@@ -4,13 +4,14 @@ import React from 'react';
 import { ArrowRightIcon } from '@/assets/jsx-icons';
 import { AnimeCard } from '@/components';
 import { PagesPath } from '@/types';
-import { getAnime } from '@/utils/api';
+import { AnimeSortField, getAnime } from '@/utils/api';
 
 import styles from './TrendingAnime.module.scss';
 
 export const TrendingAnime = async () => {
   const anime = await getAnime({
     limit: 5,
+    sort_field: AnimeSortField.views,
   });
 
   if (!anime?.items) {

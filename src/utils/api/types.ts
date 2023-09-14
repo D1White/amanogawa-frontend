@@ -1,4 +1,11 @@
-import { AnimeSeasonEnum, AnimeStatusEnum, AnimeTypeEnum, IAnime } from '@/types';
+import {
+  AnimeSeasonEnum,
+  AnimeStatusEnum,
+  AnimeTypeEnum,
+  IAnime,
+  IAnimeFull,
+  IEpisode,
+} from '@/types';
 
 export enum AnimeSortField {
   views = 'views',
@@ -30,4 +37,14 @@ export interface IAnimeResponse {
   limit: number;
   pages: number;
   page: number;
+}
+
+export interface IAnimeYearsResponse {
+  _id: null;
+  max_year: number;
+  min_year: number;
+}
+
+export interface IEpisodeResponse extends IEpisode {
+  anime?: Pick<IAnimeFull, '_id' | 'title' | 'slug' | 'synopsis' | 'episodes' | 'created_at'>;
 }

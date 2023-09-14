@@ -10,3 +10,4 @@ export { SearchIcon } from './SearchIcon';
 export { SettingsIcon } from './SettingsIcon';
 export { StarIcon } from './StarIcon';
 export { UserIcon } from './UserIcon';
+export { VideoJSIcons } from './VideoJSIcons';

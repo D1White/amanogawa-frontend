@@ -1,0 +1,46 @@
+const videoJSChildren = {
+  mediaLoader: true,
+  posterImage: true,
+  textTrackDisplay: true,
+  loadingSpinner: true,
+  bigPlayButton: true,
+  liveTracker: true,
+  controlBar: {
+    playToggle: true,
+    volumePanel: { inline: false },
+    currentTimeDisplay: true,
+    timeDivider: false,
+    durationDisplay: true,
+    progressControl: {
+      seekBar: {
+        loadProgressBar: true,
+        mouseTimeDisplay: true,
+        playProgressBar: true,
+      },
+    },
+    liveDisplay: false,
+    seekToLive: false,
+    remainingTimeDisplay: false,
+    customControlSpacer: false,
+    playbackRateMenuButton: true,
+    chaptersButton: false,
+    descriptionsButton: false,
+    subsCapsButton: true,
+    audioTrackButton: false,
+    pictureInPictureToggle: true,
+    fullscreenToggle: true,
+  },
+  errorDisplay: true,
+  textTrackSettings: false,
+};
+
+export const videoJSDefaultOptions = {
+  autoplay: false,
+  controls: true,
+  responsive: true,
+  fluid: true,
+  textTrackSettings: false,
+  experimentalSvgIcons: true,
+  playbackRates: [1, 1.25, 1.5, 2],
+  children: videoJSChildren,
+};

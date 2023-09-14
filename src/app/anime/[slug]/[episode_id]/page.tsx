@@ -1,47 +1,51 @@
 import cn from 'classnames';
 import type { Metadata, ResolvingMetadata } from 'next';
+import dynamic from 'next/dynamic';
 import { redirect } from 'next/navigation';
 
 import { Episode } from '@/components';
 import { type MetadataProps, type PageParams, PagesPath } from '@/types';
 import { getMetaTitle } from '@/utils';
-import { getOneAnime } from '@/utils/api';
+import { getEpisode, getOneAnime } from '@/utils/api';
 
 import styles from './episode_page.module.scss';
+
+const Player = dynamic(() => import('@/components/Player'), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export async function generateMetadata(
   { params }: MetadataProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const anime = await getOneAnime(params.slug);
+  const episode = await getEpisode(params.episode_id);
 
   return {
-    title: getMetaTitle(anime?.title),
-    description: anime?.synopsis,
+    title: getMetaTitle(episode?.anime?.title),
+    description: episode?.anime?.synopsis,
   };
 }
 
 export default async function EpisodePage({ params }: PageParams) {
   const redirectPath = params?.slug ? `${PagesPath.anime}/${params.slug}` : PagesPath.anime;
 
-  const anime = await getOneAnime(params.slug);
-  if (!anime || !anime?.episodes) redirect(redirectPath);
+  const episode = await getEpisode(params.episode_id);
+  if (!episode?.anime?.episodes) redirect(redirectPath);
 
-  const episode = anime.episodes.find((episode) => episode._id === params?.episode_id);
-
-  if (!episode || !params?.episode_id) redirect(redirectPath);
-
-  const episodeIndex = anime.episodes.map((ep) => ep._id).indexOf(params.episode_id);
-  const prevEpisode = anime.episodes?.[episodeIndex - 1];
-  const nextEpisode = anime.episodes?.[episodeIndex + 1];
+  const episodeIndex = episode.anime.episodes.map((ep) => ep._id).indexOf(params.episode_id);
+  const prevEpisode = episode.anime.episodes?.[episodeIndex - 1];
+  const nextEpisode = episode.anime.episodes?.[episodeIndex + 1];
 
   return (
     <main className="container page-offset">
-      <div className={styles.playerWrapper}></div>
+      <div className={styles.playerWrapper}>
+        <Player data={episode} />
+      </div>
 
       <div className={styles.content}>
         <div className={styles.info}>
-          <h2 className={styles.animeTitle}>{anime.title}</h2>
+          <h2 className={styles.animeTitle}>{episode.anime.title}</h2>
           <h1 className={styles.episodeTitle}>
             {episode?.custom_name || `Episode ${episode.order}`}
           </h1>
