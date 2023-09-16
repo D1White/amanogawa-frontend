@@ -1,12 +1,12 @@
 'use client';
 
 import cn from 'classnames';
-import React, { memo, useContext, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { MultiRangeSlider, MultiRangeSliderOnChangeValue } from '@/components';
 import { SelectOption, SelectValue, SelectValueOrNull } from '@/components/Select';
-import { FilterContext } from '@/features/filter/filter-context';
 import { animeStatusOptions, animeTypesOptions } from '@/features/filter/filter-data';
+import { useFilterStore } from '@/store';
 
 import { MultipleFilterSelect, SingleFilterSelect } from '../filter-select';
 import filterSelectStyles from '../filter-select/FilterSelect.module.scss';
@@ -24,7 +24,7 @@ export const FilterModal = memo(() => {
     yearLimit,
     setYearLimit,
     defaultYearLimit,
-  } = useContext(FilterContext);
+  } = useFilterStore();
 
   const genresOptions: SelectOption[] = useMemo(
     () =>

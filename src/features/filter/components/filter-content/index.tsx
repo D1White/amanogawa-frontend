@@ -1,16 +1,16 @@
 'use client';
 
 import cn from 'classnames';
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 
 import { SettingsIcon } from '@/assets/jsx-icons';
-import { FilterContext } from '@/features/filter/filter-context';
+import { useFilterStore } from '@/store';
 
 import { FilterModal, SelectedFilters, SortBy } from '../index';
 import styles from './FilterContent.module.scss';
 
 export const FilterContent: FC = () => {
-  const { isFilterOpen, setIsFilterOpen } = useContext(FilterContext);
+  const { isFilterOpen, setIsFilterOpen } = useFilterStore();
 
   const handleFiltersOpenSwitch = () => {
     setIsFilterOpen(!isFilterOpen);

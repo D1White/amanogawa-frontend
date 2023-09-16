@@ -19,7 +19,8 @@
     "react-dom": "18.2.0",
     "swiper": "^10.0.4",
     "typescript": "5.1.6",
-    "video.js": "^8.5.2"
+    "video.js": "^8.5.2",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",

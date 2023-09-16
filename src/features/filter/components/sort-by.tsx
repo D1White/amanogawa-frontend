@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { Select, SelectOption, SelectValue } from '@/components/Select';
+import { useFilterStore } from '@/store';
 import { AnimeSortField } from '@/utils/api';
-
-import { FilterContext } from '../filter-context';
 
 const sortOptions: SelectOption[] = [
   { label: 'Release Date', value: AnimeSortField.createdAt },
@@ -13,13 +12,13 @@ const sortOptions: SelectOption[] = [
 ];
 
 export const SortBy = () => {
-  const { sortFiled, setSortFiled } = useContext(FilterContext);
+  const { sortField, setSortField } = useFilterStore();
 
   const handleSortChange = (value: SelectValue) => {
-    setSortFiled(value as AnimeSortField);
+    setSortField(value as AnimeSortField);
   };
 
   return (
-    <Select value={sortFiled} options={sortOptions} onChange={handleSortChange} label="Sort by:" />
+    <Select value={sortField} options={sortOptions} onChange={handleSortChange} label="Sort by:" />
   );
 };

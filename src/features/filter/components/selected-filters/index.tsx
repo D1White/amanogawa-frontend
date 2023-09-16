@@ -1,11 +1,11 @@
 'use client';
 
-import React, { FC, useContext, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 
 import { CloseIcon } from '@/assets/jsx-icons';
 import { SelectValue } from '@/components/Select';
-import { FilterContext } from '@/features/filter/filter-context';
 import { animeStatusOptions, animeTypesOptions } from '@/features/filter/filter-data';
+import { useFilterStore } from '@/store';
 
 import styles from './SelectedFilters.module.scss';
 
@@ -44,7 +44,7 @@ export const SelectedFilters = () => {
     resetFromYearLimit,
     resetToYearLimit,
     defaultYearLimit,
-  } = useContext(FilterContext);
+  } = useFilterStore();
 
   const typesFilters = useMemo(
     () => animeTypesOptions.filter((option) => type === option.value),
