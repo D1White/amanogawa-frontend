@@ -1,5 +1,4 @@
 @use 'helpers/reset';
-@use 'helpers/container';
 
 * {
   padding: 0;
@@ -45,4 +44,24 @@ h2 {
 
 .page-offset {
   padding-top: 100px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @include xxl {
+    max-width: 968px;
+  }
+  @include lg {
+    max-width: 100%;
+    padding: 0 32px;
+  }
+  @include sm {
+    max-width: 100%;
+    padding: 0 24px;
+  }
 }

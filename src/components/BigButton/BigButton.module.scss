@@ -7,8 +7,22 @@
 
   background-color: $primary;
 
-  &:global.black {
+  &:global(.black) {
     background-color: $black;
+
+    @include md {
+      background-color: lighten($black, 5);
+      padding: 20px 59px;
+
+      .text,
+      .background {
+        display: none;
+      }
+
+      svg {
+        margin-left: 0;
+      }
+    }
   }
 
   svg {
@@ -56,7 +70,13 @@
     height ease-in-out 0.2s,
     right ease-in-out 0.2s;
 
-  &:global.black {
+  &:global(.black) {
     background-color: lighten($black, 5);
+  }
+
+  @include md {
+    width: 72px !important;
+    height: 48px !important;
+    right: 6px !important;
   }
 }

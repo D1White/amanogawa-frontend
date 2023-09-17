@@ -8,6 +8,10 @@
     flex-direction: row;
     @include flexCenteredVertically;
     justify-content: space-between;
+
+    @include lg {
+      flex-direction: column;
+    }
   }
 }
 
@@ -20,10 +24,19 @@
     &:hover {
       color: $primary;
     }
+
+    @include lg {
+      margin-left: 0;
+      margin-top: 6px;
+    }
   }
 
   &__info {
     margin-left: 40px;
+
+    @include lg {
+      margin-left: 23px;
+    }
   }
 
   &__role {
@@ -36,5 +49,11 @@
 
   @include notFirstChild {
     margin-left: 40px;
+  }
+
+  @include lg {
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

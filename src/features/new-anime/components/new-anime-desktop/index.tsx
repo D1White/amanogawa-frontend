@@ -47,7 +47,7 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
       <div className={cn(styles.background, styles.backgroundGradient)} />
       <div className={styles.swiperWrapper}>
         <Swiper
-          direction={'vertical'}
+          direction="horizontal"
           pagination={pagination}
           modules={[Pagination, Autoplay]}
           className={styles.swiper}
@@ -56,8 +56,14 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
             disableOnInteraction: false,
           }}
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={20}
           onSlideChange={onSlideChange}
+          breakpoints={{
+            769: {
+              direction: 'vertical',
+              spaceBetween: 30,
+            },
+          }}
         >
           {data.map((anime) => (
             <SwiperSlide key={anime._id}>

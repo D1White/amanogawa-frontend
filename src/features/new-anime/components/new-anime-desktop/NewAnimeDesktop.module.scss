@@ -4,6 +4,14 @@
 
   @include flexCenteredVertically;
   position: relative;
+
+  @include xxl {
+    padding: 160px 20px 120px 50px;
+  }
+  @include lg {
+    padding: 140px 0 62px 0;
+    flex-direction: column;
+  }
 }
 
 .background {
@@ -13,6 +21,10 @@
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
+
+  @include md {
+    display: none;
+  }
 }
 
 .backgroundImage {
@@ -35,10 +47,30 @@
   height: 507px;
   position: relative;
 
+  @include xxl {
+    width: 300px;
+    height: 425px;
+  }
+  @include md {
+    width: 255px;
+    height: 362px;
+  }
+
   :global(.swiper-custom-pagination) {
     position: absolute;
     left: -70px !important;
     right: initial !important;
+
+    @include xxl {
+      left: -50px !important;
+    }
+    @include md {
+      left: 0 !important;
+      bottom: -56px !important;
+      display: flex;
+      justify-content: space-between;
+    }
+
     :global(.swiper-pagination-bullet) {
       width: 24px;
       height: 24px;
@@ -49,6 +81,10 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 50%, 50%;
+
+      @include md {
+        margin: 0 !important;
+      }
     }
     :global(.swiper-pagination-bullet-active) {
       background-image: url('../../../../assets/svg/pagination-circle-active.svg');
@@ -66,6 +102,15 @@
   object-fit: cover;
   border-radius: 40px;
   position: relative;
+
+  @include xxl {
+    width: 300px;
+    height: 425px;
+  }
+  @include md {
+    width: 255px;
+    height: 362px;
+  }
 }
 
 .content {
@@ -73,6 +118,22 @@
   flex-direction: column;
   margin-left: 70px;
   position: relative;
+
+  @include xxl {
+    margin-left: 40px;
+  }
+
+  @include lg {
+    margin-left: 0;
+    margin-top: 60px;
+    width: 100%;
+    padding: 0 60px;
+  }
+  @include md {
+    margin-top: 100px;
+    padding: 0;
+    align-items: center;
+  }
 }
 
 .title {
@@ -85,6 +146,19 @@
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+
+  @include xxl {
+    font-size: 42px;
+  }
+  @include md {
+    font-size: 36px;
+  }
+  @include sm {
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    text-align: center;
+    height: 101px;
+  }
 }
 
 .synopsis {
@@ -98,11 +172,26 @@
   line-clamp: 4;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+
+  @include xxl {
+    font-size: 16px;
+    margin-top: 14px;
+  }
+  @include md {
+    display: none;
+  }
 }
 
 .details {
   @include flexCenteredVertically;
   margin-top: 90px;
+
+  @include xxl {
+    margin-top: 50px;
+  }
+  @include md {
+    display: none;
+  }
 }
 
 .detail {
@@ -120,6 +209,14 @@
 
   @include notFirstChild {
     margin-left: 70px;
+
+    @include xxl {
+      margin-left: 40px;
+    }
+  }
+
+  @include xxl {
+    font-size: 14px;
   }
 }
 
@@ -127,4 +224,11 @@
   @include flexCenteredVertically;
   margin-top: 90px;
   gap: 12px;
+
+  @include xxl {
+    margin-top: 50px;
+  }
+  @include md {
+    margin-top: 24px;
+  }
 }
