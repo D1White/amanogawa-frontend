@@ -30,6 +30,36 @@
   background: linear-gradient(180deg, rgba($black, 0) 90%, rgba($black, 1) 100%);
 }
 
+.swiperWrapper {
+  width: 358px;
+  height: 507px;
+  position: relative;
+
+  :global(.swiper-custom-pagination) {
+    position: absolute;
+    left: -70px !important;
+    right: initial !important;
+    :global(.swiper-pagination-bullet) {
+      width: 24px;
+      height: 24px;
+      background: none;
+      opacity: 1;
+      margin: 32px 0 !important;
+      background-image: url('../../../../assets/svg/pagination-circle.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%, 50%;
+    }
+    :global(.swiper-pagination-bullet-active) {
+      background-image: url('../../../../assets/svg/pagination-circle-active.svg');
+    }
+  }
+}
+
+.swiper {
+  height: 100%;
+}
+
 .poster {
   width: 358px;
   height: 507px;

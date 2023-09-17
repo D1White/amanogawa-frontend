@@ -1,4 +1,5 @@
 import 'swiper/css';
+import 'swiper/css/pagination';
 
 import { NewAnime, TrendingAnime, YoutubeVideos } from '@/features';
 

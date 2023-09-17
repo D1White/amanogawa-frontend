@@ -1,14 +1,15 @@
 'use client';
 
 import cn from 'classnames';
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useCallback, useMemo, useState } from 'react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { PaginationOptions } from 'swiper/types';
 
 import { PlayIcon, SaveIcon } from '@/assets/jsx-icons';
 import { BigButton } from '@/components';
-import { NewAnimeSliderContext } from '@/features/new-anime/new-anime-context';
 import { IAnime, PagesPath } from '@/types';
 
-import { NewAnimePagination } from '../new-anime-pagination';
 import styles from './NewAnimeDesktop.module.scss';
 
 interface NewAnimeDesktopProps {
@@ -16,13 +17,24 @@ interface NewAnimeDesktopProps {
 }
 
 export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
-  const { activeSlide, setSlidesLength } = useContext(NewAnimeSliderContext);
+  const [activeSlide, setActiveSlide] = useState(0);
 
-  const activeSlideData = data[activeSlide - 1];
+  const activeSlideData = data[activeSlide];
 
-  useEffect(() => {
-    setSlidesLength(data.length);
-  }, [data]);
+  const pagination: PaginationOptions = useMemo(
+    () => ({
+      clickable: true,
+      el: '.swiper-custom-pagination',
+      renderBullet: (idx, className) => {
+        return '<span class="' + className + '">' + '</span>';
+      },
+    }),
+    [],
+  );
+
+  const onSlideChange = useCallback((swiper: SwiperClass) => {
+    setActiveSlide(swiper.activeIndex);
+  }, []);
 
   return (
     <section className={styles.section}>
@@ -33,8 +45,29 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
       />
 
       <div className={cn(styles.background, styles.backgroundGradient)} />
+      <div className={styles.swiperWrapper}>
+        <Swiper
+          direction={'vertical'}
+          pagination={pagination}
+          modules={[Pagination, Autoplay]}
+          className={styles.swiper}
+          autoplay={{
+            delay: 7000,
+            disableOnInteraction: false,
+          }}
+          slidesPerView={1}
+          spaceBetween={30}
+          onSlideChange={onSlideChange}
+        >
+          {data.map((anime) => (
+            <SwiperSlide key={anime._id}>
+              <img src={anime.image} alt={anime.title} className={styles.poster} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      <img src={activeSlideData.image} alt={activeSlideData.title} className={styles.poster} />
+        <div className="swiper-custom-pagination"></div>
+      </div>
 
       <div className={styles.content}>
         <h2 className={styles.title}>{activeSlideData.title}</h2>
@@ -73,7 +106,7 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
         </div>
       </div>
 
-      <NewAnimePagination />
+      {/* <NewAnimePagination /> */}
     </section>
   );
 };
