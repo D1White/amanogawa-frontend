@@ -1,7 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 268px;
+  width: 100%;
+  min-width: 268px;
 
   &:hover {
     .hoverBlock {
@@ -11,6 +12,10 @@
     .actionButtons {
       transform: translateY(0);
     }
+  }
+
+  @include sm {
+    min-width: 200px;
   }
 }
 
@@ -24,6 +29,10 @@
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+
+  @include sm {
+    font-size: 16px;
+  }
 }
 
 .subtitle {
@@ -31,6 +40,10 @@
   font-size: 16px;
   font-weight: 400;
   margin-top: 6px;
+
+  @include sm {
+    margin-top: 4px;
+  }
 }
 
 .posterBlock {
@@ -41,6 +54,10 @@
   overflow: hidden;
   position: relative;
   z-index: 1;
+
+  @include sm {
+    height: 297px;
+  }
 }
 
 .hoverBlock {
@@ -54,6 +71,10 @@
   opacity: 0;
 
   transition: opacity ease-in-out 0.2s;
+
+  @include sm {
+    display: none;
+  }
 }
 
 .actionButtons {
@@ -96,6 +117,10 @@
       background-color: lighten($black, 5);
     }
   }
+
+  @include sm {
+    display: none;
+  }
 }
 
 .badge {
@@ -109,5 +134,11 @@
 
   &__score {
     right: 8px;
+
+    @include sm {
+      top: 41px;
+      right: initial;
+      left: 8px;
+    }
   }
 }

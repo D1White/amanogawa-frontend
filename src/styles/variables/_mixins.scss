@@ -24,3 +24,11 @@
 @mixin colorTransition() {
   transition: color linear 0.2s;
 }
+
+@mixin hideScrollbar() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

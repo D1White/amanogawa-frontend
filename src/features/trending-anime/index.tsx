@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import Link from 'next/link';
 import React from 'react';
 
@@ -25,7 +26,7 @@ export const TrendingAnime = async () => {
 
         <Link
           href={`${PagesPath.anime}?sort_field=views&sort_direction=DESC`}
-          className={styles.button}
+          className={cn(styles.button, styles.buttonTop)}
         >
           <span className={styles.button__text}>See All</span>
           <ArrowRightIcon />
@@ -45,6 +46,14 @@ export const TrendingAnime = async () => {
           />
         ))}
       </div>
+
+      <Link
+        href={`${PagesPath.anime}?sort_field=views&sort_direction=DESC`}
+        className={cn(styles.button, styles.buttonBottom)}
+      >
+        <span className={styles.button__text}>See All</span>
+        <ArrowRightIcon />
+      </Link>
     </section>
   );
 };

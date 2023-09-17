@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <main className="container">
       <NewAnime />
-      {/*
+
       <TrendingAnime />
 
-      <YoutubeVideos /> */}
+      <YoutubeVideos />
     </main>
   );
 }

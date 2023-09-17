@@ -9,6 +9,10 @@ import styles from './YoutubeVideos.module.scss';
 export const YoutubeVideos = async () => {
   const data = await getYoutubeVideos();
 
+  if (!data) {
+    return null;
+  }
+
   return (
     <YoutubeVideosContextProvider>
       <section className={styles.section}>

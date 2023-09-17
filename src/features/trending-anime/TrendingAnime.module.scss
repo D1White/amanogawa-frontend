@@ -11,6 +11,10 @@
   width: 100%;
   @include flexCenteredVertically;
   justify-content: space-between;
+
+  @include sm {
+    justify-content: center;
+  }
 }
 
 .title {
@@ -25,6 +29,34 @@
   margin-top: 40px;
   display: flex;
   justify-content: space-between;
+  gap: 15px;
+
+  overflow-x: scroll;
+  @include hideScrollbar;
+
+  @include lg {
+    width: calc(100% + 72px);
+    margin: 40px -32px 0;
+
+    a:first-child {
+      margin-left: 36px;
+    }
+    a:last-child {
+      margin-right: 36px;
+    }
+  }
+
+  @include sm {
+    width: calc(100% + 48px);
+    margin: 40px -24px 0;
+
+    a:first-child {
+      margin-left: 24px;
+    }
+    a:last-child {
+      margin-right: 24px;
+    }
+  }
 }
 
 .button {
@@ -62,5 +94,21 @@
         stroke: $gray-light;
       }
     }
+  }
+
+  &.buttonBottom {
+    display: none;
+  }
+
+  @include sm {
+    &.buttonBottom {
+      display: flex;
+    }
+    &.buttonTop {
+      display: none;
+    }
+
+    margin: 40px auto 0;
+    width: fit-content;
   }
 }
