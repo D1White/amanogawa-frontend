@@ -43,7 +43,7 @@ h2 {
 }
 
 .page-offset {
-  padding-top: 100px;
+  padding-top: 100px !important;
 }
 
 .container {
@@ -62,6 +62,6 @@ h2 {
   }
   @include sm {
     max-width: 100%;
-    padding: 0 24px;
+    padding: 0 16px;
   }
 }

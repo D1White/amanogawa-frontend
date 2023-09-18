@@ -19,6 +19,7 @@ export const AnimeGrid: FC<{ data: IAnimeResponse }> = ({ data }) => {
             rating={anime?.rating}
             slug={anime.slug}
             episodes={anime?.episodes?.length}
+            size="small"
             key={anime.slug}
           />
         ))}

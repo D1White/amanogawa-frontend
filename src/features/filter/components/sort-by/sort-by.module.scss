@@ -1,0 +1,21 @@
+.select {
+  @include sm {
+    margin-top: 16px;
+    width: 100%;
+
+    :global(.select-label) {
+      display: none;
+    }
+
+    :global(.select-dropdown) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    :global(.select-arrow) {
+      position: absolute;
+      right: 24px;
+      top: 14px;
+    }
+  }
+}

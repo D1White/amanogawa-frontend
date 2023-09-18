@@ -6,11 +6,23 @@
   height: 100%;
   z-index: 50;
   background-color: rgba($black, 0.96);
+  overflow-y: auto;
 
   :global .container {
     height: 100%;
     align-items: center;
     justify-content: center;
+
+    @include xl {
+      height: initial;
+      justify-content: initial;
+      padding-top: 140px !important;
+      padding-bottom: 100px !important;
+    }
+
+    @include sm {
+      padding-top: 200px !important;
+    }
   }
 }
 
@@ -27,8 +39,27 @@
   @include flexCenteredVertically;
   justify-content: space-evenly;
   margin-top: 80px;
+
+  @include xl {
+    flex-direction: column;
+
+    & > div {
+      align-items: center;
+    }
+  }
+
+  @include sm {
+    width: 100%;
+    & > div {
+      width: 100%;
+    }
+  }
 }
 
 .yearTitle {
   margin-bottom: 35px;
+
+  @include xl {
+    margin-top: 80px;
+  }
 }

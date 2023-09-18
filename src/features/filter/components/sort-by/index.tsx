@@ -6,6 +6,8 @@ import { Select, SelectOption, SelectValue } from '@/components/Select';
 import { useFilterStore } from '@/store';
 import { AnimeSortField } from '@/utils/api';
 
+import styles from './sort-by.module.scss';
+
 const sortOptions: SelectOption[] = [
   { label: 'Release Date', value: AnimeSortField.createdAt },
   { label: 'Views', value: AnimeSortField.views },
@@ -19,6 +21,12 @@ export const SortBy = () => {
   };
 
   return (
-    <Select value={sortField} options={sortOptions} onChange={handleSortChange} label="Sort by:" />
+    <Select
+      value={sortField}
+      options={sortOptions}
+      onChange={handleSortChange}
+      label="Sort by:"
+      className={styles.select}
+    />
   );
 };

@@ -53,7 +53,7 @@ export const FilterModal = memo(() => {
 
   return (
     <div className={styles.modal}>
-      <div className="container">
+      <div className="container page-offset">
         <SingleFilterSelect
           title="Type"
           value={type}

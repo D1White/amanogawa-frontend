@@ -1,8 +1,28 @@
 .wrapper {
-  @include flexCentered;
-  flex-wrap: wrap;
+  width: 100%;
+  @include flexCenteredVertically;
   margin-top: 16px;
   gap: 16px;
+
+  overflow-x: auto;
+  padding-bottom: 10px;
+
+  // Scrollbar
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $gray-dark;
+    border-radius: 99px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $gray-light;
+    border-radius: 99px;
+
+    &:hover {
+      background: $gray;
+    }
+  }
 }
 
 .filter {
@@ -14,6 +34,7 @@
   p {
     font-size: 18px;
     font-weight: 500;
+    white-space: nowrap;
   }
 }
 

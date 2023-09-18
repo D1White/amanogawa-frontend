@@ -47,14 +47,14 @@
   }
 
   @include sm {
-    width: calc(100% + 48px);
-    margin: 40px -24px 0;
+    width: calc(100% + 32px);
+    margin: 40px -16px 0;
 
     a:first-child {
-      margin-left: 24px;
+      margin-left: 16px;
     }
     a:last-child {
-      margin-right: 24px;
+      margin-right: 16px;
     }
   }
 }

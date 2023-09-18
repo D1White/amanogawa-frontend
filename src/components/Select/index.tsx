@@ -21,9 +21,10 @@ interface SelectProps {
   options: SelectOption[];
   onChange: (value: SelectValue) => void;
   label?: string;
+  className?: string;
 }
 
-export const Select: FC<SelectProps> = ({ value, options, onChange, label }) => {
+export const Select: FC<SelectProps> = ({ value, options, onChange, label, className }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const selectedOption = useMemo(
@@ -42,13 +43,18 @@ export const Select: FC<SelectProps> = ({ value, options, onChange, label }) => 
   const ref = useClickOutside<HTMLDivElement>(handleClose);
 
   return (
-    <div className={styles.select} onClick={handleClick} ref={ref} aria-label={`${label} select`}>
-      {!!label && <span className={styles.label}>{label}</span>}
+    <div
+      className={cn(styles.select, className)}
+      onClick={handleClick}
+      ref={ref}
+      aria-label={`${label} select`}
+    >
+      {!!label && <span className={cn(styles.label, 'select-label')}>{label}</span>}
 
-      <div className={styles.dropdown}>
+      <div className={cn(styles.dropdown, 'select-dropdown')}>
         <p className={styles.selectedOption}>{selectedOption?.label || value}</p>
 
-        <ArrowRightIcon className={cn(styles.arrow, { [styles.rotate]: isOpen })} />
+        <ArrowRightIcon className={cn(styles.arrow, 'select-arrow', { [styles.rotate]: isOpen })} />
 
         {isOpen && (
           <div className={styles.optionsWrapper}>

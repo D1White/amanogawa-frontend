@@ -6,4 +6,11 @@
   row-gap: 60px;
   justify-content: space-evenly;
   margin: 60px 0;
+
+  @include sm {
+    grid-template-columns: repeat(auto-fill, 165px);
+    column-gap: 13px;
+    row-gap: 24px;
+    margin: 40px 0;
+  }
 }

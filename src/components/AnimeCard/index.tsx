@@ -11,14 +11,15 @@ import styles from './AnimeCard.module.scss';
 
 interface AnimeCardProps extends Pick<IAnime, 'title' | 'image' | 'status' | 'rating' | 'slug'> {
   episodes?: number;
+  size?: 'default' | 'small';
 }
 
 export const AnimeCard: FC<AnimeCardProps> = (props) => {
-  const { title, image, status, rating, slug, episodes } = props;
+  const { title, image, status, rating, slug, episodes, size = 'default' } = props;
 
   return (
-    <Link href={`${PagesPath.anime}/${slug}`} className={styles.card}>
-      <div className={styles.posterBlock}>
+    <Link href={`${PagesPath.anime}/${slug}`} className={cn(styles.card, size)}>
+      <div className={cn(styles.posterBlock, size)}>
         <Image src={image} alt={title} fill objectFit="cover" />
 
         <div className={styles.hoverBlock} />
