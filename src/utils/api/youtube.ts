@@ -7,8 +7,6 @@ export const getYoutubeVideos = async (): Promise<IYoutubeVideos | null> => {
 
   const res = await fetch(url, { next: { revalidate: revalidateInSeconds } });
 
-  console.log(res);
-
   if (!res.ok) {
     return null;
   }

@@ -1,0 +1,46 @@
+.button {
+  display: none;
+  @include square(24);
+  position: relative;
+  z-index: 100;
+
+  svg {
+    @include square(100, '%');
+  }
+
+  @include md {
+    display: block;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $black;
+  z-index: 99;
+  left: -100%;
+
+  align-items: center;
+  flex-direction: column;
+  padding: 26px 0;
+
+  transition: 0.3s ease-in-out left;
+
+  &.open {
+    left: 0%;
+  }
+
+  @include md {
+    display: flex;
+  }
+}
+
+.navigation {
+  @include flexCentered;
+  flex-direction: column;
+  height: 100%;
+}

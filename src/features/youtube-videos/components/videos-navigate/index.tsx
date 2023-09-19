@@ -25,7 +25,7 @@ export const VideosNavigate = () => {
   };
 
   return (
-    <div className={blocksStyles.flexCenteredVertically}>
+    <div className={styles.navigate}>
       <button
         className={cn(styles.navButton, styles.prev)}
         onClick={onPrevSlide}

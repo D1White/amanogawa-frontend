@@ -13,6 +13,11 @@
       flex-direction: column;
     }
   }
+
+  @include md {
+    margin-top: 100px;
+    padding: 0 0 60px 0;
+  }
 }
 
 .text {

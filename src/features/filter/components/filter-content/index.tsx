@@ -1,9 +1,10 @@
 'use client';
 
 import cn from 'classnames';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { SettingsIcon } from '@/assets/jsx-icons';
+import { useTogglePageNoScroll } from '@/hooks';
 import { useFilterStore } from '@/store';
 
 import { FilterModal, SelectedFilters, SortBy } from '../index';
@@ -15,6 +16,8 @@ export const FilterContent: FC = () => {
   const handleFiltersOpenSwitch = () => {
     setIsFilterOpen(!isFilterOpen);
   };
+
+  useTogglePageNoScroll(isFilterOpen);
 
   return (
     <>

@@ -2,5 +2,9 @@
   width: fit-content !important;
   @include notLastChild {
     margin-right: 20px;
+
+    @include sm {
+      margin-right: 16px;
+    }
   }
 }

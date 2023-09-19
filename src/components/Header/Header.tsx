@@ -4,15 +4,18 @@ import React from 'react';
 import { AmanogawaLogoIcon, SearchIcon, UserIcon } from '@/assets/jsx-icons';
 import { PagesPath } from '@/types';
 
-import { NavigationLink } from '../NavigationLink';
 import { EpisodeBackButton } from './EpisodeBackButton';
 import styles from './Header.module.scss';
 import { leftNavigationLinks, rigthNavigationLinks } from './header-data';
+import { MobileMenu } from './MobileMenu';
+import { NavigationLink } from './NavigationLink';
 
 export const Header = () => {
   return (
     <header className={styles.header}>
       <div className="container">
+        <MobileMenu />
+
         <EpisodeBackButton />
 
         <nav className={styles.navigation}>

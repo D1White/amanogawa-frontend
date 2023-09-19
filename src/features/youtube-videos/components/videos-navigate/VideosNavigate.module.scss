@@ -1,3 +1,11 @@
+.navigate {
+  @include flexCenteredVertically;
+
+  @include sm {
+    display: none;
+  }
+}
+
 .navButton {
   @include square(44);
   @include flexCentered;

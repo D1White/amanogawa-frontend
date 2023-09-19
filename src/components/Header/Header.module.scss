@@ -13,11 +13,19 @@
     flex-direction: row;
     @include flexCentered;
     position: relative;
+
+    @include md {
+      justify-content: space-between;
+    }
   }
 }
 
 .navigation {
   @include flexCenteredVertically;
+
+  @include md {
+    display: none;
+  }
 }
 
 .logo {
@@ -32,6 +40,13 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+
+  @include lg {
+    position: relative;
+    top: initial;
+    right: initial;
+    transform: initial;
+  }
 }
 
 .searchButton {
@@ -79,5 +94,37 @@
       stroke: $white;
       transform: translateX(-5px);
     }
+  }
+
+  @include md {
+    display: none;
+  }
+}
+
+.link {
+  color: $gray;
+  font-size: 16px;
+
+  @include colorTransition;
+
+  &:not(&:first-child) {
+    margin-left: 42px;
+
+    @include md {
+      margin-left: 0;
+      margin-top: 42px;
+    }
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  &.active {
+    color: $white;
+  }
+
+  @include md {
+    font-size: 32px;
   }
 }

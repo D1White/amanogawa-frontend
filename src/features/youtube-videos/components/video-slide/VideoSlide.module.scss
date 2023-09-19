@@ -8,6 +8,10 @@
   &:hover {
     opacity: 0.75;
   }
+
+  @include sm {
+    width: 260px;
+  }
 }
 
 .poster {

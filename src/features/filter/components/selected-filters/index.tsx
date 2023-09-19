@@ -2,7 +2,7 @@
 
 import React, { FC, useMemo } from 'react';
 
-import { CloseIcon } from '@/assets/jsx-icons';
+import { CloseSmallIcon } from '@/assets/jsx-icons';
 import { SelectValue } from '@/components/Select';
 import { animeStatusOptions, animeTypesOptions } from '@/features/filter/filter-data';
 import { useFilterStore } from '@/store';
@@ -25,7 +25,7 @@ const FilterChips: FC<FilterChipsProps> = ({ label, value, onClick }) => {
       <p>{label}</p>
 
       <button className={styles.removeButton} onClick={handleClick}>
-        <CloseIcon />
+        <CloseSmallIcon />
       </button>
     </div>
   );
