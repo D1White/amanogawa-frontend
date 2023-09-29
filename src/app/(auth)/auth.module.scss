@@ -1,0 +1,16 @@
+.authWrapper {
+  width: 100vw;
+  height: 100vh;
+  @include flexCenteredVertically;
+}
+
+.imageBlock {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+.content {
+  flex: 1;
+  @include flexCentered;
+}

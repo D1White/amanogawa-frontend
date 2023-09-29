@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { AmanogawaLogoIcon, SearchIcon, UserIcon } from '@/assets/jsx-icons';
+import { AmanogawaLogoIcon, SearchIcon } from '@/assets/jsx-icons';
 import { PagesPath } from '@/types';
 
 import { EpisodeBackButton } from './EpisodeBackButton';
 import styles from './Header.module.scss';
 import { leftNavigationLinks, rigthNavigationLinks } from './header-data';
+import { HeaderUser } from './HeaderUser';
 import { MobileMenu } from './MobileMenu';
 import { NavigationLink } from './NavigationLink';
 
@@ -41,9 +42,7 @@ export const Header = () => {
             <SearchIcon />
           </button>
 
-          <button className={styles.userButton}>
-            <UserIcon />
-          </button>
+          <HeaderUser />
         </div>
       </div>
     </header>

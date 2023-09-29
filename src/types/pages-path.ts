@@ -3,4 +3,8 @@ export enum PagesPath {
   anime = '/anime',
   myList = '/my-list',
   account = '/account',
+  login = '/login',
+  signup = '/signup',
 }
+
+export const privateRoutes: string[] = [PagesPath.account];

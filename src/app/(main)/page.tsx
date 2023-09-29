@@ -3,7 +3,7 @@ import 'swiper/css/pagination';
 
 import { NewAnime, TrendingAnime, YoutubeVideos } from '@/features';
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="container">
       <NewAnime />

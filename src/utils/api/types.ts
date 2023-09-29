@@ -48,3 +48,18 @@ export interface IAnimeYearsResponse {
 export interface IEpisodeResponse extends IEpisode {
   anime?: Pick<IAnimeFull, '_id' | 'title' | 'slug' | 'synopsis' | 'episodes' | 'created_at'>;
 }
+
+// Auth
+
+export interface LoginReq {
+  email: string;
+  password: string;
+}
+
+// Other
+
+export interface ErrorRes {
+  error: string;
+  message: string;
+  statusCode: number;
+}

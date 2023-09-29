@@ -7,3 +7,4 @@ export { Header } from './Header';
 export type { MultiRangeSliderOnChangeValue } from './MultiRangeSlider';
 export { MultiRangeSlider } from './MultiRangeSlider';
 export { Pagination } from './Pagination';
+export { TextField } from './TextField';
