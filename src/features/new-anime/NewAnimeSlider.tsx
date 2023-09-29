@@ -10,13 +10,13 @@ import { PlayIcon, SaveIcon } from '@/assets/jsx-icons';
 import { BigButton } from '@/components';
 import { IAnime, PagesPath } from '@/types';
 
-import styles from './NewAnimeDesktop.module.scss';
+import styles from './new-anime.module.scss';
 
-interface NewAnimeDesktopProps {
+interface NewAnimeSliderProps {
   data: IAnime[];
 }
 
-export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
+export const NewAnimeSlider: FC<NewAnimeSliderProps> = ({ data }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const activeSlideData = data[activeSlide];
@@ -111,8 +111,6 @@ export const NewAnimeDesktop: FC<NewAnimeDesktopProps> = ({ data }) => {
           ) : null}
         </div>
       </div>
-
-      {/* <NewAnimePagination /> */}
     </section>
   );
 };

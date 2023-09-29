@@ -77,7 +77,7 @@
       background: none;
       opacity: 1;
       margin: 32px 0 !important;
-      background-image: url('../../../../assets/svg/pagination-circle.svg');
+      background-image: url('../../assets/svg/pagination-circle.svg');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 50%, 50%;
@@ -87,7 +87,7 @@
       }
     }
     :global(.swiper-pagination-bullet-active) {
-      background-image: url('../../../../assets/svg/pagination-circle-active.svg');
+      background-image: url('../../assets/svg/pagination-circle-active.svg');
     }
   }
 }

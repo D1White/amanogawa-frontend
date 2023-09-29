@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { AnimeSortField, getAnime, SortDirection } from '@/utils/api';
 
-import { NewAnimeDesktop } from './components';
+import { NewAnimeSlider } from './NewAnimeSlider';
 
 export const NewAnime: FC = async () => {
   const anime = await getAnime({
@@ -15,5 +15,5 @@ export const NewAnime: FC = async () => {
     return null;
   }
 
-  return <NewAnimeDesktop data={anime?.items} />;
+  return <NewAnimeSlider data={anime?.items} />;
 };
