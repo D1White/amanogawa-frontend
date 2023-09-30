@@ -4,7 +4,8 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 
 import { PlayIcon, SaveIcon } from '@/assets/jsx-icons';
-import { IAnime, PagesPath } from '@/types';
+import { IAnime } from '@/types';
+import { PagesPath } from '@/utils';
 
 import { Badge } from '../Badge';
 import styles from './AnimeCard.module.scss';

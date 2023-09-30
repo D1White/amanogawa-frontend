@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ArrowRightIcon } from '@/assets/jsx-icons';
 import { AnimeCard } from '@/components';
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 import { AnimeSortField, getAnime } from '@/utils/api';
 
 import styles from './TrendingAnime.module.scss';

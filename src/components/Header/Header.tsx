@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { AmanogawaLogoIcon, SearchIcon } from '@/assets/jsx-icons';
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 
 import { EpisodeBackButton } from './EpisodeBackButton';
 import styles from './Header.module.scss';

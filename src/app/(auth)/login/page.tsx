@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useCallback, useMemo, useState } from 'react';
 
 import { TextField } from '@/components';
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 import { ErrorRes, login } from '@/utils/api';
 
 import styles from './login.module.scss';

@@ -4,7 +4,7 @@ import React from 'react';
 
 import { AmanogawaLogoIcon } from '@/assets/jsx-icons';
 import blocksStyles from '@/styles/variables/blocks/blocks.module.scss';
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 
 import styles from './Footer.module.scss';
 

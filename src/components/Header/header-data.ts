@@ -1,4 +1,4 @@
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 
 export const leftNavigationLinks = [
   {

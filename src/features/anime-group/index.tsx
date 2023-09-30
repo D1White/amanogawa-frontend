@@ -2,7 +2,7 @@ import cn from 'classnames';
 import Link from 'next/link';
 import React, { FC } from 'react';
 
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 import { getAnimeByGroup } from '@/utils/api';
 
 import styles from './anime-group.module.scss';

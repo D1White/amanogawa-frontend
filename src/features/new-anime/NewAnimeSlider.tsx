@@ -8,7 +8,8 @@ import { PaginationOptions } from 'swiper/types';
 
 import { PlayIcon, SaveIcon } from '@/assets/jsx-icons';
 import { BigButton } from '@/components';
-import { IAnime, PagesPath } from '@/types';
+import { IAnime } from '@/types';
+import { PagesPath } from '@/utils';
 
 import styles from './new-anime.module.scss';
 

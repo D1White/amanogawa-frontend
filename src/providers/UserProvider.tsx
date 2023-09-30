@@ -5,8 +5,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import React, { FC, PropsWithChildren } from 'react';
 import useSWR from 'swr';
 
-import { IUser, PagesPath, privateRoutes } from '@/types';
-import { SWRKeys } from '@/utils';
+import { IUser } from '@/types';
+import { PagesPath, privateRoutes, SWRKeys } from '@/utils';
 import { ErrorRes, getUser } from '@/utils/api';
 
 export const UserProvider: FC<PropsWithChildren> = ({ children }) => {

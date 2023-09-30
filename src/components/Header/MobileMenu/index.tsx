@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 import { AmanogawaLogoIcon, CloseIcon, MenuIcon } from '@/assets/jsx-icons';
 import { useTogglePageNoScroll } from '@/hooks';
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 
 import { leftNavigationLinks, rigthNavigationLinks } from '../header-data';
 import { NavigationLink } from '../NavigationLink';

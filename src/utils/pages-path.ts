@@ -7,4 +7,4 @@ export enum PagesPath {
   signup = '/signup',
 }
 
-export const privateRoutes: string[] = [PagesPath.account];
+export const privateRoutes: string[] = [PagesPath.account, PagesPath.myList];

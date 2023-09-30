@@ -59,10 +59,15 @@
 
 .userButton {
   @include flexCentered;
-  padding: 10px;
+  @include square(44);
   border-radius: 50%;
+  overflow: hidden;
   background: linear-gradient(220deg, $gray-dark 0%, rgba($gray-dark, 0) 100%);
   margin-left: 40px;
+
+  canvas {
+    @include square(100, '%', true);
+  }
 }
 
 .backButton {

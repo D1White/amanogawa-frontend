@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import React from 'react';
 
 import { ArrowNarrowLeftIcon } from '@/assets/jsx-icons';
-import { PagesPath } from '@/types';
+import { PagesPath } from '@/utils';
 
 import styles from './Header.module.scss';
 

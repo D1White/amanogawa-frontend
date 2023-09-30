@@ -4,9 +4,9 @@ import dynamic from 'next/dynamic';
 import { redirect } from 'next/navigation';
 
 import { Episode } from '@/components';
-import { type MetadataProps, type PageParams, PagesPath } from '@/types';
-import { getMetaTitle } from '@/utils';
-import { getEpisode, getOneAnime } from '@/utils/api';
+import { type MetadataProps, type PageParams } from '@/types';
+import { getMetaTitle, PagesPath } from '@/utils';
+import { getEpisode } from '@/utils/api';
 
 import styles from './episode_page.module.scss';
 

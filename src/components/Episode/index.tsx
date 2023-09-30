@@ -3,7 +3,8 @@ import React, { FC } from 'react';
 
 import defaultEpisodePreview from '@/assets/img/default-episode-preview.png';
 import { PlayIcon } from '@/assets/jsx-icons';
-import { IEpisode, PagesPath } from '@/types';
+import { IEpisode } from '@/types';
+import { PagesPath } from '@/utils';
 
 import styles from './episode.module.scss';
 
