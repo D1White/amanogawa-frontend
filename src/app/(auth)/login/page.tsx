@@ -4,7 +4,8 @@ import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useCallback, useMemo, useState } from 'react';
 
-import { TextField } from '@/components';
+import { PlayIcon } from '@/assets/jsx-icons';
+import { PasswordInput, TextField } from '@/components';
 import { PagesPath } from '@/utils';
 import { ErrorRes, login } from '@/utils/api';
 
@@ -54,12 +55,7 @@ export default function Login() {
 
       <form onSubmit={onSubmit} className={styles.form}>
         <TextField value={email} onChange={onChangeEmail} placeholder="Email" type="email" />
-        <TextField
-          value={password}
-          onChange={onChangePassword}
-          placeholder="Password"
-          type="password"
-        />
+        <PasswordInput value={password} onChange={onChangePassword} placeholder="Password" />
 
         <button type="submit" className={styles.submitButton} disabled={loading}>
           Log in

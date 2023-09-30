@@ -3,6 +3,7 @@ export { ArrowNarrowLeftIcon } from './ArrowNarrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
 export { ArrowRightPipeIcon } from './ArrowRightPipeIcon';
 export { CloseIcon, CloseSmallIcon } from './CloseIcon';
+export { EyeIcon, EyeOffIcon } from './EyeIcon';
 export { MenuIcon } from './MenuIcon';
 export { PaginationActiveCircle, PaginationCircle } from './PaginationCircle';
 export { PlayIcon } from './PlayIcon';

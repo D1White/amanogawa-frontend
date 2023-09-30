@@ -7,4 +7,5 @@ export { Header } from './Header';
 export type { MultiRangeSliderOnChangeValue } from './MultiRangeSlider';
 export { MultiRangeSlider } from './MultiRangeSlider';
 export { Pagination } from './Pagination';
+export { PasswordInput } from './PasswordInput';
 export { TextField } from './TextField';

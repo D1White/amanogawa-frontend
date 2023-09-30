@@ -25,16 +25,25 @@
     border: 2px solid $error;
   }
 
-  &:global(.with-icon) {
-    padding: 14px 16px 14px 48px;
+  &:global(.start-icon) {
+    padding-left: 48px;
+  }
+  &:global(.end-icon) {
+    padding-right: 48px;
   }
 }
 
-.startIcon {
+.icon {
   position: absolute;
   @include square(24);
+  top: 16px;
+}
+
+.startIcon {
   left: 16px;
-  top: 15px;
+}
+.endIcon {
+  right: 16px;
 }
 
 .helperText {
@@ -42,7 +51,7 @@
   bottom: 0;
   left: 16px;
 
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   color: $gray;
 

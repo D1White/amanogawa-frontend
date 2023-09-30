@@ -5,7 +5,7 @@ import React, { ChangeEventHandler, FC, HTMLInputTypeAttribute, memo, ReactNode 
 
 import styles from './TextField.module.scss';
 
-interface TextFieldProps {
+export interface TextFieldProps {
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
@@ -15,6 +15,7 @@ interface TextFieldProps {
   wrapperClassName?: string;
   className?: string;
   startIcon?: ReactNode;
+  endIcon?: ReactNode;
 }
 
 export const TextField: FC<TextFieldProps> = memo((props) => {
@@ -28,6 +29,7 @@ export const TextField: FC<TextFieldProps> = memo((props) => {
     wrapperClassName = '',
     className = '',
     startIcon,
+    endIcon,
   } = props;
 
   return (
@@ -38,13 +40,15 @@ export const TextField: FC<TextFieldProps> = memo((props) => {
         onChange={onChange}
         placeholder={placeholder}
         className={cn(styles.input, {
-          ['with-icon']: !!startIcon,
+          ['start-icon']: !!startIcon,
+          ['end-icon']: !!endIcon,
           error,
           [className]: !!className,
         })}
       />
 
-      {!!startIcon && <div className={styles.startIcon}>{startIcon}</div>}
+      {!!startIcon && <div className={cn(styles.icon, styles.startIcon)}>{startIcon}</div>}
+      {!!endIcon && <div className={cn(styles.icon, styles.endIcon)}>{endIcon}</div>}
 
       {helperText && <p className={cn(styles.helperText, { error })}>{helperText}</p>}
     </div>
