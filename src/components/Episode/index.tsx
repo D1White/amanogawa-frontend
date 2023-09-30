@@ -36,8 +36,8 @@ export const Episode: FC<EpisodeProps> = ({ data, anime_slug }) => {
       </div>
 
       <p className={styles.title}>{episodeNumber}</p>
-
-      {/* <p className={styles.subtitle}>{episodeNumber}</p> */}
+      {/* [INFO] temporarily hidden */}
+      {/* <p className={styles.subtitle}>{custom_name}</p> */}
     </Link>
   );
 };

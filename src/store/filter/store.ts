@@ -39,4 +39,12 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
 
   isFilterOpen: false,
   setIsFilterOpen: (isFilterOpen) => set({ isFilterOpen }),
+
+  resetFilter: () =>
+    set({
+      type: null,
+      genres: [],
+      status: null,
+      yearLimit: get().defaultYearLimit,
+    }),
 }));

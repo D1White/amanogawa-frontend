@@ -1,7 +1,7 @@
 'use client';
 
 import cn from 'classnames';
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
 import { SettingsIcon } from '@/assets/jsx-icons';
 import { useTogglePageNoScroll } from '@/hooks';

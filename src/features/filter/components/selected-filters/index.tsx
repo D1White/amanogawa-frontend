@@ -5,8 +5,9 @@ import React, { FC, useMemo } from 'react';
 import { CloseSmallIcon } from '@/assets/jsx-icons';
 import { SelectValue } from '@/components/Select';
 import { animeStatusOptions, animeTypesOptions } from '@/features/filter/filter-data';
-import { useFilterStore } from '@/store';
+import { filtersUrlParamsSelector, useFilterStore } from '@/store';
 
+import { ClearFilterButton } from '../clear-filter-button';
 import styles from './SelectedFilters.module.scss';
 
 interface FilterChipsProps {
@@ -45,6 +46,7 @@ export const SelectedFilters = () => {
     resetToYearLimit,
     defaultYearLimit,
   } = useFilterStore();
+  const urlParams = useFilterStore(filtersUrlParamsSelector);
 
   const typesFilters = useMemo(
     () => animeTypesOptions.filter((option) => type === option.value),
@@ -63,6 +65,8 @@ export const SelectedFilters = () => {
 
   return (
     <div className={styles.wrapper}>
+      {!!urlParams && <ClearFilterButton />}
+
       {typesFilters.map((option) => (
         <FilterChips
           label={option.label}

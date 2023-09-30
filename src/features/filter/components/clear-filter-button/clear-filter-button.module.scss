@@ -1,0 +1,11 @@
+.wrapper {
+  @include flexCenteredVertically;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: $error-dark;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $error;
+}

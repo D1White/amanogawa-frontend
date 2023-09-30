@@ -34,6 +34,8 @@ type Action = {
   setGenresData: (genresData: State['genresData']) => void;
 
   setIsFilterOpen: (isFilterOpen: State['isFilterOpen']) => void;
+
+  resetFilter: () => void;
 };
 
 export type FilterStore = State & Action;

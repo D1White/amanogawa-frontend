@@ -18,6 +18,10 @@
       justify-content: space-between;
     }
   }
+
+  @include md {
+    padding: 18px 0;
+  }
 }
 
 .navigation {
