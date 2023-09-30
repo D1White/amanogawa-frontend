@@ -1,7 +1,7 @@
 .wrapper {
   width: 100%;
   padding: 200px 0 100px;
-  @include flexCenteredVertically;
+  display: flex;
   position: relative;
 }
 
@@ -23,7 +23,7 @@
   }
 
   &.gradient {
-    background: linear-gradient(90deg, rgba($black, 0.8) 9.32%, rgba($black, 0.2) 90.54%);
+    background: linear-gradient(90deg, rgba($black, 0.8) 9.32%, rgba($black, 0.6) 90.54%);
     z-index: 0;
   }
 }
@@ -38,7 +38,6 @@
 
 .content {
   margin-left: 70px;
-  min-height: 507px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,40 +46,6 @@
 
 .title {
   font-family: $ff-k;
-  font-size: 56px;
+  font-size: 50px;
   font-weight: 500;
-}
-
-.synopsis {
-  font-size: 18px;
-  font-weight: 400;
-  margin-top: 16px;
-  white-space: pre-line;
-}
-
-.actionButtons {
-  @include flexCenteredVertically;
-  margin-top: 48px;
-  gap: 12px;
-}
-
-.details {
-  @include flexCenteredVertically;
-  margin-top: 48px;
-  flex-wrap: wrap;
-  gap: 24px 70px;
-}
-
-.detail {
-  font-size: 16px;
-  font-weight: 500;
-  color: $gray;
-  text-align: center;
-
-  mark {
-    font-size: 18px;
-    color: $white;
-    text-transform: capitalize;
-    margin-left: 6px;
-  }
 }

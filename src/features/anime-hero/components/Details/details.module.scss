@@ -1,0 +1,35 @@
+.details {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  @include flexCenteredVertically;
+  flex-wrap: wrap;
+  gap: 16px 60px;
+
+  @include notFirstChild {
+    margin-top: 16px;
+  }
+}
+
+.detail {
+  font-size: 16px;
+  font-weight: 500;
+  color: $gray-light;
+  text-align: center;
+  display: flex;
+
+  mark {
+    font-size: 18px;
+    color: $white;
+    text-transform: capitalize;
+    margin-left: 6px;
+  }
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
