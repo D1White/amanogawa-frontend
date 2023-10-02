@@ -1,15 +1,15 @@
 'use client';
 
 import { AxiosError } from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useCallback, useMemo, useState } from 'react';
 
-import { PlayIcon } from '@/assets/jsx-icons';
 import { PasswordInput, TextField } from '@/components';
 import { PagesPath } from '@/utils';
 import { ErrorRes, login } from '@/utils/api';
 
-import styles from './login.module.scss';
+import styles from '../auth.module.scss';
 
 export default function Login() {
   const router = useRouter();
@@ -47,7 +47,7 @@ export default function Login() {
   );
 
   return (
-    <div className={styles.wrapper}>
+    <>
       <h1 className={styles.title}>Login</h1>
       <h3 className={styles.subtitle}>
         Отримай доступ до оцінки аніме та збереження до власного списку!
@@ -61,6 +61,10 @@ export default function Login() {
           Log in
         </button>
       </form>
-    </div>
+
+      <Link href={PagesPath.signup} className={styles.link}>
+        Створити акаунт
+      </Link>
+    </>
   );
 }

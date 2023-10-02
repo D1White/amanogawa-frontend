@@ -17,8 +17,14 @@
   line-height: 1.2;
   color: $white;
 
+  transition: border 0.2s linear;
+
   &::placeholder {
     color: $gray-light;
+  }
+
+  &:focus {
+    border: 2px solid $primary;
   }
 
   &:global(.error) {

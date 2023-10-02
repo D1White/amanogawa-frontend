@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { AuthTokens } from '@/types';
 
-import { ErrorRes, LoginReq } from './types';
+import { LoginReq, SignUpReq } from './types';
 
 export const login = async (body: LoginReq): Promise<AuthTokens> => {
   try {
@@ -12,6 +12,42 @@ export const login = async (body: LoginReq): Promise<AuthTokens> => {
       { withCredentials: true },
     );
 
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const signUp = async (body: SignUpReq): Promise<AuthTokens> => {
+  try {
+    const { data } = await axios.post<AuthTokens>(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`,
+      body,
+      { withCredentials: true },
+    );
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const validateEmail = async (email: string): Promise<boolean> => {
+  try {
+    const { data } = await axios.get<boolean>(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/email/${email}`,
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const validateUsername = async (username: string): Promise<boolean> => {
+  try {
+    const { data } = await axios.get<boolean>(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/email/${username}`,
+    );
     return data;
   } catch (error) {
     throw error;

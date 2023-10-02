@@ -56,6 +56,10 @@ export interface LoginReq {
   password: string;
 }
 
+export interface SignUpReq extends LoginReq {
+  username: string;
+}
+
 // Other
 
 export interface ErrorRes {

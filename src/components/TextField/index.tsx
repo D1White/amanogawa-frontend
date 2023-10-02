@@ -10,6 +10,7 @@ export interface TextFieldProps {
   onChange: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
+  required?: boolean;
   helperText?: string;
   error?: boolean;
   wrapperClassName?: string;
@@ -24,6 +25,7 @@ export const TextField: FC<TextFieldProps> = memo((props) => {
     onChange,
     placeholder,
     type = 'text',
+    required = false,
     helperText,
     error = false,
     wrapperClassName = '',
@@ -39,6 +41,7 @@ export const TextField: FC<TextFieldProps> = memo((props) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        required={required}
         className={cn(styles.input, {
           ['start-icon']: !!startIcon,
           ['end-icon']: !!endIcon,
