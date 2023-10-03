@@ -2,6 +2,11 @@
   margin-top: 24px;
   display: flex;
   flex-direction: column;
+
+  @include sm {
+    margin-top: 40px;
+    order: 6;
+  }
 }
 
 .row {
@@ -11,6 +16,19 @@
 
   @include notFirstChild {
     margin-top: 16px;
+
+    @include sm {
+      margin-top: 12px;
+    }
+  }
+
+  @include lg {
+    gap: 16px 30px;
+  }
+  @include sm {
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -27,9 +45,4 @@
     text-transform: capitalize;
     margin-left: 6px;
   }
-}
-
-.break {
-  flex-basis: 100%;
-  height: 0;
 }

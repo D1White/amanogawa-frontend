@@ -7,6 +7,7 @@ import useSWR from 'swr';
 
 import { StarIcon } from '@/assets/jsx-icons';
 import { StarRating } from '@/components';
+import blocksStyles from '@/styles/variables/blocks/blocks.module.scss';
 import { IUser } from '@/types';
 import { SWRKeys } from '@/utils';
 import { getAnimeRating, updateAnimeRating } from '@/utils/api';
@@ -36,28 +37,30 @@ export const Rating: FC<RatingProps> = ({ animeId, rating, ratingCount }) => {
     } catch (error) {}
   };
 
-  if (!userRating && !rating) {
+  if (!rating && !user) {
     return null;
   }
 
   return (
     <div className={styles.ratingWrapper}>
-      {!!userRating && (
-        <>
-          <StarRating rating={userRating.rating} onChange={changeRating} />
+      <div className={blocksStyles.flexCenteredVertically}>
+        {!!user && <StarRating rating={userRating?.rating || 0} onChange={changeRating} />}
 
-          <p className={cn(styles.ratingText, styles.user)}>{userRating.rating}</p>
-
-          <hr className={styles.divider} />
-        </>
-      )}
+        {!!userRating && <p className={cn(styles.ratingText, styles.user)}>{userRating.rating}</p>}
+      </div>
 
       {!!rating && (
         <>
-          <StarIcon width={28} height={28} />
-          <p className={cn(styles.ratingText, styles.general)}>{rating}</p>
+          <hr className={styles.divider} />
 
-          {!!ratingCount && <p className={styles.ratingsCount}>({ratingCount})</p>}
+          <div className={blocksStyles.flexCenteredVertically}>
+            <p className={cn(styles.ratingText, styles.avg)}>Рейтинг:</p>
+
+            <StarIcon width={28} height={28} />
+            <p className={cn(styles.ratingText, styles.general)}>{rating}</p>
+
+            {!!ratingCount && <p className={styles.ratingsCount}>({ratingCount})</p>}
+          </div>
         </>
       )}
     </div>

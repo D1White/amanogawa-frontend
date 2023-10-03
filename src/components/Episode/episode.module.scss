@@ -9,6 +9,10 @@
       opacity: 1;
     }
   }
+
+  @include sm {
+    width: 100%;
+  }
 }
 
 .previewBlock {
@@ -17,6 +21,10 @@
   border-radius: 20px;
   overflow: hidden;
   position: relative;
+
+  @include sm {
+    height: 192px;
+  }
 }
 
 .preview {

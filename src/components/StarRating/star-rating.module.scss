@@ -5,7 +5,15 @@
 .star {
   @include flexCentered;
 
-  svg > path {
-    transition: fill 0.1s linear;
+  svg {
+    @include square(28);
+
+    @include sm {
+      @include square(36);
+    }
+
+    path {
+      transition: fill 0.1s linear;
+    }
   }
 }

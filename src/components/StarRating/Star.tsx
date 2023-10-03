@@ -21,11 +21,7 @@ export const Star: FC<StarProps> = ({ value, hover, rating, setHover, setRating 
       onMouseEnter={() => setHover(value)}
       onMouseLeave={() => setHover(null)}
     >
-      <StarIcon
-        width={28}
-        height={28}
-        fill={value <= (hover || rating) ? colors.yellow : colors.grayDark}
-      />
+      <StarIcon fill={value <= (hover || rating) ? colors.yellow : colors.grayDark} />
     </button>
   );
 };

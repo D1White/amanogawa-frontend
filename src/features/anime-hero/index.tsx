@@ -21,6 +21,8 @@ export const AnimeHero: FC<AnimeHeroProps> = ({ anime }) => {
       <div className={styles.content}>
         <h1 className={styles.title}>{anime.title}</h1>
 
+        <hr className={styles.divider} />
+
         <Rating animeId={anime._id} rating={anime?.rating} ratingCount={anime?.rating_count} />
 
         <Details anime={anime} />
@@ -28,6 +30,8 @@ export const AnimeHero: FC<AnimeHeroProps> = ({ anime }) => {
         <ActionButtons />
 
         <Synopsis data={anime.synopsis} />
+
+        <hr className={styles.divider} />
       </div>
     </section>
   );

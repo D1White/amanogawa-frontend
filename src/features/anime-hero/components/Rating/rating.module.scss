@@ -1,6 +1,14 @@
 .ratingWrapper {
   @include flexCenteredVertically;
   margin-top: 24px;
+
+  @include sm {
+    margin-top: 0;
+    order: 5;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
 
 .ratingText {
@@ -9,9 +17,25 @@
 
   &.user {
     margin-left: 12px;
+
+    @include sm {
+      font-size: 34px;
+      margin-left: 16px;
+    }
   }
   &.general {
     margin-left: 6px;
+  }
+
+  &.avg {
+    font-size: 16px;
+    margin-right: 6px;
+    color: $gray-light;
+    display: none;
+
+    @include sm {
+      display: initial;
+    }
   }
 }
 
@@ -19,6 +43,10 @@
   height: 12px;
   margin: 0 40px;
   border-color: $white;
+
+  @include sm {
+    display: none;
+  }
 }
 
 .ratingsCount {
