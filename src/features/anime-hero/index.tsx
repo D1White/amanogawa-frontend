@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { IAnimeFull } from '@/types';
 
 import styles from './anime-hero.module.scss';
-import { ActionButtons, Details, Synopsis } from './components';
+import { ActionButtons, Details, Rating, Synopsis } from './components';
 
 interface AnimeHeroProps {
   anime: IAnimeFull;
@@ -20,6 +20,8 @@ export const AnimeHero: FC<AnimeHeroProps> = ({ anime }) => {
 
       <div className={styles.content}>
         <h1 className={styles.title}>{anime.title}</h1>
+
+        <Rating animeId={anime._id} rating={anime?.rating} ratingCount={anime?.rating_count} />
 
         <Details anime={anime} />
 

@@ -1,0 +1,11 @@
+.starList {
+  @include flexCenteredVertically;
+}
+
+.star {
+  @include flexCentered;
+
+  svg > path {
+    transition: fill 0.1s linear;
+  }
+}

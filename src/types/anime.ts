@@ -40,6 +40,7 @@ interface IAnimeBase {
   episodes_total?: string;
   myanime_id?: number;
   rating?: number;
+  rating_count?: number;
   views?: number;
   created_at: string;
   updated_at: string;

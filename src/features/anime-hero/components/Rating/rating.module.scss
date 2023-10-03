@@ -1,0 +1,30 @@
+.ratingWrapper {
+  @include flexCenteredVertically;
+  margin-top: 24px;
+}
+
+.ratingText {
+  font-size: 24px;
+  font-weight: 500;
+
+  &.user {
+    margin-left: 12px;
+  }
+  &.general {
+    margin-left: 6px;
+  }
+}
+
+.divider {
+  height: 12px;
+  margin: 0 40px;
+  border-color: $white;
+}
+
+.ratingsCount {
+  color: $gray-light;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 6px;
+  margin-left: 6px;
+}

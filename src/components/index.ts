@@ -8,4 +8,5 @@ export type { MultiRangeSliderOnChangeValue } from './MultiRangeSlider';
 export { MultiRangeSlider } from './MultiRangeSlider';
 export { Pagination } from './Pagination';
 export { PasswordInput } from './PasswordInput';
+export { StarRating } from './StarRating';
 export { TextField } from './TextField';

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
 
-import { IUser } from '@/types';
+import { IRating, IUser } from '@/types';
 
 import { refreshAuthTokens } from './auth';
 
@@ -44,6 +44,32 @@ axiosUserApiInstance.interceptors.response.use(
 export const getUser = async (): Promise<IUser> => {
   try {
     const { data } = await axiosUserApiInstance.get<IUser>('');
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAnimeRating = async (animeId: string): Promise<IRating> => {
+  try {
+    const { data } = await axiosUserApiInstance.get<IRating>(`/${animeId}`, {
+      baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/rating`,
+    });
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const updateAnimeRating = async (
+  body: Pick<IRating, 'anime_id' | 'rating'>,
+): Promise<IRating> => {
+  try {
+    const { data } = await axiosUserApiInstance.post<IRating>(``, body, {
+      baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/rating`,
+    });
 
     return data;
   } catch (error) {
