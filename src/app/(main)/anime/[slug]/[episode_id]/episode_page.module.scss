@@ -7,12 +7,23 @@
   margin-top: 60px;
   display: flex;
   justify-content: space-between;
+
+  @include xxl {
+    flex-direction: column;
+  }
+  @include sm {
+    margin-top: 32px;
+  }
 }
 
 .info {
   display: flex;
   flex-direction: column;
   margin-right: 90px;
+
+  @include xxl {
+    margin-right: 0;
+  }
 }
 
 .animeTitle {
@@ -21,6 +32,13 @@
   font-size: 34px;
   font-weight: 500;
   line-height: 1.4;
+
+  @include sm {
+    font-size: 28px;
+  }
+  @include xs {
+    font-size: 24px;
+  }
 }
 
 .episodeTitle {
@@ -30,10 +48,29 @@
   font-weight: 500;
   line-height: 1.4;
   margin-top: 32px;
+
+  @include xxl {
+    margin-top: 24px;
+  }
+  @include sm {
+    font-size: 34px;
+    margin-top: 18px;
+  }
+  @include xs {
+    font-size: 28px;
+  }
 }
 
 .episodes {
   display: flex;
+
+  @include xxl {
+    margin-top: 60px;
+  }
+  @include sm {
+    flex-direction: column;
+    margin-top: 32px;
+  }
 }
 
 .episode {
@@ -43,6 +80,12 @@
   &.end {
     align-items: flex-end;
     margin-left: 20px;
+
+    @include sm {
+      margin-left: 0;
+      margin-top: 32px;
+      align-items: flex-start;
+    }
   }
 }
 
@@ -53,4 +96,11 @@
   font-weight: 500;
   line-height: 1.4;
   margin-bottom: 40px;
+
+  @include sm {
+    margin-bottom: 18px;
+  }
+  @include xs {
+    font-size: 24px;
+  }
 }

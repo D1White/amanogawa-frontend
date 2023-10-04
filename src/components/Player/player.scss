@@ -1,8 +1,16 @@
 .vjs-amanogawa {
   border-radius: 58px;
 
+  @include md {
+    border-radius: 24px;
+  }
+
   .vjs-tech {
     border-radius: 58px;
+
+    @include md {
+      border-radius: 24px;
+    }
   }
 
   .vjs-control-bar {
@@ -17,19 +25,30 @@
     align-items: center;
     padding: 16px 40px;
 
+    @include md {
+      height: 58px;
+      width: calc(100% - 24px);
+      padding: 16px 30px;
+    }
+
     .vjs-volume-panel {
-      height: 48px;
-      width: 48px;
+      @include square(48);
+
+      @include md {
+        @include square(24);
+      }
     }
   }
 
   .vjs-button {
-    height: 48px;
-    width: 48px;
+    @include square(48);
+
+    @include md {
+      @include square(24);
+    }
 
     .vjs-svg-icon {
-      width: 24px;
-      height: 24px;
+      @include square(24);
     }
   }
 
@@ -60,6 +79,10 @@
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none;
+
+    @include md {
+      font-size: 16px;
+    }
   }
 
   .vjs-play-control {
@@ -68,6 +91,10 @@
 
   .vjs-current-time {
     order: 2;
+
+    @include md {
+      padding: 0 4px 0 20px;
+    }
   }
 
   .vjs-progress-control {
@@ -127,6 +154,10 @@
 
   .vjs-duration {
     order: 4;
+
+    @include md {
+      padding: 0 20px 0 4px;
+    }
   }
 
   .vjs-volume-panel {
@@ -134,15 +165,32 @@
   }
   .vjs-playback-rate {
     order: 6;
+
+    @include md {
+      margin-left: 20px;
+    }
   }
   .vjs-subs-caps-button {
     order: 7;
   }
+  div.vjs-subs-caps-button {
+    @include md {
+      margin-left: 20px;
+    }
+  }
   .vjs-picture-in-picture-control {
     order: 8;
+
+    @include md {
+      display: none;
+    }
   }
   .vjs-fullscreen-control {
     order: 9;
+
+    @include md {
+      margin-left: 20px;
+    }
   }
 
   .vjs-big-play-button {
@@ -157,6 +205,12 @@
     font-size: 48px;
     line-height: 2.5;
     transform: translate(-50%, -50%);
+
+    @include md {
+      width: 90px;
+      height: 60px;
+      font-size: 24px;
+    }
   }
 
   .vjs-menu {
@@ -178,6 +232,10 @@
         font-size: 18px;
         font-weight: 500;
         line-height: 140%;
+
+        @include md {
+          font-size: 16px;
+        }
 
         &.vjs-selected {
           background-color: initial;
