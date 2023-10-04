@@ -1,15 +1,20 @@
 'use client';
 
+import cn from 'classnames';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { ArrowNarrowLeftIcon } from '@/assets/jsx-icons';
 import { PagesPath } from '@/utils';
 
 import styles from './Header.module.scss';
 
-export const EpisodeBackButton = () => {
+interface EpisodeBackButtonProps {
+  className?: string;
+}
+
+export const EpisodeBackButton: FC<EpisodeBackButtonProps> = ({ className }) => {
   const params = useParams();
 
   const link = PagesPath.anime + `/${params?.slug}`;
@@ -19,7 +24,7 @@ export const EpisodeBackButton = () => {
   }
 
   return (
-    <Link href={link} className={styles.backButton}>
+    <Link href={link} className={cn(styles.backButton, className)}>
       <ArrowNarrowLeftIcon />
       Back
     </Link>

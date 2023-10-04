@@ -104,3 +104,16 @@
     font-size: 24px;
   }
 }
+
+.backButton {
+  display: none;
+  position: relative;
+  left: initial;
+  top: initial;
+  transform: initial;
+  width: fit-content;
+
+  @include md {
+    display: flex;
+  }
+}

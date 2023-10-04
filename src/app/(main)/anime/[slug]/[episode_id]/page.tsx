@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { redirect } from 'next/navigation';
 
 import { Episode } from '@/components';
+import { EpisodeBackButton } from '@/components/Header/EpisodeBackButton';
 import { type MetadataProps, type PageParams } from '@/types';
 import { getMetaTitle, PagesPath } from '@/utils';
 import { getEpisode } from '@/utils/api';
@@ -39,6 +40,8 @@ export default async function EpisodePage({ params }: PageParams) {
 
   return (
     <main className="container page-offset">
+      <EpisodeBackButton className={styles.backButton} />
+
       <div className={styles.playerWrapper}>
         <Player data={episode} />
       </div>
