@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
-import { AnimeGrid, Filter } from '@/features';
+import { Filter } from '@/features';
+import { AnimeGrid } from '@/features/anime-grid';
 import { SearchParams } from '@/types';
 import { getAnime } from '@/utils/api';
 

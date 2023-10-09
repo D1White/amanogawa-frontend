@@ -1,4 +1,3 @@
-export { AnimeGrid } from './anime-grid';
 export { AnimeGroup } from './anime-group';
 export { AnimeHero } from './anime-hero';
 export { Episodes } from './episodes';

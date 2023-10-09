@@ -3,7 +3,7 @@ import { yearOptions } from '@/features/filter/filter-data';
 import { IGenre } from '@/types';
 import { AnimeSortField } from '@/utils/api';
 
-type State = {
+export type FilterState = {
   type: SelectValueOrNull;
   genres: SelectValue[];
   status: SelectValueOrNull;
@@ -14,28 +14,28 @@ type State = {
   isFilterOpen: boolean;
 };
 
-type Action = {
-  setType: (type: State['type']) => void;
+type FilterAction = {
+  setType: (type: FilterState['type']) => void;
   removeType: () => void;
 
-  setGenres: (genres: State['genres']) => void;
+  setGenres: (genres: FilterState['genres']) => void;
   removeGenre: (genre: SelectValue) => void;
 
-  setStatus: (status: State['status']) => void;
+  setStatus: (status: FilterState['status']) => void;
   removeStatus: () => void;
 
-  setYearLimit: (yearLimit: State['yearLimit']) => void;
-  setDefaultYearLimit: (defaultYearLimit: State['defaultYearLimit']) => void;
+  setYearLimit: (yearLimit: FilterState['yearLimit']) => void;
+  setDefaultYearLimit: (defaultYearLimit: FilterState['defaultYearLimit']) => void;
   resetFromYearLimit: () => void;
   resetToYearLimit: () => void;
 
-  setSortField: (sortField: State['sortField']) => void;
+  setSortField: (sortField: FilterState['sortField']) => void;
 
-  setGenresData: (genresData: State['genresData']) => void;
+  setGenresData: (genresData: FilterState['genresData']) => void;
 
-  setIsFilterOpen: (isFilterOpen: State['isFilterOpen']) => void;
+  setIsFilterOpen: (isFilterOpen: FilterState['isFilterOpen']) => void;
 
   resetFilter: () => void;
 };
 
-export type FilterStore = State & Action;
+export type FilterStore = FilterState & FilterAction;

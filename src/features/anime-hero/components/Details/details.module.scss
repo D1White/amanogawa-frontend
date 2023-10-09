@@ -39,10 +39,17 @@
   text-align: center;
   display: flex;
 
-  mark {
+  mark,
+  a {
     font-size: 18px;
     color: $white;
     text-transform: capitalize;
     margin-left: 6px;
+
+    transition: color 0.2s linear;
+  }
+
+  a:hover {
+    color: $purple;
   }
 }
