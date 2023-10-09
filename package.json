@@ -19,6 +19,7 @@
     "rc-tooltip": "^6.0.1",
     "react": "18.2.0",
     "react-blockies": "^1.4.1",
+    "react-content-loader": "^6.2.1",
     "react-dom": "18.2.0",
     "swiper": "^10.0.4",
     "swr": "^2.2.4",

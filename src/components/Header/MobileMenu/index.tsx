@@ -27,9 +27,11 @@ export const MobileMenu = () => {
 
   return (
     <>
-      <button className={styles.button} onClick={handleClick}>
-        {isOpen ? <CloseIcon /> : <MenuIcon />}
-      </button>
+      <div className={styles.buttonWrapper}>
+        <button className={styles.button} onClick={handleClick}>
+          {isOpen ? <CloseIcon /> : <MenuIcon />}
+        </button>
+      </div>
 
       <div className={cn(styles.modal, { [styles.open]: isOpen })}>
         <Link href={PagesPath.home} className={styles.logo} onClick={handleClose}>

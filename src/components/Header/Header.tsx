@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { AmanogawaLogoIcon, SearchIcon } from '@/assets/jsx-icons';
+import { AmanogawaLogoIcon } from '@/assets/jsx-icons';
+import { Search } from '@/features';
 import { PagesPath } from '@/utils';
 
 import { EpisodeBackButton } from './EpisodeBackButton';
@@ -38,9 +39,7 @@ export const Header = () => {
         </nav>
 
         <div className={styles.actionButtons}>
-          <button className={styles.searchButton}>
-            <SearchIcon />
-          </button>
+          <Search />
 
           <HeaderUser />
         </div>

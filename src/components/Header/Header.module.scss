@@ -9,14 +9,11 @@
   left: 0;
   z-index: 999;
 
-  :global .container {
+  & > :global(.container) {
     flex-direction: row;
-    @include flexCentered;
+    @include flexCenteredVertically;
+    justify-content: space-between;
     position: relative;
-
-    @include md {
-      justify-content: space-between;
-    }
   }
 
   @include md {
@@ -38,23 +35,9 @@
 }
 
 .actionButtons {
+  width: 110px;
   @include flexCenteredVertically;
-
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-
-  @include lg {
-    position: relative;
-    top: initial;
-    right: initial;
-    transform: initial;
-  }
-}
-
-.searchButton {
-  @include flexCentered;
+  justify-content: flex-end;
 }
 
 .userButton {

@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import useSWR from 'swr';
 
 import { StarIcon } from '@/assets/jsx-icons';
-import { StarRating } from '@/components';
+import { StarRating } from '@/components/StarRating';
 import blocksStyles from '@/styles/variables/blocks/blocks.module.scss';
 import { IUser } from '@/types';
 import { SWRKeys } from '@/utils';

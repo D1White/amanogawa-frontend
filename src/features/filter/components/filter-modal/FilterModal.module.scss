@@ -8,7 +8,7 @@
   background-color: rgba($black, 0.96);
   overflow-y: auto;
 
-  :global .container {
+  :global(.container) {
     height: 100%;
     align-items: center;
     justify-content: center;
