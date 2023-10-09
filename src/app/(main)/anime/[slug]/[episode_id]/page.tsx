@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 
 import { Episode } from '@/components';
 import { EpisodeBackButton } from '@/components/Header/EpisodeBackButton';
+import { PlayerLoader } from '@/components/Player/PlayerLoader';
 import { type MetadataProps, type PageParams } from '@/types';
 import { getMetaTitle, PagesPath } from '@/utils';
 import { getEpisode } from '@/utils/api';
@@ -13,7 +14,7 @@ import styles from './episode_page.module.scss';
 
 const Player = dynamic(() => import('@/components/Player'), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <PlayerLoader />,
 });
 
 export async function generateMetadata(
