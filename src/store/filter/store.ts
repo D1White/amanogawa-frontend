@@ -49,6 +49,7 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
       type: null,
       genres: [],
       status: null,
+      season: null,
       yearLimit: get().defaultYearLimit,
     }),
 }));
