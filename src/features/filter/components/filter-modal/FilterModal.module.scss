@@ -12,12 +12,14 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    gap: 80px;
 
-    @include xl {
+    @include xxl {
       height: initial;
       justify-content: initial;
       padding-top: 140px !important;
       padding-bottom: 100px !important;
+      gap: 60px;
     }
 
     @include sm {
@@ -38,10 +40,10 @@
   width: 100%;
   @include flexCenteredVertically;
   justify-content: space-evenly;
-  margin-top: 80px;
 
-  @include xl {
+  @include xxl {
     flex-direction: column;
+    gap: 60px;
 
     & > div {
       align-items: center;
@@ -58,8 +60,4 @@
 
 .yearTitle {
   margin-bottom: 35px;
-
-  @include xl {
-    margin-top: 80px;
-  }
 }

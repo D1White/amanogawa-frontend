@@ -7,6 +7,7 @@ export type FilterState = {
   type: SelectValueOrNull;
   genres: SelectValue[];
   status: SelectValueOrNull;
+  season: SelectValueOrNull;
   yearLimit: typeof yearOptions;
   defaultYearLimit: typeof yearOptions;
   sortField: AnimeSortField;
@@ -23,6 +24,9 @@ type FilterAction = {
 
   setStatus: (status: FilterState['status']) => void;
   removeStatus: () => void;
+
+  setSeason: (status: FilterState['season']) => void;
+  removeSeason: () => void;
 
   setYearLimit: (yearLimit: FilterState['yearLimit']) => void;
   setDefaultYearLimit: (defaultYearLimit: FilterState['defaultYearLimit']) => void;

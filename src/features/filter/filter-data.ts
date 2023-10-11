@@ -1,5 +1,5 @@
 import { SelectOption } from '@/components/Select';
-import { AnimeStatusEnum, AnimeTypeEnum } from '@/types';
+import { AnimeSeasonEnum, AnimeStatusEnum, AnimeTypeEnum } from '@/types';
 import { MIN_ANIME_YEAR } from '@/utils';
 
 export const animeTypesOptions: SelectOption[] = [
@@ -37,6 +37,25 @@ export const animeStatusOptions: SelectOption[] = [
   {
     label: 'Upcoming',
     value: AnimeStatusEnum.upcoming,
+  },
+];
+
+export const animeSeasonOptions: SelectOption[] = [
+  {
+    label: 'Winter',
+    value: AnimeSeasonEnum.winter,
+  },
+  {
+    label: 'Spring',
+    value: AnimeSeasonEnum.spring,
+  },
+  {
+    label: 'Summer',
+    value: AnimeSeasonEnum.summer,
+  },
+  {
+    label: 'Autumn',
+    value: AnimeSeasonEnum.autumn,
   },
 ];
 

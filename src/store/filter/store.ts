@@ -18,6 +18,10 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
   setStatus: (status) => set({ status }),
   removeStatus: () => set({ status: null }),
 
+  season: null,
+  setSeason: (season) => set({ season }),
+  removeSeason: () => set({ season: null }),
+
   yearLimit: yearOptions,
   defaultYearLimit: yearOptions,
   setYearLimit: (yearLimit) => set({ yearLimit }),

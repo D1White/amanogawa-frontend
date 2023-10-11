@@ -4,7 +4,11 @@ import React, { FC, useMemo } from 'react';
 
 import { CloseSmallIcon } from '@/assets/jsx-icons';
 import { SelectValue } from '@/components/Select';
-import { animeStatusOptions, animeTypesOptions } from '@/features/filter/filter-data';
+import {
+  animeSeasonOptions,
+  animeStatusOptions,
+  animeTypesOptions,
+} from '@/features/filter/filter-data';
 import { filtersUrlParamsSelector, useFilterStore } from '@/store';
 
 import { ClearFilterButton } from '../clear-filter-button';
@@ -38,10 +42,12 @@ export const SelectedFilters = () => {
     genres,
     genresData,
     status,
+    season,
     yearLimit,
     removeType,
     removeGenre,
     removeStatus,
+    removeSeason,
     resetFromYearLimit,
     resetToYearLimit,
     defaultYearLimit,
@@ -56,6 +62,11 @@ export const SelectedFilters = () => {
   const statusFilters = useMemo(
     () => animeStatusOptions.filter((option) => status === option.value),
     [status],
+  );
+
+  const seasonFilters = useMemo(
+    () => animeSeasonOptions.filter((option) => season === option.value),
+    [season],
   );
 
   const genresFilters = useMemo(
@@ -81,6 +92,15 @@ export const SelectedFilters = () => {
           label={option.label}
           value={option.value}
           onClick={removeStatus}
+          key={option.value}
+        />
+      ))}
+
+      {seasonFilters.map((option) => (
+        <FilterChips
+          label={option.label}
+          value={option.value}
+          onClick={removeSeason}
           key={option.value}
         />
       ))}

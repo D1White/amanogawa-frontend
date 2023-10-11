@@ -3,7 +3,7 @@
 import cn from 'classnames';
 import React, { FC } from 'react';
 
-import { SettingsIcon } from '@/assets/jsx-icons';
+import { CloseIcon, SettingsIcon } from '@/assets/jsx-icons';
 import { useTogglePageNoScroll } from '@/hooks';
 import { useFilterStore } from '@/store';
 
@@ -27,7 +27,7 @@ export const FilterContent: FC = () => {
             className={cn(styles.filterButton, { [styles.open]: isFilterOpen })}
             onClick={handleFiltersOpenSwitch}
           >
-            <SettingsIcon />
+            {isFilterOpen ? <CloseIcon /> : <SettingsIcon />}
             {isFilterOpen ? 'Close Filter' : 'Filter'}
           </button>
 

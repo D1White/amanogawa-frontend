@@ -26,6 +26,7 @@ export const FilterStoreProvider: FC<Props> = ({ children, genresData, yearsData
     isFilterOpen,
     setType,
     setStatus,
+    setSeason,
     setYearLimit,
     setGenres,
   } = useFilterStore();
@@ -42,6 +43,9 @@ export const FilterStoreProvider: FC<Props> = ({ children, genresData, yearsData
     }
     if (urlParams?.status) {
       setStatus(urlParams.status as string);
+    }
+    if (urlParams?.season) {
+      setSeason(urlParams.season as string);
     }
 
     setYearLimit({

@@ -5,11 +5,12 @@ import { AnimeSortField } from '@/utils/api';
 import { FilterStore } from './types';
 
 export const filtersUrlParamsSelector = (store: FilterStore) => {
-  const { type, status, genres, yearLimit, defaultYearLimit, sortField } = store;
+  const { type, status, season, genres, yearLimit, defaultYearLimit, sortField } = store;
 
   const params = {
     type,
     status,
+    season,
     genres,
     min_year: yearLimit.min > defaultYearLimit.min ? yearLimit.min : null,
     max_year: yearLimit.max < defaultYearLimit.max ? yearLimit.max : null,

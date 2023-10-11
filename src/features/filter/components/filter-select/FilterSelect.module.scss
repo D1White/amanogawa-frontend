@@ -6,14 +6,6 @@
   &.center {
     align-items: center;
   }
-
-  @include notFirstChild {
-    margin-top: 80px;
-  }
-
-  &.noSpacing {
-    margin-top: 0 !important;
-  }
 }
 
 .title {

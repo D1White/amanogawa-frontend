@@ -5,7 +5,11 @@ import React, { memo, useMemo } from 'react';
 
 import { MultiRangeSlider, MultiRangeSliderOnChangeValue } from '@/components';
 import { SelectOption, SelectValue, SelectValueOrNull } from '@/components/Select';
-import { animeStatusOptions, animeTypesOptions } from '@/features/filter/filter-data';
+import {
+  animeSeasonOptions,
+  animeStatusOptions,
+  animeTypesOptions,
+} from '@/features/filter/filter-data';
 import { useFilterStore } from '@/store';
 
 import { MultipleFilterSelect, SingleFilterSelect } from '../filter-select';
@@ -21,6 +25,8 @@ export const FilterModal = memo(() => {
     setGenres,
     status,
     setStatus,
+    season,
+    setSeason,
     yearLimit,
     setYearLimit,
     defaultYearLimit,
@@ -47,6 +53,10 @@ export const FilterModal = memo(() => {
     setStatus(value);
   };
 
+  const handleSeasonChange = (value: SelectValueOrNull) => {
+    setSeason(value);
+  };
+
   const handleYearChange = (value: MultiRangeSliderOnChangeValue) => {
     setYearLimit(value);
   };
@@ -54,12 +64,21 @@ export const FilterModal = memo(() => {
   return (
     <div className={styles.modal}>
       <div className="container page-offset">
-        <SingleFilterSelect
-          title="Type"
-          value={type}
-          options={animeTypesOptions}
-          onChange={handleTypesChange}
-        />
+        <div className={styles.filtersRowBlock}>
+          <SingleFilterSelect
+            title="Type"
+            value={type}
+            options={animeTypesOptions}
+            onChange={handleTypesChange}
+          />
+
+          <SingleFilterSelect
+            title="Season"
+            value={season}
+            options={animeSeasonOptions}
+            onChange={handleSeasonChange}
+          />
+        </div>
 
         <MultipleFilterSelect
           title="Genre"
