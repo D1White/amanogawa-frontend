@@ -4,13 +4,13 @@ import dynamic from 'next/dynamic';
 import { redirect } from 'next/navigation';
 
 import { Episode } from '@/components';
-import { EpisodeBackButton } from '@/components/Header/EpisodeBackButton';
 import { PlayerLoader } from '@/components/Player/PlayerLoader';
 import { type MetadataProps, type PageParams } from '@/types';
 import { getMetaTitle, PagesPath } from '@/utils';
 import { getEpisode } from '@/utils/api';
 
 import styles from './episode_page.module.scss';
+import { EpisodeBackButton } from './EpisodeBackButton';
 
 const Player = dynamic(() => import('@/components/Player'), {
   ssr: false,
@@ -41,7 +41,7 @@ export default async function EpisodePage({ params }: PageParams) {
 
   return (
     <main className="container page-offset">
-      <EpisodeBackButton className={styles.backButton} />
+      <EpisodeBackButton />
 
       <div className={styles.playerWrapper}>
         <Player data={episode} />
