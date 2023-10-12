@@ -1,5 +1,3 @@
-import { IAnime } from './anime';
-
 export interface AuthTokens {
   access_token: string;
   refresh_token: string;
@@ -9,6 +7,6 @@ export interface IUser {
   username: string;
   email: string;
   password: string;
-  favorites: IAnime[];
+  favorites: string[];
   refresh_token: string;
 }

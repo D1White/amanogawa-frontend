@@ -1,0 +1,102 @@
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 122px 1fr auto;
+  column-gap: 40px;
+  z-index: 1;
+  position: relative;
+
+  &:hover {
+    z-index: 2;
+  }
+
+  @include notFirstChild {
+    margin-top: 16px;
+  }
+}
+
+.posterWrapper {
+  width: 100%;
+  height: 122px;
+  position: relative;
+}
+
+.poster {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  height: 122px;
+  object-fit: cover;
+  border-radius: 20px;
+
+  transition:
+    width 0.2s ease-in-out,
+    height 0.2s ease-in-out;
+
+  &:hover {
+    width: 160px;
+    height: 240px;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.textInfo {
+  color: $white;
+  font-size: 24px;
+  font-weight: 500;
+
+  transition: color 0.2s linear;
+
+  &.link {
+    @include textLines;
+    &:hover {
+      color: $purple;
+    }
+  }
+
+  &.subtitle {
+    color: $gray;
+    margin-top: 6px;
+    text-transform: capitalize;
+  }
+}
+
+@keyframes shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.deleteButton {
+  @include flexCenteredVertically;
+  gap: 16px;
+
+  color: $error;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  &:hover > svg {
+    animation: shaking 0.3s infinite;
+  }
+}

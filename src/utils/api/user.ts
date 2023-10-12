@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
 
-import { IRating, IUser } from '@/types';
+import { IAnime, IRating, IUser } from '@/types';
 
 import { refreshAuthTokens } from './auth';
 
@@ -51,6 +51,7 @@ export const getUser = async (): Promise<IUser> => {
   }
 };
 
+// Rating
 export const getAnimeRating = async (animeId: string): Promise<IRating> => {
   try {
     const { data } = await axiosUserApiInstance.get<IRating>(`/${animeId}`, {
@@ -72,6 +73,33 @@ export const updateAnimeRating = async (
     });
 
     return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Favorites
+export const getFavorites = async (): Promise<IAnime[]> => {
+  try {
+    const { data } = await axiosUserApiInstance.get<IAnime[]>('/favorites');
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const addFavorite = async (animeId: string): Promise<void> => {
+  try {
+    await axiosUserApiInstance.post('/favorites/add', { anime_id: animeId });
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const removeFavorite = async (animeId: string): Promise<void> => {
+  try {
+    await axiosUserApiInstance.post('/favorites/remove', { anime_id: animeId });
   } catch (error) {
     throw error;
   }

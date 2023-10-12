@@ -5,11 +5,14 @@ import React, { FC, useCallback, useMemo, useState } from 'react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { PaginationOptions } from 'swiper/types';
+import useSWR from 'swr';
 
 import { PlayIcon, SaveIcon } from '@/assets/jsx-icons';
 import { BigButton } from '@/components';
+import { useFavorites } from '@/hooks';
+import colors from '@/styles/variables/colors/colors.module.scss';
 import { IAnime } from '@/types';
-import { PagesPath } from '@/utils';
+import { PagesPath, SWRKeys } from '@/utils';
 
 import styles from './new-anime.module.scss';
 
@@ -36,6 +39,19 @@ export const NewAnimeSlider: FC<NewAnimeSliderProps> = ({ data }) => {
   const onSlideChange = useCallback((swiper: SwiperClass) => {
     setActiveSlide(swiper.activeIndex);
   }, []);
+
+  const { data: user } = useSWR(SWRKeys.user);
+  const { onFavorites, favoriteAction } = useFavorites(activeSlideData._id);
+
+  const saveIcon = useCallback(
+    () => (
+      <SaveIcon
+        fill={onFavorites ? colors.yellow : colors.white}
+        stroke={onFavorites ? colors.yellow : colors.white}
+      />
+    ),
+    [onFavorites],
+  );
 
   return (
     <section className={styles.section}>
@@ -87,7 +103,14 @@ export const NewAnimeSlider: FC<NewAnimeSliderProps> = ({ data }) => {
             icon={PlayIcon}
             href={`${PagesPath.anime}/${activeSlideData.slug}`}
           />
-          <BigButton text="Add to list" icon={SaveIcon} styling="black" onClick={() => {}} />
+          {!!user && (
+            <BigButton
+              text={onFavorites ? 'Remove from list' : 'Add to list'}
+              icon={saveIcon}
+              styling="black"
+              onClick={favoriteAction}
+            />
+          )}
         </div>
 
         <div className={styles.details}>

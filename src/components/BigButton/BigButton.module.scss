@@ -29,10 +29,6 @@
     @include square(20);
     margin-left: 42px;
     position: relative;
-
-    path {
-      fill: $white;
-    }
   }
 
   &:hover {

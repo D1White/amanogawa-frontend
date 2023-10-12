@@ -9,14 +9,16 @@ import { PagesPath } from '@/utils';
 
 import { Badge } from '../Badge';
 import styles from './AnimeCard.module.scss';
+import { SaveButton } from './SaveButton';
 
 interface AnimeCardProps extends Pick<IAnime, 'title' | 'image' | 'status' | 'rating' | 'slug'> {
+  id: string;
   episodes?: number;
   size?: 'default' | 'small';
 }
 
 export const AnimeCard: FC<AnimeCardProps> = (props) => {
-  const { title, image, status, rating, slug, episodes, size = 'default' } = props;
+  const { id, title, image, status, rating, slug, episodes, size = 'default' } = props;
 
   return (
     <Link href={`${PagesPath.anime}/${slug}`} className={cn(styles.card, size)}>
@@ -30,9 +32,7 @@ export const AnimeCard: FC<AnimeCardProps> = (props) => {
             <PlayIcon />
           </div>
 
-          <div className={cn(styles.actionButton, styles.actionButton__save)}>
-            <SaveIcon />
-          </div>
+          <SaveButton animeId={id} />
         </div>
 
         <Badge text={status} className={cn(styles.badge, styles.badge__type)} />

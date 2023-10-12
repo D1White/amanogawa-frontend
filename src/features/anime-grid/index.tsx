@@ -13,6 +13,7 @@ export const AnimeGrid: FC<{ data: IAnimeResponse }> = ({ data }) => {
       <section className={styles.animeGrid}>
         {data?.items?.map((anime) => (
           <AnimeCard
+            id={anime._id}
             title={anime.title}
             image={anime.image}
             status={anime.status}

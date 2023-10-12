@@ -36,6 +36,7 @@ export const TrendingAnime = async () => {
       <div className={styles.cards}>
         {anime.items.map((item) => (
           <AnimeCard
+            id={item._id}
             title={item.title}
             episodes={item.episodes?.length || 0}
             image={item.image}

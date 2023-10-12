@@ -27,7 +27,7 @@ export const AnimeHero: FC<AnimeHeroProps> = ({ anime }) => {
 
         <Details anime={anime} />
 
-        <ActionButtons />
+        <ActionButtons animeId={anime._id} />
 
         <Synopsis data={anime.synopsis} />
 

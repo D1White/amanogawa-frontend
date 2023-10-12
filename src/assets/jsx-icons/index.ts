@@ -11,5 +11,6 @@ export { SaveIcon } from './SaveIcon';
 export { SearchIcon } from './SearchIcon';
 export { SettingsIcon } from './SettingsIcon';
 export { StarIcon } from './StarIcon';
+export { TrashIcon } from './TrashIcon';
 export { UserIcon } from './UserIcon';
 export { VideoJSIcons } from './VideoJSIcons';
