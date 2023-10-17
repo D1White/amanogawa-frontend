@@ -3,4 +3,8 @@
   width: 100%;
   flex-direction: column;
   gap: 16px;
+
+  @include md {
+    margin-top: 40px;
+  }
 }

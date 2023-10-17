@@ -13,12 +13,27 @@
   @include notFirstChild {
     margin-top: 16px;
   }
+
+  @include md {
+    column-gap: 20px;
+    grid-template-columns: 100px 1fr auto;
+  }
+  @include sm {
+    grid-template-columns: 80px 1fr auto;
+  }
 }
 
 .posterWrapper {
   width: 100%;
   height: 122px;
   position: relative;
+
+  @include md {
+    height: 100px;
+  }
+  @include sm {
+    height: 80px;
+  }
 }
 
 .poster {
@@ -28,7 +43,7 @@
   transform: translate(-50%, -50%);
 
   width: 100%;
-  height: 122px;
+  height: 100%;
   object-fit: cover;
   border-radius: 20px;
 
@@ -39,6 +54,15 @@
   &:hover {
     width: 160px;
     height: 240px;
+
+    @include md {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @include sm {
+    border-radius: 12px;
   }
 }
 
@@ -60,12 +84,23 @@
     &:hover {
       color: $purple;
     }
+
+    @include md {
+      @include textLines(2);
+    }
   }
 
   &.subtitle {
     color: $gray;
     margin-top: 6px;
     text-transform: capitalize;
+  }
+
+  @include md {
+    font-size: 18px;
+  }
+  @include sm {
+    font-size: 16px;
   }
 }
 
@@ -98,5 +133,14 @@
 
   &:hover > svg {
     animation: shaking 0.3s infinite;
+  }
+
+  @include md {
+    gap: 8px;
+  }
+  @include sm {
+    span {
+      display: none;
+    }
   }
 }
