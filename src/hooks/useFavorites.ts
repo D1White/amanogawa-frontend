@@ -1,36 +1,30 @@
 import React, { useCallback, useMemo } from 'react';
-import useSWR, { useSWRConfig } from 'swr';
 
-import { SWRKeys } from '@/utils';
-import { addFavorite, getFavorites, removeFavorite } from '@/utils/api';
+import { useAddFavorite, useGetFavorites, useRemoveFavorite } from './queries';
 
 export const useFavorites = (
   animeId: string,
-): { onFavorites: boolean; favoriteAction: () => Promise<void> } => {
-  const { mutate } = useSWRConfig();
+): { isFavorite: boolean; favoriteAction: () => void } => {
+  const { data: favorites } = useGetFavorites();
+  const { mutate: addFavorite } = useAddFavorite();
+  const { mutate: removeFavorite } = useRemoveFavorite();
 
-  const { data: favorites } = useSWR(SWRKeys.favorites, getFavorites);
-
-  const onFavorites = useMemo(
+  const isFavorite = useMemo(
     () => !!(favorites && favorites?.some((anime) => anime._id === animeId)),
     [favorites, animeId],
   );
 
-  const favoriteAction = useCallback(async () => {
+  const favoriteAction = useCallback(() => {
     if (!favorites) {
       return;
     }
 
-    try {
-      if (onFavorites) {
-        await removeFavorite(animeId);
-      } else {
-        await addFavorite(animeId);
-      }
+    if (isFavorite) {
+      removeFavorite(animeId);
+    } else {
+      addFavorite(animeId);
+    }
+  }, [animeId, isFavorite]);
 
-      mutate(SWRKeys.favorites);
-    } catch (error) {}
-  }, [animeId, onFavorites]);
-
-  return { onFavorites, favoriteAction };
+  return { isFavorite, favoriteAction };
 };

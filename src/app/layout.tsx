@@ -5,7 +5,7 @@ import cn from 'classnames';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import { SWRProvider } from '@/providers';
+import { ReactQueryProvider } from '@/providers';
 import { getMetaTitle } from '@/utils';
 
 const fixel = localFont({
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="uk">
-      <SWRProvider>
+      <ReactQueryProvider>
         <body className={cn(fixel.variable, kyivRegion.variable)}>{children}</body>
-      </SWRProvider>
+      </ReactQueryProvider>
     </html>
   );
 }

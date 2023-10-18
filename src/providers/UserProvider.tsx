@@ -1,21 +1,18 @@
 'use client';
 
-import { AxiosError } from 'axios';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { FC, PropsWithChildren } from 'react';
-import useSWR from 'swr';
 
-import { IUser } from '@/types';
-import { PagesPath, privateRoutes, SWRKeys } from '@/utils';
-import { ErrorRes, getUser } from '@/utils/api';
+import { useGetUser } from '@/hooks';
+import { PagesPath, privateRoutes } from '@/utils';
 
 export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const { data: user } = useSWR<IUser, AxiosError<ErrorRes>>(SWRKeys.user, getUser);
+  const { data: user, isFetching } = useGetUser();
 
-  if (privateRoutes.includes(pathname) && !user) {
+  if (privateRoutes.includes(pathname) && !user && !isFetching) {
     router.push(PagesPath.login);
   }
 

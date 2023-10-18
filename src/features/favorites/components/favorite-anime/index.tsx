@@ -1,13 +1,12 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { useSWRConfig } from 'swr';
 
 import { TrashIcon } from '@/assets/jsx-icons';
+import { useRemoveFavorite } from '@/hooks';
 import blocksStyles from '@/styles/variables/blocks/blocks.module.scss';
 import { IAnime } from '@/types';
-import { PagesPath, SWRKeys } from '@/utils';
-import { removeFavorite } from '@/utils/api';
+import { PagesPath } from '@/utils';
 
 import styles from './favorite-anime.module.scss';
 
@@ -16,15 +15,12 @@ interface FavoriteAnimeProps {
 }
 
 export const FavoriteAnime: FC<FavoriteAnimeProps> = ({ anime }) => {
-  const { mutate } = useSWRConfig();
+  const { mutate } = useRemoveFavorite();
 
   const animeLink = `${PagesPath.anime}/${anime.slug}`;
 
-  const handleRemove = async () => {
-    try {
-      await removeFavorite(anime._id);
-      mutate(SWRKeys.favorites);
-    } catch (error) {}
+  const handleRemove = () => {
+    mutate(anime._id);
   };
 
   return (

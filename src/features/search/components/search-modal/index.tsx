@@ -4,14 +4,12 @@ import cn from 'classnames';
 import Link from 'next/link';
 import React, { ChangeEvent, FC, MouseEvent, useCallback, useRef, useState } from 'react';
 import ContentLoader from 'react-content-loader';
-import useSWR from 'swr';
 
 import { SearchIcon } from '@/assets/jsx-icons';
 import { TextField } from '@/components/TextField';
-import { useDebounce } from '@/hooks';
+import { useDebounce, useSearch } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
-import { PagesPath, SWRKeys } from '@/utils';
-import { getAnime } from '@/utils/api';
+import { PagesPath } from '@/utils';
 
 import styles from './search-modal.module.scss';
 
@@ -25,10 +23,7 @@ export const SearchModal: FC<SearchModalProps> = ({ onClose }) => {
 
   const debouncedSearch = useDebounce(value, 500);
 
-  const { data, isLoading } = useSWR(
-    debouncedSearch ? [SWRKeys.search, debouncedSearch] : null,
-    ([key, debouncedSearch]) => getAnime({ search: debouncedSearch, limit: 5 }),
-  );
+  const { data, isLoading } = useSearch(debouncedSearch);
 
   const handleChange = useCallback(({ target }: ChangeEvent<HTMLInputElement>) => {
     setValue(target.value);

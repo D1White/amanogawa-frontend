@@ -3,17 +3,18 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Blockies from 'react-blockies';
-import useSWR from 'swr';
 
 import { UserIcon } from '@/assets/jsx-icons';
+import { useGetUser } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
-import { PagesPath, SWRKeys } from '@/utils';
+import { PagesPath } from '@/utils';
 
 import headerStyles from '../Header.module.scss';
 
 export const HeaderUser = () => {
   const router = useRouter();
-  const { data: user } = useSWR(SWRKeys.user);
+
+  const { data: user } = useGetUser();
 
   const handleClick = () => {
     router.push(user ? PagesPath.account : PagesPath.login);

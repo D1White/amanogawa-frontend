@@ -1,17 +1,14 @@
 'use client';
 
 import React from 'react';
-import useSWR from 'swr';
 
-import { IAnime } from '@/types';
-import { SWRKeys } from '@/utils';
-import { getFavorites } from '@/utils/api';
+import { useGetFavorites } from '@/hooks';
 
 import { FavoriteAnime } from './components';
 import styles from './favorites.module.scss';
 
 export const Favorites = () => {
-  const { data } = useSWR<IAnime[]>(SWRKeys.favorites, getFavorites);
+  const { data } = useGetFavorites();
 
   return (
     <section className={styles.container}>

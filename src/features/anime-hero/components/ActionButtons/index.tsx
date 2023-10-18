@@ -1,14 +1,12 @@
 'use client';
 
 import React, { FC, useCallback } from 'react';
-import useSWR from 'swr';
 
 import { SaveIcon } from '@/assets/jsx-icons';
 import { BigButton } from '@/components';
 import { useFavorites } from '@/hooks';
+import { useIsUserAuthorized } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
-import { IUser } from '@/types';
-import { SWRKeys } from '@/utils';
 
 import styles from './action-buttons.module.scss';
 
@@ -17,27 +15,27 @@ interface ActionButtonsProps {
 }
 
 export const ActionButtons: FC<ActionButtonsProps> = ({ animeId }) => {
-  const { data: user } = useSWR<IUser>(SWRKeys.user);
-  const { onFavorites, favoriteAction } = useFavorites(animeId);
+  const isUserAuthorized = useIsUserAuthorized();
+  const { isFavorite, favoriteAction } = useFavorites(animeId);
 
   const icon = useCallback(
     () => (
       <SaveIcon
-        fill={onFavorites ? colors.yellow : colors.white}
-        stroke={onFavorites ? colors.yellow : colors.white}
+        fill={isFavorite ? colors.yellow : colors.white}
+        stroke={isFavorite ? colors.yellow : colors.white}
       />
     ),
-    [onFavorites],
+    [isFavorite],
   );
 
-  if (!user) {
+  if (!isUserAuthorized) {
     return null;
   }
 
   return (
     <div className={styles.actionButtons}>
       <BigButton
-        text={onFavorites ? 'Remove from list' : 'Add to list'}
+        text={isFavorite ? 'Remove from list' : 'Add to list'}
         icon={icon}
         styling="black"
         onClick={favoriteAction}

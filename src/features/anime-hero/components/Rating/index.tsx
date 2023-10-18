@@ -3,14 +3,11 @@
 import cn from 'classnames';
 import { useRouter } from 'next/navigation';
 import React, { FC } from 'react';
-import useSWR from 'swr';
 
 import { StarIcon } from '@/assets/jsx-icons';
 import { StarRating } from '@/components/StarRating';
+import { useGetRating, useIsUserAuthorized, useUpdateRating } from '@/hooks';
 import blocksStyles from '@/styles/variables/blocks/blocks.module.scss';
-import { IUser } from '@/types';
-import { SWRKeys } from '@/utils';
-import { getAnimeRating, updateAnimeRating } from '@/utils/api';
 
 import styles from './rating.module.scss';
 
@@ -23,28 +20,27 @@ interface RatingProps {
 export const Rating: FC<RatingProps> = ({ animeId, rating, ratingCount }) => {
   const router = useRouter();
 
-  const { data: user } = useSWR<IUser>(SWRKeys.user);
-  const { data: userRating, mutate } = useSWR(
-    !!user?._id ? [SWRKeys.rating, animeId] : null,
-    ([key, animeId]) => getAnimeRating(animeId),
-  );
+  const isUserAuthorized = useIsUserAuthorized();
+  const { data: userRating } = useGetRating(animeId);
+  const { mutateAsync } = useUpdateRating();
 
   const changeRating = async (newRating: number) => {
     try {
-      const updatedRating = await updateAnimeRating({ anime_id: animeId, rating: newRating });
-      mutate(updatedRating);
+      await mutateAsync({ anime_id: animeId, rating: newRating });
       router.refresh();
     } catch (error) {}
   };
 
-  if (!rating && !user) {
+  if (!rating && !isUserAuthorized) {
     return null;
   }
 
   return (
     <div className={styles.ratingWrapper}>
       <div className={blocksStyles.flexCenteredVertically}>
-        {!!user && <StarRating rating={userRating?.rating || 0} onChange={changeRating} />}
+        {isUserAuthorized && (
+          <StarRating rating={userRating?.rating || 0} onChange={changeRating} />
+        )}
 
         {!!userRating && <p className={cn(styles.ratingText, styles.user)}>{userRating.rating}</p>}
       </div>
