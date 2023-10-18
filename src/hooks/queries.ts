@@ -42,8 +42,15 @@ export const useUpdateRating = () => {
   });
 };
 
-export const useGetFavorites = () =>
-  useQuery({ queryKey: [QueryKeys.favorites], queryFn: getFavorites });
+export const useGetFavorites = () => {
+  const isUserAuthorized = useIsUserAuthorized();
+
+  return useQuery({
+    queryKey: [QueryKeys.favorites],
+    queryFn: getFavorites,
+    enabled: isUserAuthorized,
+  });
+};
 
 export const useRemoveFavorite = () => {
   const queryClient = useQueryClient();
