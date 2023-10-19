@@ -30,6 +30,13 @@ body {
   color: $white;
   background: $black;
   min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 h1,

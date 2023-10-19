@@ -33,7 +33,6 @@ export default function Login() {
       setLoading(true);
       login({ email, password })
         .then((res) => {
-          console.log(res);
           router.push(PagesPath.home);
         })
         .catch((err: AxiosError<ErrorRes>) => {

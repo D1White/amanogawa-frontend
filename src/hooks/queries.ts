@@ -9,17 +9,41 @@ import {
   getAnimeRating,
   getFavorites,
   getUser,
+  logout,
   removeFavorite,
   updateAnimeRating,
 } from '@/utils/api';
 
-export const useGetUser = () => useQuery({ queryKey: [QueryKeys.user], queryFn: getUser });
+export const useGetUser = () => {
+  const accessToken = Cookie.get('access-token');
+  const refreshToken = Cookie.get('refresh-token');
+
+  return useQuery({
+    queryKey: [QueryKeys.user],
+    queryFn: getUser,
+    enabled: Boolean(accessToken || refreshToken),
+  });
+};
 
 export const useIsUserAuthorized = () => {
   const accessToken = Cookie.get('access-token');
   const { data: user } = useGetUser();
 
   return Boolean(user && accessToken);
+};
+
+export const useLogout = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      queryClient.removeQueries({
+        queryKey: [QueryKeys.user, QueryKeys.rating, QueryKeys.favorites],
+      });
+      queryClient.setQueryData([QueryKeys.user], null);
+    },
+  });
 };
 
 export const useGetRating = (animeId: string) => {

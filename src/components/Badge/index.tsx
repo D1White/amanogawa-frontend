@@ -17,10 +17,11 @@ interface BadgeProps {
   state?: BadgeStateEnum;
   withStar?: boolean;
   className?: string;
+  uppercase?: boolean;
 }
 
 export const Badge: FC<BadgeProps> = (props) => {
-  const { text, state = BadgeStateEnum.default, withStar, className } = props;
+  const { text, state = BadgeStateEnum.default, withStar, className, uppercase = true } = props;
 
   return (
     <div
@@ -35,7 +36,7 @@ export const Badge: FC<BadgeProps> = (props) => {
       )}
     >
       {withStar && <StarIcon className={styles.star} />}
-      <p className={styles.text}>{text}</p>
+      <p className={cn(styles.text, { [styles.uppercase]: uppercase })}>{text}</p>
     </div>
   );
 };

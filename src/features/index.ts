@@ -4,6 +4,7 @@ export { Episodes } from './episodes';
 export { Favorites } from './favorites';
 export { Filter } from './filter';
 export { NewAnime } from './new-anime';
+export { Profile } from './profile';
 export { Search } from './search';
 export { TrendingAnime } from './trending-anime';
 export { YoutubeVideos } from './youtube-videos';

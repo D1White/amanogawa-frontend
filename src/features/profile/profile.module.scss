@@ -1,0 +1,78 @@
+.wrapper {
+  min-width: 400px;
+  padding: 0 20px 26px 20px;
+  border-radius: 20px;
+  background-color: lighten($black, 2);
+  border: 1px solid $gray-dark;
+  margin-top: 40px;
+
+  @include flexCenteredVertically;
+  flex-direction: column;
+
+  transition: 0.1s linear border;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  @include sm {
+    width: 100%;
+    min-width: initial;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  @include flexCentered;
+  @include square(112);
+  margin-top: -40px;
+
+  & > canvas {
+    @include square(100, '%', true);
+  }
+
+  @include sm {
+    @include square(86);
+    margin-top: -32px;
+  }
+}
+
+.username {
+  color: $white;
+  font-size: 28px;
+  font-weight: 500;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.email {
+  color: $gray;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.badge {
+  margin-top: 12px;
+}
+
+.logoutButton {
+  width: 150px;
+  @include flexCentered;
+  padding: 12px 28px;
+  border-radius: 99px;
+  background: $error-dark;
+  margin-top: 36px;
+
+  color: $error;
+  font-size: 20px;
+  font-weight: 500;
+
+  transition: opacity 0.2s linear;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

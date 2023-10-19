@@ -45,19 +45,17 @@ export const Rating: FC<RatingProps> = ({ animeId, rating, ratingCount }) => {
         {!!userRating && <p className={cn(styles.ratingText, styles.user)}>{userRating.rating}</p>}
       </div>
 
+      {(isUserAuthorized || !!userRating) && !!rating && <hr className={styles.divider} />}
+
       {!!rating && (
-        <>
-          <hr className={styles.divider} />
+        <div className={blocksStyles.flexCenteredVertically}>
+          <p className={cn(styles.ratingText, styles.avg)}>Рейтинг:</p>
 
-          <div className={blocksStyles.flexCenteredVertically}>
-            <p className={cn(styles.ratingText, styles.avg)}>Рейтинг:</p>
+          <StarIcon width={28} height={28} />
+          <p className={cn(styles.ratingText, styles.general)}>{rating}</p>
 
-            <StarIcon width={28} height={28} />
-            <p className={cn(styles.ratingText, styles.general)}>{rating}</p>
-
-            {!!ratingCount && <p className={styles.ratingsCount}>({ratingCount})</p>}
-          </div>
-        </>
+          {!!ratingCount && <p className={styles.ratingsCount}>({ratingCount})</p>}
+        </div>
       )}
     </div>
   );

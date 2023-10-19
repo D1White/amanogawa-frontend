@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookie from 'js-cookie';
 
 import { AuthTokens } from '@/types';
 
@@ -62,6 +63,20 @@ export const refreshAuthTokens = async (): Promise<AuthTokens> => {
     );
 
     return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const logout = async (): Promise<void> => {
+  const accessToken = Cookie.get('access-token');
+  try {
+    await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/logout`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      withCredentials: true,
+    });
   } catch (error) {
     throw error;
   }
