@@ -3,12 +3,21 @@
   height: 100vh;
   @include flexCenteredVertically;
   flex: none;
+
+  @include sm {
+    height: fit-content;
+    padding: 40px 20px;
+  }
 }
 
 .imageBlock {
   flex: 1;
   height: 100%;
   position: relative;
+
+  @include lg {
+    display: none;
+  }
 }
 
 .content {
@@ -22,6 +31,10 @@
   font-size: 56px;
   font-weight: 600;
   text-align: center;
+
+  @include sm {
+    font-size: 42px;
+  }
 }
 
 .subtitle {
@@ -31,11 +44,19 @@
   text-align: center;
   margin-top: 16px;
   max-width: 320px;
+
+  @include sm {
+    font-size: 16px;
+  }
 }
 
 .form {
   width: 450px;
-  margin-top: 80px;
+  margin-top: 60px;
+
+  @include sm {
+    width: 100%;
+  }
 }
 
 .submitButton {
@@ -44,7 +65,7 @@
   padding: 16px 32px;
   border-radius: 69px;
   background: $primary;
-  margin-top: 48px;
+  margin-top: 40px;
 
   color: $white;
   font-family: $ff-f;
@@ -55,6 +76,10 @@
 
   &:hover {
     background: lighten($primary, 10);
+  }
+
+  @include sm {
+    margin-top: 28px;
   }
 }
 
@@ -68,5 +93,42 @@
 
   &:hover {
     color: $primary;
+  }
+}
+
+.homeButton {
+  width: fit-content;
+  @include flexCenteredVertically;
+
+  padding: 10px 24px 10px 22px;
+  border-radius: 99px;
+  border: 1px solid $gray-dark;
+  margin-bottom: 24px;
+
+  color: $gray;
+  font-size: 18px;
+  font-weight: 500;
+
+  transition: color 0.2s linear;
+
+  svg {
+    stroke: $gray;
+    margin-right: 4px;
+    transition:
+      stroke 0.2s linear,
+      transform 0.2s linear;
+  }
+
+  &:hover {
+    color: $white;
+
+    svg {
+      stroke: $white;
+      transform: translateX(-5px);
+    }
+  }
+
+  @include sm {
+    font-size: 16px;
   }
 }

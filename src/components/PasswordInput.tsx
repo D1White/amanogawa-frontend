@@ -16,7 +16,7 @@ export const PasswordInput: FC<TextFieldProps> = memo((props) => {
 
   const ToggleShowPassword = useCallback(
     () => (
-      <button className={blocksStyles.flexCentered} onClick={handleClick}>
+      <button type="button" className={blocksStyles.flexCentered} onClick={handleClick}>
         {showPassword ? <EyeIcon /> : <EyeOffIcon />}
       </button>
     ),

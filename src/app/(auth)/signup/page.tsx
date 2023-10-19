@@ -1,13 +1,13 @@
 'use client';
 
-import { AxiosError, isAxiosError } from 'axios';
+import { isAxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useCallback, useMemo, useState } from 'react';
 
 import { PasswordInput, TextField } from '@/components';
 import { PagesPath } from '@/utils';
-import { ErrorRes, signUp, validateEmail, validateUsername } from '@/utils/api';
+import { signUp, validateEmail, validateUsername } from '@/utils/api';
 
 import styles from '../auth.module.scss';
 
