@@ -3,6 +3,7 @@ import Cookie from 'js-cookie';
 
 import { AuthTokens } from '@/types';
 
+import { ACCESS_TOKEN_COOKIE } from '../constants';
 import { LoginReq, SignUpReq } from './types';
 
 export const login = async (body: LoginReq): Promise<AuthTokens> => {
@@ -69,7 +70,7 @@ export const refreshAuthTokens = async (): Promise<AuthTokens> => {
 };
 
 export const logout = async (): Promise<void> => {
-  const accessToken = Cookie.get('access-token');
+  const accessToken = Cookie.get(ACCESS_TOKEN_COOKIE);
   try {
     await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/logout`, {
       headers: {

@@ -3,9 +3,10 @@
 import { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ChangeEvent, FormEvent, useCallback, useMemo, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { PasswordInput, TextField } from '@/components';
+import { useLogin } from '@/hooks';
 import { PagesPath } from '@/utils';
 import { ErrorRes, login } from '@/utils/api';
 
@@ -16,31 +17,37 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const { onChangeEmail, onChangePassword } = useMemo(
     () => ({
-      onChangeEmail: ({ target }: ChangeEvent<HTMLInputElement>) => setEmail(target.value),
-      onChangePassword: ({ target }: ChangeEvent<HTMLInputElement>) => setPassword(target.value),
+      onChangeEmail: ({ target }: ChangeEvent<HTMLInputElement>) => {
+        setEmail(target.value);
+        setShowError(false);
+      },
+      onChangePassword: ({ target }: ChangeEvent<HTMLInputElement>) => {
+        setPassword(target.value);
+        setShowError(false);
+      },
     }),
     [],
   );
+
+  const { mutateAsync, isPending, isError } = useLogin();
+
+  useEffect(() => {
+    if (isError) {
+      setShowError(true);
+    }
+  }, [isError]);
 
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      setLoading(true);
-      login({ email, password })
-        .then((res) => {
-          router.push(PagesPath.home);
-        })
-        .catch((err: AxiosError<ErrorRes>) => {
-          console.log(err?.response?.data);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      mutateAsync({ email, password }).then(() => {
+        router.push(PagesPath.home);
+      });
     },
     [email, password],
   );
@@ -53,10 +60,21 @@ export default function Login() {
       </h3>
 
       <form onSubmit={onSubmit} className={styles.form}>
-        <TextField value={email} onChange={onChangeEmail} placeholder="Email" type="email" />
-        <PasswordInput value={password} onChange={onChangePassword} placeholder="Password" />
+        <TextField
+          value={email}
+          onChange={onChangeEmail}
+          placeholder="Email"
+          type="email"
+          error={showError}
+        />
+        <PasswordInput
+          value={password}
+          onChange={onChangePassword}
+          placeholder="Password"
+          error={showError}
+        />
 
-        <button type="submit" className={styles.submitButton} disabled={loading}>
+        <button type="submit" className={styles.submitButton} disabled={isPending || showError}>
           Log in
         </button>
       </form>

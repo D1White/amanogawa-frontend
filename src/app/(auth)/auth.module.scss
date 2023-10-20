@@ -78,6 +78,12 @@
     background: lighten($primary, 10);
   }
 
+  &:disabled {
+    background: $gray;
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+
   @include sm {
     margin-top: 28px;
   }

@@ -3,6 +3,7 @@ import Cookie from 'js-cookie';
 
 import { IAnime, IRating, IUser } from '@/types';
 
+import { ACCESS_TOKEN_COOKIE } from '../constants';
 import { refreshAuthTokens } from './auth';
 
 const axiosUserApiInstance = axios.create({
@@ -12,7 +13,7 @@ const axiosUserApiInstance = axios.create({
 
 axiosUserApiInstance.interceptors.request.use(
   async (config) => {
-    const accessToken = Cookie.get('access-token');
+    const accessToken = Cookie.get(ACCESS_TOKEN_COOKIE);
     config.headers.Authorization = `Bearer ${accessToken}`;
     return config;
   },

@@ -15,15 +15,15 @@ import { daysDifference, daysFormat } from './utils';
 export const Profile = () => {
   const router = useRouter();
   const { data: user } = useGetUser();
-  const { mutateAsync } = useLogout();
+  const { mutate } = useLogout();
 
   if (!user) return null;
 
   const daysOnService = user?.created_at ? daysDifference(user.created_at) : null;
 
-  const logout = async () => {
-    await mutateAsync();
+  const logout = () => {
     router.push(PagesPath.home);
+    mutate();
   };
 
   return (

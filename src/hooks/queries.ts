@@ -2,21 +2,23 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Cookie from 'js-cookie';
 
 import { IAnime, IRating } from '@/types';
-import { QueryKeys } from '@/utils';
+import { ACCESS_TOKEN_COOKIE, QueryKeys, REFRESH_TOKEN_COOKIE } from '@/utils';
 import {
   addFavorite,
   getAnime,
   getAnimeRating,
   getFavorites,
   getUser,
+  login,
+  LoginReq,
   logout,
   removeFavorite,
   updateAnimeRating,
 } from '@/utils/api';
 
 export const useGetUser = () => {
-  const accessToken = Cookie.get('access-token');
-  const refreshToken = Cookie.get('refresh-token');
+  const accessToken = Cookie.get(ACCESS_TOKEN_COOKIE);
+  const refreshToken = Cookie.get(REFRESH_TOKEN_COOKIE);
 
   return useQuery({
     queryKey: [QueryKeys.user],
@@ -26,10 +28,16 @@ export const useGetUser = () => {
 };
 
 export const useIsUserAuthorized = () => {
-  const accessToken = Cookie.get('access-token');
+  const accessToken = Cookie.get(ACCESS_TOKEN_COOKIE);
   const { data: user } = useGetUser();
 
   return Boolean(user && accessToken);
+};
+
+export const useLogin = () => {
+  return useMutation({
+    mutationFn: (data: LoginReq) => login(data),
+  });
 };
 
 export const useLogout = () => {
@@ -38,10 +46,10 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      queryClient.removeQueries({
-        queryKey: [QueryKeys.user, QueryKeys.rating, QueryKeys.favorites],
-      });
+      queryClient.removeQueries({ queryKey: [QueryKeys.favorites] });
+      queryClient.removeQueries({ queryKey: [QueryKeys.rating] });
       queryClient.setQueryData([QueryKeys.user], null);
+      queryClient.removeQueries({ queryKey: [QueryKeys.user] });
     },
   });
 };
