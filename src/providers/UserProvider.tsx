@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useEffect } from 'react';
 
 import { useGetUser } from '@/hooks';
 import { PagesPath, privateRoutes } from '@/utils';
@@ -12,9 +12,11 @@ export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const { data: user, isFetching } = useGetUser();
 
-  if (privateRoutes.includes(pathname) && !user && !isFetching) {
-    router.push(PagesPath.login);
-  }
+  useEffect(() => {
+    if (privateRoutes.includes(pathname) && !user && !isFetching) {
+      router.push(PagesPath.login);
+    }
+  }, [pathname, user, isFetching]);
 
   return <>{children}</>;
 };
