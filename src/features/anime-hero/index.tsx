@@ -13,10 +13,14 @@ interface AnimeHeroProps {
 export const AnimeHero: FC<AnimeHeroProps> = ({ anime }) => {
   return (
     <section className={styles.wrapper}>
-      <img src={anime.image} alt={anime.title} className={cn(styles.background, styles.bgImage)} />
+      <img
+        src={anime.image}
+        alt="Фоновий аніме постер"
+        className={cn(styles.background, styles.bgImage)}
+      />
       <div className={cn(styles.background, styles.gradient)}></div>
 
-      <img src={anime.image} alt={anime.title} className={styles.poster} />
+      <img src={anime.image} alt="Аніме постер" className={styles.poster} />
 
       <div className={styles.content}>
         <h1 className={styles.title}>{anime.title}</h1>

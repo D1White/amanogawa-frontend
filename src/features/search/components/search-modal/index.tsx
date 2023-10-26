@@ -78,7 +78,7 @@ export const SearchModal: FC<SearchModalProps> = ({ onClose }) => {
                         className={styles.result}
                         key={anime._id}
                       >
-                        <img src={anime.image} alt={anime.title} className={styles.resultPoster} />
+                        <img src={anime.image} alt="Аніме постер" className={styles.resultPoster} />
 
                         <div className={styles.resultInfo}>
                           <p className={styles.resultText}>{anime.title}</p>

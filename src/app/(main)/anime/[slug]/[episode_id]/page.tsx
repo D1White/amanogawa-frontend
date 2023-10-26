@@ -18,15 +18,11 @@ const Player = dynamic(() => import('@/components/Player'), {
   loading: () => <PlayerLoader />,
 });
 
-export async function generateMetadata(
-  { params }: MetadataProps,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
   const episode = await getEpisode(params.episode_id);
 
   return {
     title: getMetaTitle(episode?.anime?.title),
-    description: episode?.anime?.synopsis,
   };
 }
 

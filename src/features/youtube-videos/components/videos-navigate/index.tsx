@@ -30,12 +30,18 @@ export const VideosNavigate = () => {
         className={cn(styles.navButton, styles.prev)}
         onClick={onPrevSlide}
         disabled={isStart}
+        aria-label="Попередній слайд"
       >
         <div className={styles.content}>
           <ArrowRightIcon />
         </div>
       </button>
-      <button className={cn(styles.navButton, styles.next)} onClick={onNextSlide} disabled={isEnd}>
+      <button
+        className={cn(styles.navButton, styles.next)}
+        onClick={onNextSlide}
+        disabled={isEnd}
+        aria-label="Наступний слайд"
+      >
         <div className={styles.content}>
           <ArrowRightIcon />
         </div>

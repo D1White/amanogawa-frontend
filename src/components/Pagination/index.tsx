@@ -16,7 +16,11 @@ interface PaginationProps {
 export const Pagination: FC<PaginationProps> = ({ activePage, pages, setPage = () => {} }) => {
   return (
     <div className={styles.pagination}>
-      <button className={cn(styles.arrowButton, styles.rotate)} onClick={() => setPage(1)}>
+      <button
+        className={cn(styles.arrowButton, styles.rotate)}
+        onClick={() => setPage(1)}
+        aria-label="Перша сторінка"
+      >
         <ArrowRightPipeIcon />
       </button>
 
@@ -25,12 +29,17 @@ export const Pagination: FC<PaginationProps> = ({ activePage, pages, setPage = (
           className={cn(styles.pageButton, { [styles.active]: idx + 1 === activePage })}
           onClick={() => setPage(idx + 1)}
           key={idx}
+          aria-label={`Сторінка ${idx + 1}`}
         >
           {idx + 1}
         </button>
       ))}
 
-      <button className={styles.arrowButton} onClick={() => setPage(pages)}>
+      <button
+        className={styles.arrowButton}
+        onClick={() => setPage(pages)}
+        aria-label="Остання сторінка"
+      >
         <ArrowRightPipeIcon />
       </button>
     </div>

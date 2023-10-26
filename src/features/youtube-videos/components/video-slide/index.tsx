@@ -17,7 +17,7 @@ export const VideoSlide: FC<VideoSlideProps> = ({ id, poster, title }) => {
       rel="noopener noreferrer"
       className={styles.slide}
     >
-      <img src={poster} alt={title} className={styles.poster} />
+      <img src={poster} alt="Постер відео" className={styles.poster} />
 
       <p className={styles.title}>{title}</p>
     </a>

@@ -21,7 +21,7 @@ export const HeaderUser = () => {
   };
 
   return (
-    <button className={headerStyles.userButton} onClick={handleClick}>
+    <button className={headerStyles.userButton} onClick={handleClick} aria-label="Акаунт">
       {user?.username ? (
         <Blockies seed={user.username} size={8} scale={3} bgColor={colors.grayDark} />
       ) : (

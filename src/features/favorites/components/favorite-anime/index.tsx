@@ -26,7 +26,7 @@ export const FavoriteAnime: FC<FavoriteAnimeProps> = ({ anime }) => {
   return (
     <div className={styles.wrapper}>
       <Link href={animeLink} className={styles.posterWrapper}>
-        <img src={anime.image} alt={anime.title} className={styles.poster} />
+        <img src={anime.image} alt="Аніме постер" className={styles.poster} />
       </Link>
 
       <div className={styles.info}>

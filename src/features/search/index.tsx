@@ -22,7 +22,7 @@ export const Search = () => {
 
   return (
     <>
-      <button className={blocksStyles.flexCentered} onClick={handleOpen}>
+      <button className={blocksStyles.flexCentered} onClick={handleOpen} aria-label="Пошук">
         <SearchIcon />
       </button>
 

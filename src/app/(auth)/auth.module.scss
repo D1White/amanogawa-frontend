@@ -50,45 +50,6 @@
   }
 }
 
-.form {
-  width: 450px;
-  margin-top: 60px;
-
-  @include sm {
-    width: 100%;
-  }
-}
-
-.submitButton {
-  width: 100%;
-  @include flexCentered;
-  padding: 16px 32px;
-  border-radius: 69px;
-  background: $primary;
-  margin-top: 40px;
-
-  color: $white;
-  font-family: $ff-f;
-  font-size: 18px;
-  font-weight: 500;
-
-  transition: background 0.2s linear;
-
-  &:hover {
-    background: lighten($primary, 10);
-  }
-
-  &:disabled {
-    background: $gray;
-    opacity: 0.8;
-    cursor: not-allowed;
-  }
-
-  @include sm {
-    margin-top: 28px;
-  }
-}
-
 .link {
   margin-top: 20px;
   color: $gray-light;

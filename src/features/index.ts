@@ -3,6 +3,7 @@ export { AnimeHero } from './anime-hero';
 export { Episodes } from './episodes';
 export { Favorites } from './favorites';
 export { Filter } from './filter';
+export * from './forms';
 export { NewAnime } from './new-anime';
 export { Profile } from './profile';
 export { Search } from './search';

@@ -24,7 +24,7 @@ export const Header = () => {
             </NavigationLink>
           ))}
 
-          <Link href={PagesPath.home} className={styles.logo}>
+          <Link href={PagesPath.home} className={styles.logo} aria-label="На головну">
             <AmanogawaLogoIcon />
           </Link>
 

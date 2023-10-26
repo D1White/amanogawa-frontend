@@ -20,7 +20,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className="container">
         <div className={blocksStyles.flexCenteredVertically}>
-          <Link href={PagesPath.home} className={blocksStyles.flexCentered}>
+          <Link href={PagesPath.home} className={blocksStyles.flexCentered} aria-label="На головну">
             <AmanogawaLogoIcon />
           </Link>
 

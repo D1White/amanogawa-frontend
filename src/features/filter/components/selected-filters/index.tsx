@@ -29,7 +29,7 @@ const FilterChips: FC<FilterChipsProps> = ({ label, value, onClick }) => {
     <div className={styles.filter}>
       <p>{label}</p>
 
-      <button className={styles.removeButton} onClick={handleClick}>
+      <button className={styles.removeButton} onClick={handleClick} aria-label="Видалити фільтр">
         <CloseSmallIcon />
       </button>
     </div>

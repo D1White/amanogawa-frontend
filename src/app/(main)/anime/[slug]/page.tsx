@@ -6,15 +6,11 @@ import type { MetadataProps, PageParams } from '@/types';
 import { getMetaTitle } from '@/utils';
 import { getOneAnime } from '@/utils/api';
 
-export async function generateMetadata(
-  { params }: MetadataProps,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
   const anime = await getOneAnime(params.slug);
 
   return {
     title: getMetaTitle(anime?.title),
-    description: anime?.synopsis,
   };
 }
 

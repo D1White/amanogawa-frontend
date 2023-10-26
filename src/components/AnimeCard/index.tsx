@@ -23,7 +23,7 @@ export const AnimeCard: FC<AnimeCardProps> = (props) => {
   return (
     <Link href={`${PagesPath.anime}/${slug}`} className={cn(styles.card, size)}>
       <div className={cn(styles.posterBlock, size)}>
-        <Image src={image} alt={title} fill objectFit="cover" />
+        <Image src={image} alt="Постер аніме" fill objectFit="cover" />
 
         <div className={styles.hoverBlock} />
 
