@@ -30,15 +30,16 @@ axiosUserApiInstance.interceptors.response.use(
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       try {
-        clearAuthCookie();
         await refreshAuthTokens();
         originalRequest._retry = true;
         // axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
         return axiosUserApiInstance(originalRequest);
       } catch (refreshErr) {
+        clearAuthCookie();
         return Promise.reject(error);
       }
     }
+    clearAuthCookie();
     return Promise.reject(error);
   },
 );
