@@ -4,11 +4,11 @@ import Cookie from 'js-cookie';
 import { IAnime, IRating, IUser } from '@/types';
 
 import { ACCESS_TOKEN_COOKIE } from '../constants';
+import { clearAuthCookie } from '../cookie';
 import { refreshAuthTokens } from './auth';
 
 const axiosUserApiInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/user`,
-  withCredentials: true,
 });
 
 axiosUserApiInstance.interceptors.request.use(
@@ -30,6 +30,7 @@ axiosUserApiInstance.interceptors.response.use(
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       try {
+        clearAuthCookie();
         await refreshAuthTokens();
         originalRequest._retry = true;
         // axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;

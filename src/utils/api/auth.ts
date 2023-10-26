@@ -4,6 +4,7 @@ import Cookie from 'js-cookie';
 import { AuthTokens } from '@/types';
 
 import { ACCESS_TOKEN_COOKIE } from '../constants';
+import { clearAuthCookie, setAuthCookie } from '../cookie';
 import { LoginReq, SignUpReq } from './types';
 
 export const login = async (body: LoginReq): Promise<AuthTokens> => {
@@ -11,8 +12,9 @@ export const login = async (body: LoginReq): Promise<AuthTokens> => {
     const { data } = await axios.post<AuthTokens>(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`,
       body,
-      { withCredentials: true },
     );
+
+    setAuthCookie(data);
 
     return data;
   } catch (error) {
@@ -25,8 +27,9 @@ export const signUp = async (body: SignUpReq): Promise<AuthTokens> => {
     const { data } = await axios.post<AuthTokens>(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`,
       body,
-      { withCredentials: true },
     );
+
+    setAuthCookie(data);
 
     return data;
   } catch (error) {
@@ -60,8 +63,9 @@ export const refreshAuthTokens = async (): Promise<AuthTokens> => {
   try {
     const { data } = await axios.get<AuthTokens>(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/refresh`,
-      { withCredentials: true },
     );
+
+    setAuthCookie(data);
 
     return data;
   } catch (error) {
@@ -76,8 +80,9 @@ export const logout = async (): Promise<void> => {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-      withCredentials: true,
     });
+
+    clearAuthCookie();
   } catch (error) {
     throw error;
   }
