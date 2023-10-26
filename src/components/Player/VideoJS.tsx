@@ -23,7 +23,6 @@ export const VideoJS: FC<VideoJSProps> = memo(({ options, onReady }) => {
       const videoElement = document.createElement('video-js');
 
       videoElement.classList.add('vjs-big-play-centered');
-      videoElement.classList.add('vjs-amanogawa');
 
       videoRef.current.appendChild(videoElement);
 
@@ -54,7 +53,7 @@ export const VideoJS: FC<VideoJSProps> = memo(({ options, onReady }) => {
 
   return (
     <div data-vjs-player>
-      <div ref={videoRef}>
+      <div ref={videoRef} className="vjs-amanogawa">
         <VideoJSIcons />
       </div>
     </div>
