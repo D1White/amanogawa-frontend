@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import authImg from '@/assets/img/auth-background.jpg';
-import { ArrowNarrowLeftIcon } from '@/assets/jsx-icons';
+import { BackLink } from '@/components';
 import { getMetaTitle, PagesPath } from '@/utils';
 
 import styles from './auth.module.scss';
@@ -19,10 +18,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <Image src={authImg} alt="night Japan street background" fill objectFit="cover" />
       </div>
       <div className={styles.content}>
-        <Link href={PagesPath.home} className={styles.homeButton}>
-          <ArrowNarrowLeftIcon />
-          На головну
-        </Link>
+        <BackLink href={PagesPath.home}>На головну</BackLink>
 
         {children}
       </div>

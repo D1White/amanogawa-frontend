@@ -1,0 +1,26 @@
+.wrapper {
+  @include flexCenteredVertically;
+  flex-direction: column;
+}
+
+.emoji {
+  color: $white;
+  font-size: 42px;
+  font-weight: 500;
+
+  @include md {
+    font-size: 32px;
+  }
+}
+
+.text {
+  color: $white;
+  font-size: 28px;
+  font-weight: 500;
+  margin-top: 24px;
+  margin-bottom: 60px;
+
+  @include md {
+    font-size: 18px;
+  }
+}

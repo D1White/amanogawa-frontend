@@ -20,13 +20,13 @@ export const getAnime = async (params?: IAnimeParams): Promise<IAnimeResponse> =
   return res.json();
 };
 
-export const getOneAnime = async (slug: string): Promise<IAnimeFull> => {
+export const getOneAnime = async (slug: string): Promise<IAnimeFull | undefined> => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime/${slug}/full`, {
     cache: 'no-store',
   });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch anime data');
+    return undefined;
   }
 
   return res.json();

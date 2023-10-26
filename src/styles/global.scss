@@ -56,6 +56,10 @@ h2 {
 
 .page-offset {
   padding-top: 100px !important;
+
+  @include md {
+    padding-top: 80px !important;
+  }
 }
 
 .container {

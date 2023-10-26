@@ -2,6 +2,7 @@ import cn from 'classnames';
 import type { Metadata, ResolvingMetadata } from 'next';
 import dynamic from 'next/dynamic';
 import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import { Episode } from '@/components';
 import { PlayerLoader } from '@/components/Player/PlayerLoader';
@@ -33,6 +34,8 @@ export default async function EpisodePage({ params }: PageParams) {
   const redirectPath = params?.slug ? `${PagesPath.anime}/${params.slug}` : PagesPath.anime;
 
   const episode = await getEpisode(params.episode_id);
+
+  if (!episode) notFound();
   if (!episode?.anime?.episodes) redirect(redirectPath);
 
   const episodeIndex = episode.anime.episodes.map((ep) => ep._id).indexOf(params.episode_id);

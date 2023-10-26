@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import { AnimeGroup, AnimeHero, Episodes } from '@/features';
 import type { MetadataProps, PageParams } from '@/types';
@@ -12,13 +13,17 @@ export async function generateMetadata(
   const anime = await getOneAnime(params.slug);
 
   return {
-    title: getMetaTitle(anime.title),
-    description: anime.synopsis,
+    title: getMetaTitle(anime?.title),
+    description: anime?.synopsis,
   };
 }
 
 export default async function AnimePage({ params }: PageParams) {
   const anime = await getOneAnime(params.slug);
+
+  if (!anime) {
+    notFound();
+  }
 
   return (
     <main className="container">
