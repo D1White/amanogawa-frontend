@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
 
 import { Favorites } from '@/features';
-import { getMetaTitle } from '@/utils';
+import { getMetaTitle, metaTexts } from '@/utils';
 
 import styles from './my-list.module.scss';
 
 export const metadata: Metadata = {
-  title: getMetaTitle('Обране'),
+  title: getMetaTitle(metaTexts.myList),
+  openGraph: {
+    title: getMetaTitle(metaTexts.myList),
+  },
 };
 
 export default async function MyList() {

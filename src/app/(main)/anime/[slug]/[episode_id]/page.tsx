@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
 
   return {
     title: getMetaTitle(episode?.anime?.title),
+    openGraph: {
+      title: getMetaTitle(episode?.anime?.title),
+    },
   };
 }
 

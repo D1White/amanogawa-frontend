@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import { ReactQueryProvider } from '@/providers';
+import { metaTexts } from '@/utils';
 
 const fixel = localFont({
   src: [
@@ -23,9 +24,16 @@ const kyivRegion = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Amanogawa – Українська аніме-спільнота, аніме українською',
-  description:
-    "Спільнота Аманоґава – ми перекладаємо та озвучуємо аніме, збираємо інформацію та новини про аніме та Японію, висвітлюємо різноманітні анімешні та пов'язані з ними події в Україні та за її межами, прагнемо просувати ліцензійну манґу та манхву і ще робимо купу-купу всього іншого, до чого можемо дотягнутися і до чого маємо натхнення",
+  title: metaTexts.global.title,
+  description: metaTexts.global.description,
+  openGraph: {
+    title: metaTexts.global.title,
+    description: metaTexts.global.description,
+  },
+  applicationName: metaTexts.global.shortTitle,
+  keywords: metaTexts.global.keywords,
+  themeColor: '#0063f2',
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

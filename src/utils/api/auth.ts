@@ -3,7 +3,7 @@ import Cookie from 'js-cookie';
 
 import { AuthTokens } from '@/types';
 
-import { ACCESS_TOKEN_COOKIE } from '../constants';
+import { ACCESS_TOKEN_COOKIE, REFRESH_TOKEN_COOKIE } from '../constants';
 import { clearAuthCookie, setAuthCookie } from '../cookie';
 import { LoginReq, SignUpReq } from './types';
 
@@ -61,8 +61,11 @@ export const validateUsername = async (username: string): Promise<boolean> => {
 
 export const refreshAuthTokens = async (): Promise<AuthTokens> => {
   try {
-    const { data } = await axios.get<AuthTokens>(
+    const refreshToken = Cookie.get(REFRESH_TOKEN_COOKIE);
+
+    const { data } = await axios.post<AuthTokens>(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/refresh`,
+      { refresh_token: refreshToken },
     );
 
     setAuthCookie(data);

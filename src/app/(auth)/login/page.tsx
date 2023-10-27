@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { LoginForm } from '@/features/forms/auth/login-form';
-import { getMetaTitle } from '@/utils';
+import { LoginForm } from '@/features';
+import { getMetaTitle, metaTexts } from '@/utils';
 import { PagesPath } from '@/utils';
 
 import styles from '../auth.module.scss';
 
 export const metadata: Metadata = {
-  title: getMetaTitle('Авторизація'),
+  title: getMetaTitle(metaTexts.login),
+  openGraph: {
+    title: getMetaTitle(metaTexts.login),
+  },
 };
 
 export default function Login() {
