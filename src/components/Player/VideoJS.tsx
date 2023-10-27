@@ -53,7 +53,7 @@ export const VideoJS: FC<VideoJSProps> = memo(({ options, onReady }) => {
 
   return (
     <div data-vjs-player>
-      <div ref={videoRef} className="vjs-amanogawa">
+      <div ref={videoRef} id="vjs-amanogawa">
         <VideoJSIcons />
       </div>
     </div>
