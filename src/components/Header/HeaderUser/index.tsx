@@ -11,7 +11,7 @@ import { PagesPath } from '@/utils';
 
 import headerStyles from '../Header.module.scss';
 
-export const HeaderUser = () => {
+const HeaderUser = () => {
   const router = useRouter();
 
   const { data: user } = useGetUser();
@@ -30,3 +30,5 @@ export const HeaderUser = () => {
     </button>
   );
 };
+
+export default HeaderUser;

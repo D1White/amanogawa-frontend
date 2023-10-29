@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
 
@@ -7,9 +8,10 @@ import { PagesPath } from '@/utils';
 
 import styles from './Header.module.scss';
 import { leftNavigationLinks, rigthNavigationLinks } from './header-data';
-import { HeaderUser } from './HeaderUser';
 import { MobileMenu } from './MobileMenu';
 import { NavigationLink } from './NavigationLink';
+
+const HeaderUser = dynamic(() => import('./HeaderUser'), {});
 
 export const Header = () => {
   return (

@@ -12,6 +12,8 @@ interface SynopsisProps {
 }
 
 export const Synopsis: FC<SynopsisProps> = ({ data }) => {
+  const enableReadMore = data.length > 350;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -20,12 +22,14 @@ export const Synopsis: FC<SynopsisProps> = ({ data }) => {
 
   return (
     <div className={styles.wrapper}>
-      <p className={cn(styles.text, { open: isOpen })}>{data}</p>
+      <p className={cn(styles.text, { open: enableReadMore ? isOpen : true })}>{data}</p>
 
-      <button className={cn(styles.button, { open: isOpen })} onClick={handleClick}>
-        Read More
-        <ArrowRightIcon />
-      </button>
+      {enableReadMore && (
+        <button className={cn(styles.button, { open: isOpen })} onClick={handleClick}>
+          Read More
+          <ArrowRightIcon />
+        </button>
+      )}
     </div>
   );
 };

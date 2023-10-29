@@ -21,6 +21,7 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  filter: blur(6px);
 
   border-radius: 0px 0px 80px 80px;
   pointer-events: none;
@@ -32,17 +33,20 @@
   }
 
   &.gradient {
+    height: calc(100% + 3px);
     background: linear-gradient(90deg, rgba($black, 0.8) 9.32%, rgba($black, 0.6) 90.54%);
     z-index: 0;
 
     @include sm {
       background: linear-gradient(180deg, rgba($black, 0) 0%, $black 64.95%);
+      height: 531px;
     }
   }
 
   @include sm {
     height: 531px;
     border-radius: initial;
+    filter: blur(0px);
   }
 }
 
