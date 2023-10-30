@@ -1,0 +1,65 @@
+.notFoundContainer {
+  width: 100vw;
+  height: 100vh;
+  @include flexCentered;
+}
+
+.notFoundWrapper {
+  @include flexCentered;
+  position: relative;
+}
+
+.notFoundImage {
+  max-width: 580px;
+  width: 80vw;
+}
+
+.notFoundText {
+  position: absolute;
+  right: 14%;
+  bottom: 22%;
+
+  color: $black;
+  text-align: right;
+  font-family: $ff-f;
+  font-size: 42px;
+  font-weight: 500;
+
+  @include md {
+    font-size: 28px;
+  }
+  @include sm {
+    font-size: 18px;
+  }
+}
+
+.notFoundLink {
+  position: absolute;
+  left: 18%;
+  bottom: 15%;
+
+  @include flexCenteredVertically;
+  padding: 18px 32px;
+  border-radius: 69px;
+  background: $purple-dark;
+
+  color: $white;
+  font-family: $ff-f;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+
+  transition: background 0.2s linear;
+
+  &:hover {
+    background: lighten($purple-dark, 10);
+  }
+
+  @include md {
+    padding: 12px 24px;
+  }
+  @include sm {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
