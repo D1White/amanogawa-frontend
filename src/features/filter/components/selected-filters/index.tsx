@@ -1,5 +1,6 @@
 'use client';
 
+import qs from 'query-string';
 import React, { FC, useMemo } from 'react';
 
 import { CloseSmallIcon } from '@/assets/jsx-icons';
@@ -53,6 +54,12 @@ export const SelectedFilters = () => {
     defaultYearLimit,
   } = useFilterStore();
   const urlParams = useFilterStore(filtersUrlParamsSelector);
+  const parsedUrlParams = qs.parse(urlParams.toString(), { arrayFormat: 'bracket' });
+  const showClearBtn = !!urlParams
+    ? !!parsedUrlParams?.sort_field && Object.keys(parsedUrlParams)?.length === 1
+      ? false
+      : true
+    : false;
 
   const typesFilters = useMemo(
     () => animeTypesOptions.filter((option) => type === option.value),
@@ -76,7 +83,7 @@ export const SelectedFilters = () => {
 
   return (
     <div className={styles.wrapper}>
-      {!!urlParams && <ClearFilterButton />}
+      {showClearBtn && <ClearFilterButton />}
 
       {typesFilters.map((option) => (
         <FilterChips
