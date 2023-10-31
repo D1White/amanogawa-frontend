@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 import { AmanogawaLogoIcon, CloseIcon, MenuIcon } from '@/assets/jsx-icons';
 import { useTogglePageNoScroll } from '@/hooks';
-import { PagesPath } from '@/utils';
+import { PagesPath, socialLinks } from '@/utils';
 
 import { leftNavigationLinks, rigthNavigationLinks } from '../header-data';
 import { NavigationLink } from '../NavigationLink';
@@ -45,6 +45,20 @@ export const MobileMenu = () => {
             </NavigationLink>
           ))}
         </nav>
+
+        <div className={styles.socialLinks}>
+          {socialLinks.map(({ link, icon: Icon }) => (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              key={link}
+            >
+              <Icon />
+            </a>
+          ))}
+        </div>
       </div>
     </>
   );

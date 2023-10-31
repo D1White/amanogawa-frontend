@@ -12,7 +12,7 @@ import { useFavorites } from '@/hooks';
 import { useIsUserAuthorized } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
 import { IAnime } from '@/types';
-import { PagesPath } from '@/utils';
+import { PagesPath, socialLinks } from '@/utils';
 
 import styles from './new-anime.module.scss';
 
@@ -134,6 +134,20 @@ export const NewAnimeSlider: FC<NewAnimeSliderProps> = ({ data }) => {
             </span>
           ) : null}
         </div>
+      </div>
+
+      <div className={styles.socialLinks}>
+        {socialLinks.map(({ link, icon: Icon }) => (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialLink}
+            key={link}
+          >
+            <Icon />
+          </a>
+        ))}
       </div>
     </section>
   );

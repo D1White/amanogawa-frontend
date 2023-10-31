@@ -232,3 +232,41 @@
     margin-top: 24px;
   }
 }
+
+.socialLinks {
+  @include flexCenteredVertically;
+  flex-direction: column;
+  gap: 40px;
+
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include xxl {
+    right: calc(((100vw - 960px) / -2) + 30px);
+  }
+  @include lg {
+    right: -10px;
+  }
+  @include md {
+    display: none;
+  }
+}
+
+.socialLink {
+  @include square(34);
+  @include flexCentered;
+  border-radius: 99px;
+  background: rgba($primary-dark, 0.2);
+
+  transition: background 0.2s linear;
+
+  & > svg {
+    width: 53%;
+  }
+
+  &:hover {
+    background: rgba($primary-dark, 0.4);
+  }
+}

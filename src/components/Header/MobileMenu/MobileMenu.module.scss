@@ -31,7 +31,7 @@
 
   align-items: center;
   flex-direction: column;
-  padding: 26px 0;
+  padding: 32px 0;
 
   transition: 0.3s ease-in-out left;
 
@@ -48,4 +48,22 @@
   @include flexCentered;
   flex-direction: column;
   height: 100%;
+}
+
+.socialLinks {
+  @include flexCenteredVertically;
+  gap: 40px;
+}
+
+.socialLink {
+  @include square(34);
+  @include flexCentered;
+  border-radius: 99px;
+  background: rgba($primary-dark, 0.2);
+
+  transition: background 0.2s linear;
+
+  & > svg {
+    width: 53%;
+  }
 }
