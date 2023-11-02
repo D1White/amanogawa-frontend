@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function Login() {
   return (
     <>
-      <h1 className={styles.title}>Login</h1>
+      <h1 className={styles.title}>Авторизація</h1>
       <h3 className={styles.subtitle}>
         Отримай доступ до оцінки аніме та збереження до власного списку!
       </h3>

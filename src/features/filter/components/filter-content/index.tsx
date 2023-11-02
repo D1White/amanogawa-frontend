@@ -28,7 +28,7 @@ export const FilterContent: FC = () => {
             onClick={handleFiltersOpenSwitch}
           >
             {isFilterOpen ? <CloseIcon /> : <SettingsIcon />}
-            {isFilterOpen ? 'Close Filter' : 'Filter'}
+            {isFilterOpen ? 'Закрити' : 'Фільтр'}
           </button>
 
           <SortBy />

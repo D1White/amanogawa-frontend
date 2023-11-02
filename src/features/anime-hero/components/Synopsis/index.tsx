@@ -26,7 +26,7 @@ export const Synopsis: FC<SynopsisProps> = ({ data }) => {
 
       {enableReadMore && (
         <button className={cn(styles.button, { open: isOpen })} onClick={handleClick}>
-          Read More
+          Детальніше
           <ArrowRightIcon />
         </button>
       )}

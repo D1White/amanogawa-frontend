@@ -12,7 +12,7 @@ import { useFavorites } from '@/hooks';
 import { useIsUserAuthorized } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
 import { IAnime } from '@/types';
-import { PagesPath, socialLinks } from '@/utils';
+import { PagesPath, seasonTranslate, socialLinks } from '@/utils';
 
 import styles from './new-anime.module.scss';
 
@@ -99,13 +99,13 @@ export const NewAnimeSlider: FC<NewAnimeSliderProps> = ({ data }) => {
 
         <div className={styles.actionButtons}>
           <BigButton
-            text="Watch"
+            text="Дивитись"
             icon={PlayIcon}
             href={`${PagesPath.anime}/${activeSlideData.slug}`}
           />
           {isUserAuthorized && (
             <BigButton
-              text={isFavorite ? 'Remove from list' : 'Add to list'}
+              text={isFavorite ? 'Видалити з обраного' : 'Додати до обраного'}
               icon={saveIcon}
               styling="black"
               onClick={favoriteAction}
@@ -116,20 +116,20 @@ export const NewAnimeSlider: FC<NewAnimeSliderProps> = ({ data }) => {
         <div className={styles.details}>
           {activeSlideData?.rating && (
             <span className={styles.detail}>
-              Rating:<mark>{activeSlideData.rating}</mark>
+              Рейтинг:<mark>{activeSlideData.rating}</mark>
             </span>
           )}
 
           <span className={styles.detail}>
-            Year:<mark>{activeSlideData.year}</mark>
+            Рік:<mark>{activeSlideData.year}</mark>
           </span>
           <span className={styles.detail}>
-            Season:<mark>{activeSlideData.season}</mark>
+            Сезон:<mark>{seasonTranslate[activeSlideData.season]}</mark>
           </span>
 
           {activeSlideData?.episodes_total && activeSlideData.episodes?.length ? (
             <span className={styles.detail}>
-              Episodes:
+              Епізоди:
               <mark>{`${activeSlideData.episodes?.length} / ${activeSlideData.episodes_total}`}</mark>
             </span>
           ) : null}

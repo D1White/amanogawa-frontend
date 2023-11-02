@@ -66,14 +66,14 @@ export const FilterModal = memo(() => {
       <div className="container page-offset">
         <div className={styles.filtersRowBlock}>
           <SingleFilterSelect
-            title="Type"
+            title="Тип"
             value={type}
             options={animeTypesOptions}
             onChange={handleTypesChange}
           />
 
           <SingleFilterSelect
-            title="Season"
+            title="Сезон"
             value={season}
             options={animeSeasonOptions}
             onChange={handleSeasonChange}
@@ -81,7 +81,7 @@ export const FilterModal = memo(() => {
         </div>
 
         <MultipleFilterSelect
-          title="Genre"
+          title="Жанри"
           values={genres}
           options={genresOptions}
           onChange={handleGenreChange}
@@ -89,7 +89,7 @@ export const FilterModal = memo(() => {
 
         <div className={styles.filtersRowBlock}>
           <SingleFilterSelect
-            title="Status"
+            title="Статус"
             value={status}
             options={animeStatusOptions}
             onChange={handleStatusChange}
@@ -97,7 +97,7 @@ export const FilterModal = memo(() => {
           />
 
           <div className={cn(filterSelectStyles.wrapper, filterSelectStyles.noSpacing)}>
-            <p className={cn(filterSelectStyles.title, styles.yearTitle)}>Year</p>
+            <p className={cn(filterSelectStyles.title, styles.yearTitle)}>Рік</p>
 
             <MultiRangeSlider
               min={defaultYearLimit.min}

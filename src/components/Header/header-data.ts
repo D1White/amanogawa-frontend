@@ -2,22 +2,22 @@ import { PagesPath } from '@/utils';
 
 export const leftNavigationLinks = [
   {
-    name: 'Home',
+    name: 'Головна',
     href: PagesPath.home,
   },
   {
-    name: 'Anime',
+    name: 'Аніме',
     href: PagesPath.anime,
   },
 ];
 
 export const rigthNavigationLinks = [
   {
-    name: 'My list',
+    name: 'Обране',
     href: PagesPath.myList,
   },
   {
-    name: 'Account',
+    name: 'Профіль',
     href: PagesPath.account,
   },
 ];

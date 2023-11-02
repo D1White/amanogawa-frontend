@@ -9,8 +9,8 @@ import { AnimeSortField } from '@/utils/api';
 import styles from './sort-by.module.scss';
 
 const sortOptions: SelectOption[] = [
-  { label: 'Release Date', value: AnimeSortField.createdAt },
-  { label: 'Views', value: AnimeSortField.views },
+  { label: 'Датою релізу', value: AnimeSortField.createdAt },
+  { label: 'Переглядами', value: AnimeSortField.views },
 ];
 
 export const SortBy = () => {
@@ -25,7 +25,7 @@ export const SortBy = () => {
       value={sortField}
       options={sortOptions}
       onChange={handleSortChange}
-      label="Sort by:"
+      label="Сортувати за:"
       className={styles.select}
     />
   );

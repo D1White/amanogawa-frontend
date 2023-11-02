@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 
 import { IAnimeFull } from '@/types';
-import { PagesPath } from '@/utils';
+import { animeTypeTranslate, PagesPath, seasonTranslate, statusTranslate } from '@/utils';
 
 import styles from './details.module.scss';
 
@@ -21,10 +21,16 @@ export const Details: FC<DetailsProps> = ({ anime }) => {
           </Link>
         </span>
         <span className={styles.detail}>
-          Сезон: <Link href={`${PagesPath.anime}?season=${anime.season}`}>{anime.season}</Link>
+          Сезон:{' '}
+          <Link href={`${PagesPath.anime}?season=${anime.season}`}>
+            {seasonTranslate[anime.season]}
+          </Link>
         </span>
         <span className={styles.detail}>
-          Тип: <Link href={`${PagesPath.anime}?type=${anime.type}`}>{anime.type}</Link>
+          Тип:{' '}
+          <Link href={`${PagesPath.anime}?type=${anime.type}`}>
+            {animeTypeTranslate[anime.type]}
+          </Link>
         </span>
 
         {anime?.episodes_total && anime.episodes?.length ? (
@@ -35,7 +41,10 @@ export const Details: FC<DetailsProps> = ({ anime }) => {
         ) : null}
 
         <span className={styles.detail}>
-          Статус: <Link href={`${PagesPath.anime}?status=${anime.status}`}>{anime.status}</Link>
+          Статус:{' '}
+          <Link href={`${PagesPath.anime}?status=${anime.status}`}>
+            {statusTranslate[anime.status]}
+          </Link>
         </span>
       </div>
 

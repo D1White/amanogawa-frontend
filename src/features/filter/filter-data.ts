@@ -1,60 +1,60 @@
 import { SelectOption } from '@/components/Select';
 import { AnimeSeasonEnum, AnimeStatusEnum, AnimeTypeEnum } from '@/types';
-import { MIN_ANIME_YEAR } from '@/utils';
+import { animeTypeTranslate, MIN_ANIME_YEAR, seasonTranslate, statusTranslate } from '@/utils';
 
 export const animeTypesOptions: SelectOption[] = [
   {
-    label: 'TV',
+    label: animeTypeTranslate[AnimeTypeEnum.tv],
     value: AnimeTypeEnum.tv,
   },
   {
-    label: 'Movie',
+    label: animeTypeTranslate[AnimeTypeEnum.movie],
     value: AnimeTypeEnum.movie,
   },
   {
-    label: 'OVA',
+    label: animeTypeTranslate[AnimeTypeEnum.ova],
     value: AnimeTypeEnum.ova,
   },
   {
-    label: 'Special',
+    label: animeTypeTranslate[AnimeTypeEnum.special],
     value: AnimeTypeEnum.special,
   },
   {
-    label: 'ONA',
+    label: animeTypeTranslate[AnimeTypeEnum.ona],
     value: AnimeTypeEnum.ona,
   },
 ];
 
 export const animeStatusOptions: SelectOption[] = [
   {
-    label: 'Ongoing',
+    label: statusTranslate[AnimeStatusEnum.ongoing],
     value: AnimeStatusEnum.ongoing,
   },
   {
-    label: 'Complete',
+    label: statusTranslate[AnimeStatusEnum.complete],
     value: AnimeStatusEnum.complete,
   },
   {
-    label: 'Upcoming',
+    label: statusTranslate[AnimeStatusEnum.upcoming],
     value: AnimeStatusEnum.upcoming,
   },
 ];
 
 export const animeSeasonOptions: SelectOption[] = [
   {
-    label: 'Winter',
+    label: seasonTranslate[AnimeSeasonEnum.winter],
     value: AnimeSeasonEnum.winter,
   },
   {
-    label: 'Spring',
+    label: seasonTranslate[AnimeSeasonEnum.spring],
     value: AnimeSeasonEnum.spring,
   },
   {
-    label: 'Summer',
+    label: seasonTranslate[AnimeSeasonEnum.summer],
     value: AnimeSeasonEnum.summer,
   },
   {
-    label: 'Autumn',
+    label: seasonTranslate[AnimeSeasonEnum.autumn],
     value: AnimeSeasonEnum.autumn,
   },
 ];

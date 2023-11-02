@@ -22,13 +22,13 @@ export const TrendingAnime = async () => {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h3 className={styles.title}>Trending Now</h3>
+        <h3 className={styles.title}>Популярне зараз</h3>
 
         <Link
           href={`${PagesPath.anime}?sort_field=views&sort_direction=DESC`}
           className={cn(styles.button, styles.buttonTop)}
         >
-          <span className={styles.button__text}>See All</span>
+          <span className={styles.button__text}>Переглянути всі</span>
           <ArrowRightIcon />
         </Link>
       </div>
@@ -52,7 +52,7 @@ export const TrendingAnime = async () => {
         href={`${PagesPath.anime}?sort_field=views&sort_direction=DESC`}
         className={cn(styles.button, styles.buttonBottom)}
       >
-        <span className={styles.button__text}>See All</span>
+        <span className={styles.button__text}>Переглянути всі</span>
         <ArrowRightIcon />
       </Link>
     </section>

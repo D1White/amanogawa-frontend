@@ -35,7 +35,7 @@ export const ActionButtons: FC<ActionButtonsProps> = ({ animeId }) => {
   return (
     <div className={styles.actionButtons}>
       <BigButton
-        text={isFavorite ? 'Remove from list' : 'Add to list'}
+        text={isFavorite ? 'Видалити з обраного' : 'Додати до обраного'}
         icon={icon}
         styling="black"
         onClick={favoriteAction}

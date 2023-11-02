@@ -53,7 +53,7 @@ export default async function EpisodePage({ params }: PageParams) {
         <div className={styles.info}>
           <h2 className={styles.animeTitle}>{episode.anime.title}</h2>
           <h1 className={styles.episodeTitle}>
-            {episode?.custom_name || `Episode ${episode.order}`}
+            {episode?.custom_name || `Серія ${episode.order}`}
           </h1>
         </div>
 
@@ -61,14 +61,14 @@ export default async function EpisodePage({ params }: PageParams) {
           <div className={styles.episodes}>
             {prevEpisode && (
               <div className={styles.episode}>
-                <p className={styles.navigateText}>Prev Episode</p>
+                <p className={styles.navigateText}>Попередня серія</p>
                 <Episode data={prevEpisode} anime_slug={params.slug} />
               </div>
             )}
 
             {nextEpisode && (
               <div className={cn(styles.episode, { [styles.end]: !!prevEpisode })}>
-                <p className={styles.navigateText}>Next Episode</p>
+                <p className={styles.navigateText}>Наступна серія</p>
                 <Episode data={nextEpisode} anime_slug={params.slug} />
               </div>
             )}

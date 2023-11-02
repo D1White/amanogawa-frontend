@@ -55,19 +55,19 @@ export const LoginForm = () => {
       <TextField
         value={email}
         onChange={onChangeEmail}
-        placeholder="Email"
+        placeholder="Емейл"
         type="email"
         error={showError}
       />
       <PasswordInput
         value={password}
         onChange={onChangePassword}
-        placeholder="Password"
+        placeholder="Пароль"
         error={showError}
       />
 
       <button type="submit" className={styles.submitButton} disabled={isPending || showError}>
-        Log in
+        Увійти
       </button>
     </form>
   );

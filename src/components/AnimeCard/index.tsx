@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 
 import { PlayIcon, SaveIcon } from '@/assets/jsx-icons';
 import { IAnime } from '@/types';
-import { PagesPath } from '@/utils';
+import { PagesPath, statusTranslate } from '@/utils';
 
 import { Badge } from '../Badge';
 import styles from './AnimeCard.module.scss';
@@ -35,7 +35,7 @@ export const AnimeCard: FC<AnimeCardProps> = (props) => {
           <SaveButton animeId={id} />
         </div>
 
-        <Badge text={status} className={cn(styles.badge, styles.badge__type)} />
+        <Badge text={statusTranslate[status]} className={cn(styles.badge, styles.badge__type)} />
 
         {!!rating && (
           <Badge text={rating} className={cn(styles.badge, styles.badge__score)} withStar />
@@ -44,7 +44,11 @@ export const AnimeCard: FC<AnimeCardProps> = (props) => {
 
       <p className={styles.title}>{title}</p>
 
-      {!!episodes && <p className={styles.subtitle}>{`${episodes} episodes`}</p>}
+      {!!episodes && (
+        <p className={styles.subtitle}>{`${episodes} ${
+          episodes === 1 ? 'епізод' : episodes <= 4 ? 'епізоди' : 'епізодів'
+        }`}</p>
+      )}
     </Link>
   );
 };

@@ -16,7 +16,7 @@ interface EpisodeProps {
 export const Episode: FC<EpisodeProps> = ({ data, anime_slug }) => {
   const { name, custom_name, order, thumbnail, _id } = data;
   const episodeLink = `${PagesPath.anime}/${anime_slug}/${_id}`;
-  const episodeNumber = `Episode ${order}`;
+  const episodeNumber = `Серія ${order}`;
 
   return (
     <Link href={episodeLink} className={styles.episode}>

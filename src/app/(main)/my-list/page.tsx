@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default async function MyList() {
   return (
     <main className="container page-offset">
-      <h1 className={styles.title}>My List</h1>
+      <h1 className={styles.title}>Обране</h1>
 
       <Favorites />
     </main>
