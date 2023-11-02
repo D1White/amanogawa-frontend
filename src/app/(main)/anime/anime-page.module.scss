@@ -1,0 +1,10 @@
+.noDataText {
+  color: $gray;
+  font-size: 28px;
+  text-align: center;
+  margin: auto 0;
+
+  @include sm {
+    font-size: 22px;
+  }
+}

@@ -8,3 +8,13 @@
     margin-top: 40px;
   }
 }
+
+.noDataText {
+  font-size: 24px;
+  text-align: center;
+  color: $gray;
+
+  @include sm {
+    font-size: 22px;
+  }
+}

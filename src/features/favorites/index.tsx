@@ -12,7 +12,15 @@ export const Favorites = () => {
 
   return (
     <section className={styles.container}>
-      {data?.map((anime) => <FavoriteAnime anime={anime} key={anime._id} />)}
+      {!!data && data?.length > 0 ? (
+        data?.map((anime) => <FavoriteAnime anime={anime} key={anime._id} />)
+      ) : (
+        <p className={styles.noDataText}>
+          Додай аніме до списку щоб побачити його тут
+          <br />
+          <br />( ﾉ^.^)ﾉﾟ
+        </p>
+      )}
     </section>
   );
 };

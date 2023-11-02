@@ -7,6 +7,8 @@ import { SearchParams } from '@/types';
 import { getMetaTitle, metaTexts } from '@/utils';
 import { getAnime } from '@/utils/api';
 
+import styles from './anime-page.module.scss';
+
 export const metadata: Metadata = {
   title: getMetaTitle(metaTexts.anime),
   openGraph: {
@@ -21,7 +23,11 @@ export default async function AllAnime({ searchParams }: SearchParams) {
     <main className={cn('container', 'page-offset')}>
       <Filter />
 
-      {anime?.items && <AnimeGrid data={anime} />}
+      {anime?.items?.length > 0 ? (
+        <AnimeGrid data={anime} />
+      ) : (
+        <p className={styles.noDataText}>Нічого не знайдено ¯\(o_o)/¯</p>
+      )}
     </main>
   );
 }
