@@ -32,7 +32,6 @@ export const metadata: Metadata = {
   },
   applicationName: metaTexts.global.shortTitle,
   keywords: metaTexts.global.keywords,
-  themeColor: '#0063f2',
   robots: { index: false, follow: false },
 };
 
