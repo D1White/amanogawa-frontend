@@ -1,9 +1,10 @@
 import cn from 'classnames';
 import type { Metadata } from 'next';
 
-import { Profile } from '@/features';
-import blocksStyles from '@/styles/variables/blocks/blocks.module.scss';
+import { Favorites, Profile } from '@/features';
 import { getMetaTitle, metaTexts } from '@/utils';
+
+import styles from './user-page.module.scss';
 
 export const metadata: Metadata = {
   title: getMetaTitle(metaTexts.account),
@@ -12,10 +13,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Account() {
+export default async function MyList() {
   return (
-    <main className={cn('container', 'page-offset', blocksStyles.flexCentered)}>
+    <main className={cn('container', 'page-offset', styles.container)}>
       <Profile />
+
+      <Favorites />
     </main>
   );
 }

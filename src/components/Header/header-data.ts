@@ -13,11 +13,7 @@ export const leftNavigationLinks = [
 
 export const rigthNavigationLinks = [
   {
-    name: 'Обране',
-    href: PagesPath.myList,
-  },
-  {
     name: 'Профіль',
-    href: PagesPath.account,
+    href: PagesPath.user,
   },
 ];

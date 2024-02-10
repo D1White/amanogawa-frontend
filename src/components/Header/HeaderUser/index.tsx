@@ -17,7 +17,7 @@ const HeaderUser = () => {
   const { data: user } = useGetUser();
 
   const handleClick = () => {
-    router.push(user ? PagesPath.account : PagesPath.login);
+    router.push(user ? PagesPath.user : PagesPath.login);
   };
 
   return (

@@ -1,10 +1,9 @@
 export enum PagesPath {
   home = '/',
   anime = '/anime',
-  myList = '/my-list',
-  account = '/account',
+  user = '/user',
   login = '/login',
   signup = '/signup',
 }
 
-export const privateRoutes: string[] = [PagesPath.account, PagesPath.myList];
+export const privateRoutes: string[] = [PagesPath.user];

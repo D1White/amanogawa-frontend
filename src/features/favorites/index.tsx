@@ -16,7 +16,7 @@ export const Favorites = () => {
         data?.map((anime) => <FavoriteAnime anime={anime} key={anime._id} />)
       ) : (
         <p className={styles.noDataText}>
-          Додай аніме до списку щоб побачити його тут
+          Жодне аніме не додано до обраного
           <br />
           <br />( ﾉ^.^)ﾉﾟ
         </p>

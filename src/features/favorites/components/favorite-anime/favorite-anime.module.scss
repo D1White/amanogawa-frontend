@@ -1,7 +1,7 @@
 .wrapper {
   width: 100%;
   display: grid;
-  grid-template-columns: 122px 1fr auto;
+  grid-template-columns: 104px 1fr auto;
   column-gap: 40px;
   z-index: 1;
   position: relative;
@@ -25,7 +25,7 @@
 
 .posterWrapper {
   width: 100%;
-  height: 122px;
+  height: 104px;
   position: relative;
 
   @include md {
@@ -52,8 +52,8 @@
     height 0.2s ease-in-out;
 
   &:hover {
-    width: 160px;
-    height: 240px;
+    width: 150px;
+    height: 230px;
 
     @include md {
       width: 100%;
@@ -74,7 +74,7 @@
 
 .textInfo {
   color: $white;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
 
   transition: color 0.2s linear;

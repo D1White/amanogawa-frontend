@@ -1,0 +1,9 @@
+.container {
+  display: grid;
+  grid-template-columns: 400px auto;
+  column-gap: 64px;
+
+  @include xxl {
+    grid-template-columns: 1fr;
+  }
+}
