@@ -8,7 +8,7 @@ import { AmanogawaLogoIcon, CloseIcon, MenuIcon } from '@/assets/jsx-icons';
 import { useTogglePageNoScroll } from '@/hooks';
 import { PagesPath, socialLinks } from '@/utils';
 
-import { leftNavigationLinks, rigthNavigationLinks } from '../header-data';
+import { navigationLinks } from '../header-data';
 import { NavigationLink } from '../NavigationLink';
 import styles from './MobileMenu.module.scss';
 
@@ -27,11 +27,9 @@ export const MobileMenu = () => {
 
   return (
     <>
-      <div className={styles.buttonWrapper}>
-        <button className={styles.button} onClick={handleClick}>
-          {isOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-      </div>
+      <button className={styles.button} onClick={handleClick}>
+        {isOpen ? <CloseIcon /> : <MenuIcon />}
+      </button>
 
       <div className={cn(styles.modal, { [styles.open]: isOpen })}>
         <Link href={PagesPath.home} className={styles.logo} onClick={handleClose}>
@@ -39,7 +37,7 @@ export const MobileMenu = () => {
         </Link>
 
         <nav className={styles.navigation}>
-          {[...leftNavigationLinks, ...rigthNavigationLinks].map((link) => (
+          {navigationLinks.map((link) => (
             <NavigationLink href={link.href} onClick={handleClose} key={link.href}>
               {link.name}
             </NavigationLink>

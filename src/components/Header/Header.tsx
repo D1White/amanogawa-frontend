@@ -7,7 +7,7 @@ import { Search } from '@/features';
 import { PagesPath } from '@/utils';
 
 import styles from './Header.module.scss';
-import { leftNavigationLinks, rigthNavigationLinks } from './header-data';
+import { navigationLinks } from './header-data';
 import { MobileMenu } from './MobileMenu';
 import { NavigationLink } from './NavigationLink';
 
@@ -19,18 +19,12 @@ export const Header = () => {
       <div className="container">
         <MobileMenu />
 
+        <Link href={PagesPath.home} className={styles.logo} aria-label="На головну">
+          <AmanogawaLogoIcon />
+        </Link>
+
         <nav className={styles.navigation}>
-          {leftNavigationLinks.map((link) => (
-            <NavigationLink href={link.href} key={link.href}>
-              {link.name}
-            </NavigationLink>
-          ))}
-
-          <Link href={PagesPath.home} className={styles.logo} aria-label="На головну">
-            <AmanogawaLogoIcon />
-          </Link>
-
-          {rigthNavigationLinks.map((link) => (
+          {navigationLinks.map((link) => (
             <NavigationLink href={link.href} key={link.href}>
               {link.name}
             </NavigationLink>

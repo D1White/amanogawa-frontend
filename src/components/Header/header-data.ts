@@ -1,6 +1,6 @@
 import { PagesPath } from '@/utils';
 
-export const leftNavigationLinks = [
+export const navigationLinks = [
   {
     name: 'Головна',
     href: PagesPath.home,
@@ -9,9 +9,6 @@ export const leftNavigationLinks = [
     name: 'Аніме',
     href: PagesPath.anime,
   },
-];
-
-export const rigthNavigationLinks = [
   {
     name: 'Профіль',
     href: PagesPath.user,

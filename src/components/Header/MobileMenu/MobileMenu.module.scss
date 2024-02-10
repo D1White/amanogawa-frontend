@@ -1,11 +1,8 @@
-.buttonWrapper {
-  width: 110px;
-  @include flexCenteredVertically;
-}
-
 .button {
   display: none;
   @include square(24);
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 100;
 
@@ -14,7 +11,7 @@
   }
 
   @include md {
-    display: block;
+    display: flex;
   }
 }
 
