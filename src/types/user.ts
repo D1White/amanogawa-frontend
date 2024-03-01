@@ -11,4 +11,9 @@ export interface IUser {
   refresh_token: string;
   created_at: string;
   updated_at: string;
+  isFavoritesPublic: boolean;
+  isPublic: boolean;
 }
+
+export interface IPublicUser
+  extends Pick<IUser, '_id' | 'username' | 'isPublic' | 'isFavoritesPublic'> {}

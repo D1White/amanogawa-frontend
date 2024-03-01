@@ -2,7 +2,6 @@ import cn from 'classnames';
 import React from 'react';
 
 import { AmanogawaLogoIcon } from '@/assets/jsx-icons';
-import colors from '@/styles/variables/colors/colors.module.scss';
 
 import styles from './page-loader.module.scss';
 

@@ -1,13 +1,14 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Cookie from 'js-cookie';
 
-import { IAnime, IRating } from '@/types';
+import { IAnime, IPublicUser, IRating, IUser } from '@/types';
 import { ACCESS_TOKEN_COOKIE, QueryKeys, REFRESH_TOKEN_COOKIE } from '@/utils';
 import {
   addFavorite,
   getAnime,
   getAnimeRating,
   getFavorites,
+  getPublicUser,
   getUser,
   login,
   LoginReq,
@@ -32,6 +33,18 @@ export const useIsUserAuthorized = () => {
   const { data: user } = useGetUser();
 
   return Boolean(user && accessToken);
+};
+
+export const useGetUserByUsername = (username: string): IUser | IPublicUser | undefined => {
+  const { data: currentUser, isFetching } = useGetUser();
+
+  const { data: publicUser } = useQuery({
+    queryKey: [QueryKeys.user, username],
+    queryFn: () => getPublicUser(username),
+    enabled: !isFetching && currentUser?.username !== username,
+  });
+
+  return currentUser?.username === username ? currentUser : publicUser;
 };
 
 export const useLogin = () => {

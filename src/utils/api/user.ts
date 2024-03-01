@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
 
-import { IAnime, IRating, IUser } from '@/types';
+import { IAnime, IPublicUser, IRating, IUser } from '@/types';
 
 import { ACCESS_TOKEN_COOKIE } from '../constants';
 import { clearAuthCookie } from '../cookie';
@@ -39,7 +39,6 @@ axiosUserApiInstance.interceptors.response.use(
         return Promise.reject(error);
       }
     }
-    clearAuthCookie();
     return Promise.reject(error);
   },
 );
@@ -47,6 +46,16 @@ axiosUserApiInstance.interceptors.response.use(
 export const getUser = async (): Promise<IUser> => {
   try {
     const { data } = await axiosUserApiInstance.get<IUser>('');
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getPublicUser = async (username: string): Promise<IPublicUser> => {
+  try {
+    const { data } = await axiosUserApiInstance.get<IPublicUser>(`/${username}`);
 
     return data;
   } catch (error) {

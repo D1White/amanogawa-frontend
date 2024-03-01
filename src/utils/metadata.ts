@@ -22,8 +22,6 @@ export const metaTexts = {
     ],
   },
   anime: 'Аніме',
-  myList: 'Обране',
-  account: 'Профіль',
   login: 'Авторизація',
   signup: 'Реєстрація',
 };

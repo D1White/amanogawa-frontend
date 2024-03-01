@@ -1,24 +1,21 @@
-import cn from 'classnames';
-import type { Metadata } from 'next';
+'use client';
 
-import { Favorites, Profile } from '@/features';
-import { getMetaTitle, metaTexts } from '@/utils';
+import { useRouter } from 'next/navigation';
 
-import styles from './user-page.module.scss';
+import { PageLoader } from '@/components/PageLoader';
+import { useGetUser } from '@/hooks';
+import { PagesPath } from '@/utils';
 
-export const metadata: Metadata = {
-  title: getMetaTitle(metaTexts.account),
-  openGraph: {
-    title: getMetaTitle(metaTexts.account),
-  },
-};
+export default function User() {
+  const router = useRouter();
 
-export default async function MyList() {
-  return (
-    <main className={cn('container', 'page-offset', styles.container)}>
-      <Profile />
+  const { data: user, isFetching } = useGetUser();
 
-      <Favorites />
-    </main>
-  );
+  if (user) {
+    router.push(`${PagesPath.user}/${user.username}`);
+  } else if (!isFetching && !user) {
+    router.push(PagesPath.login);
+  }
+
+  return <PageLoader />;
 }

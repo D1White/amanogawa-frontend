@@ -5,5 +5,3 @@ export enum PagesPath {
   login = '/login',
   signup = '/signup',
 }
-
-export const privateRoutes: string[] = [PagesPath.user];

@@ -1,39 +1,49 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { FC } from 'react';
 import Blockies from 'react-blockies';
 
+import NotFound from '@/app/not-found';
 import { Badge } from '@/components';
-import { useGetUser, useLogout } from '@/hooks';
+import { useGetUserByUsername, useLogout } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
+import { IUser } from '@/types';
 import { PagesPath } from '@/utils';
 
 import styles from './profile.module.scss';
 import { daysDifference, daysFormat } from './utils';
 
-export const Profile = () => {
+interface ProfileProps {
+  username: string;
+}
+
+export const Profile: FC<ProfileProps> = ({ username }) => {
   const router = useRouter();
-  const { data: user } = useGetUser();
+  const user = useGetUserByUsername(username);
+  const typedUser = user as IUser;
+
   const { mutate } = useLogout();
 
-  if (!user) return null;
+  if (!typedUser) return null;
 
-  const daysOnService = user?.created_at ? daysDifference(user.created_at) : null;
+  const daysOnService = typedUser?.created_at ? daysDifference(typedUser.created_at) : null;
 
   const logout = () => {
     router.push(PagesPath.home);
     mutate();
   };
 
+  console.log(typedUser);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatar}>
-        <Blockies seed={user.username} size={8} scale={14} bgColor={colors.grayDark} />
+        <Blockies seed={typedUser.username} size={8} scale={14} bgColor={colors.grayDark} />
       </div>
 
-      <p className={styles.username}>{user.username}</p>
-      <p className={styles.email}>{user.email}</p>
+      <p className={styles.username}>{typedUser.username}</p>
+      <p className={styles.email}>{typedUser.email}</p>
 
       {!!daysOnService && (
         <Badge
