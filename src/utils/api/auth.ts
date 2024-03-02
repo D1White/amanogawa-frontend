@@ -51,7 +51,7 @@ export const validateEmail = async (email: string): Promise<boolean> => {
 export const validateUsername = async (username: string): Promise<boolean> => {
   try {
     const { data } = await axios.get<boolean>(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/email/${username}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/username/${username}`,
     );
     return data;
   } catch (error) {

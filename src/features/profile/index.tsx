@@ -20,42 +20,48 @@ interface ProfileProps {
 
 export const Profile: FC<ProfileProps> = ({ username }) => {
   const router = useRouter();
-  const user = useGetUserByUsername(username);
-  const typedUser = user as IUser;
+  const { data, isFetching, isCurrentUser } = useGetUserByUsername(username);
+  const user = data as IUser;
 
   const { mutate } = useLogout();
 
-  if (!typedUser) return null;
+  if (!user && !isFetching) {
+    return null;
+  }
 
-  const daysOnService = typedUser?.created_at ? daysDifference(typedUser.created_at) : null;
+  const daysOnService = user?.created_at ? daysDifference(user.created_at) : null;
 
   const logout = () => {
     router.push(PagesPath.home);
     mutate();
   };
 
-  console.log(typedUser);
-
   return (
     <div className={styles.wrapper}>
-      <div className={styles.avatar}>
-        <Blockies seed={typedUser.username} size={8} scale={14} bgColor={colors.grayDark} />
-      </div>
+      {!isFetching && (
+        <>
+          <div className={styles.avatar}>
+            <Blockies seed={user.username} size={8} scale={14} bgColor={colors.grayDark} />
+          </div>
 
-      <p className={styles.username}>{typedUser.username}</p>
-      <p className={styles.email}>{typedUser.email}</p>
+          <p className={styles.username}>{user.username}</p>
+          <p className={styles.email}>{user.email}</p>
 
-      {!!daysOnService && (
-        <Badge
-          text={`${daysOnService} ${daysFormat(daysOnService)} з нами`}
-          uppercase={false}
-          className={styles.badge}
-        />
+          {!!daysOnService && (
+            <Badge
+              text={`${daysOnService} ${daysFormat(daysOnService)} з нами`}
+              uppercase={false}
+              className={styles.badge}
+            />
+          )}
+
+          {isCurrentUser && (
+            <button className={styles.logoutButton} onClick={logout}>
+              Вийти
+            </button>
+          )}
+        </>
       )}
-
-      <button className={styles.logoutButton} onClick={logout}>
-        Вийти
-      </button>
     </div>
   );
 };

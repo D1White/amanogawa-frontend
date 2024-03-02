@@ -1,20 +1,24 @@
 'use client';
 
-import React from 'react';
+import React, { FC } from 'react';
 
-import { useGetFavorites } from '@/hooks';
+import { useGetFavoritesByUsername } from '@/hooks';
 
 import { FavoriteAnime } from './components';
 import styles from './favorites.module.scss';
 
-export const Favorites = () => {
-  const { data } = useGetFavorites();
+interface FavoritesProps {
+  username: string;
+}
+
+export const Favorites: FC<FavoritesProps> = ({ username }) => {
+  const { data, isFetching } = useGetFavoritesByUsername(username);
 
   return (
     <section className={styles.container}>
       {!!data && data?.length > 0 ? (
         data?.map((anime) => <FavoriteAnime anime={anime} key={anime._id} />)
-      ) : (
+      ) : isFetching ? null : (
         <p className={styles.noDataText}>
           Жодне аніме не додано до обраного
           <br />

@@ -8,6 +8,7 @@ import {
   getAnime,
   getAnimeRating,
   getFavorites,
+  getPublicFavorites,
   getPublicUser,
   getUser,
   login,
@@ -35,16 +36,32 @@ export const useIsUserAuthorized = () => {
   return Boolean(user && accessToken);
 };
 
-export const useGetUserByUsername = (username: string): IUser | IPublicUser | undefined => {
-  const { data: currentUser, isFetching } = useGetUser();
+export const useIsCurrentUser = (username: string) => {
+  const { data: currentUser } = useGetUser();
+  return currentUser?.username === username;
+};
 
-  const { data: publicUser } = useQuery({
+type UseGetUserByUsername = {
+  data?: IUser | IPublicUser;
+  isFetching: boolean;
+  isCurrentUser: boolean;
+};
+
+export const useGetUserByUsername = (username: string): UseGetUserByUsername => {
+  const { data: currentUser, isFetching } = useGetUser();
+  const isCurrentUser = currentUser?.username === username;
+
+  const { data: publicUser, isFetching: isPublicUserFetching } = useQuery({
     queryKey: [QueryKeys.user, username],
     queryFn: () => getPublicUser(username),
-    enabled: !isFetching && currentUser?.username !== username,
+    enabled: !isFetching && !isCurrentUser,
   });
 
-  return currentUser?.username === username ? currentUser : publicUser;
+  return {
+    data: isCurrentUser ? currentUser : publicUser,
+    isFetching: isCurrentUser ? isFetching : isPublicUserFetching,
+    isCurrentUser,
+  };
 };
 
 export const useLogin = () => {
@@ -87,14 +104,40 @@ export const useUpdateRating = () => {
   });
 };
 
-export const useGetFavorites = () => {
+type UseGetFavoritesParams = {
+  skip?: boolean;
+};
+
+export const useGetFavorites = ({ skip }: UseGetFavoritesParams = {}) => {
   const isUserAuthorized = useIsUserAuthorized();
 
   return useQuery({
     queryKey: [QueryKeys.favorites],
     queryFn: getFavorites,
-    enabled: isUserAuthorized,
+    enabled: isUserAuthorized && !skip,
   });
+};
+
+type UseGetFavoritesByUsername = {
+  data?: IAnime[];
+  isFetching: boolean;
+};
+
+export const useGetFavoritesByUsername = (username: string): UseGetFavoritesByUsername => {
+  const isCurrentUser = useIsCurrentUser(username);
+
+  const { data: favorites, isFetching } = useGetFavorites({ skip: !isCurrentUser });
+
+  const { data: publicFavorites, isFetching: isPublicFavoritesFetching } = useQuery({
+    queryKey: [QueryKeys.favorites, username],
+    queryFn: () => getPublicFavorites(username),
+    enabled: !isFetching && !isCurrentUser,
+  });
+
+  return {
+    data: isCurrentUser ? favorites : publicFavorites,
+    isFetching: isCurrentUser ? isFetching : isPublicFavoritesFetching,
+  };
 };
 
 export const useRemoveFavorite = () => {

@@ -101,6 +101,16 @@ export const getFavorites = async (): Promise<IAnime[]> => {
   }
 };
 
+export const getPublicFavorites = async (username: string): Promise<IAnime[]> => {
+  try {
+    const { data } = await axiosUserApiInstance.get<IAnime[]>(`/favorites/${username}`);
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const addFavorite = async (animeId: string): Promise<void> => {
   try {
     await axiosUserApiInstance.post('/favorites/add', { anime_id: animeId });
