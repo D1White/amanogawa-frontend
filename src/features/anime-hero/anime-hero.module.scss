@@ -85,15 +85,15 @@
 }
 
 .title {
-  font-family: $ff-k;
-  font-size: 50px;
+  font-family: $ff-u;
+  font-size: 38px;
   font-weight: 500;
 
   @include lg {
-    font-size: 40px;
+    font-size: 34px;
   }
   @include sm {
-    font-size: 34px;
+    font-size: 28px;
     text-align: center;
     order: 1;
   }

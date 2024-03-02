@@ -3,6 +3,7 @@ import '@/styles/global.scss';
 
 import cn from 'classnames';
 import type { Metadata } from 'next';
+import { Unbounded } from 'next/font/google';
 import localFont from 'next/font/local';
 
 import { ReactQueryProvider } from '@/providers';
@@ -16,11 +17,10 @@ const fixel = localFont({
   variable: '--font-fixel',
 });
 
-const kyivRegion = localFont({
-  src: [
-    { path: '../assets/fonts/KyivRegion/KyivRegion-Regular.woff2', weight: '500', style: 'normal' },
-  ],
-  variable: '--font-kyiv-region',
+const unbounded = Unbounded({
+  weight: ['400', '500'],
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-unbounded',
 });
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="uk">
       <ReactQueryProvider>
-        <body className={cn(fixel.variable, kyivRegion.variable)}>{children}</body>
+        <body className={cn(fixel.variable, unbounded.variable)}>{children}</body>
       </ReactQueryProvider>
     </html>
   );

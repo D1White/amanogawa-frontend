@@ -137,8 +137,8 @@
 }
 
 .title {
-  font-family: $ff-k;
-  font-size: 50px;
+  font-family: $ff-u;
+  font-size: 42px;
   font-weight: 500;
 
   overflow: hidden;
@@ -148,10 +148,10 @@
   -webkit-box-orient: vertical;
 
   @include xxl {
-    font-size: 42px;
+    font-size: 36px;
   }
   @include md {
-    font-size: 36px;
+    font-size: 28px;
   }
   @include sm {
     line-clamp: 2;
