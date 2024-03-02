@@ -8,8 +8,7 @@ import ContentLoader from 'react-content-loader';
 import { SearchIcon } from '@/assets/jsx-icons';
 import { TextField } from '@/components/TextField';
 import { useDebounce, useSearch } from '@/hooks';
-import colors from '@/styles/variables/colors/colors.module.scss';
-import { PagesPath } from '@/utils';
+import { contentLoaderDefaultProps, PagesPath } from '@/utils';
 
 import styles from './search-modal.module.scss';
 
@@ -51,12 +50,10 @@ export const SearchModal: FC<SearchModalProps> = ({ onClose }) => {
             {new Array(3).fill(null).map((_, idx) => (
               <div className={styles.result} key={idx}>
                 <ContentLoader
-                  speed={3}
                   width="100%"
                   height="100%"
                   viewBox="0 0 692 122"
-                  backgroundColor={colors.grayDark}
-                  foregroundColor={colors.black}
+                  {...contentLoaderDefaultProps}
                 >
                   <rect x="0" y="0" rx="20" ry="20" width="122" height="122" />
                   <rect x="162" y="22" rx="3" ry="3" width="260" height="30" />

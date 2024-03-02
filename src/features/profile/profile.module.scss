@@ -42,6 +42,14 @@
   }
 }
 
+.avatarLoader {
+  @include square(100, '%');
+
+  & > :global(.react-loading-skeleton) {
+    height: 100%;
+  }
+}
+
 .username {
   color: $white;
   font-size: 28px;

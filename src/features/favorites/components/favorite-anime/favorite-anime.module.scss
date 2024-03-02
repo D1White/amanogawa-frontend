@@ -66,6 +66,15 @@
   }
 }
 
+.posterLoader {
+  display: block;
+  height: 100%;
+
+  & > :global(.react-loading-skeleton) {
+    height: 100%;
+  }
+}
+
 .info {
   display: flex;
   justify-content: center;

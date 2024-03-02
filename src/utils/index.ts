@@ -1,4 +1,5 @@
 export * from './constants';
+export * from './content-loader';
 export * from './cookie';
 export * from './metadata';
 export * from './pages-path';
