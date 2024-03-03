@@ -10,7 +10,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
   return (
     <main className={styles.authWrapper}>
       <div className={styles.imageBlock}>
-        <Image src={authImg} alt="night Japan street background" fill objectFit="cover" />
+        <Image src={authImg} alt="girl watch anime on TV" fill objectFit="cover" />
       </div>
       <div className={styles.content}>
         <BackLink href={PagesPath.home}>На головну</BackLink>
