@@ -6,6 +6,7 @@ import { IAnime, IPublicUser, IRating, IUser } from '@/types';
 import { ACCESS_TOKEN_COOKIE } from '../constants';
 import { clearAuthCookie } from '../cookie';
 import { refreshAuthTokens } from './auth';
+import { UpdateUserReq } from './types';
 
 const axiosUserApiInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/user`,
@@ -56,6 +57,16 @@ export const getUser = async (): Promise<IUser> => {
 export const getPublicUser = async (username: string): Promise<IPublicUser> => {
   try {
     const { data } = await axiosUserApiInstance.get<IPublicUser>(`/${username}`);
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const updateUser = async (id: string, body: UpdateUserReq): Promise<IUser> => {
+  try {
+    const { data } = await axiosUserApiInstance.patch<IUser>(`/${id}`, body);
 
     return data;
   } catch (error) {

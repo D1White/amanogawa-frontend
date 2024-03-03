@@ -8,11 +8,13 @@ import Blockies from 'react-blockies';
 import Skeleton from 'react-loading-skeleton';
 
 import { Badge } from '@/components';
+import { Select } from '@/components/Select';
 import { useGetUserByUsername, useLogout } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
 import { IUser } from '@/types';
 import { PagesPath, skeletonDefaultProps } from '@/utils';
 
+import { PrivacyToggle } from './components/privacy-toggle';
 import styles from './profile.module.scss';
 import { daysDifference, daysFormat } from './utils';
 
@@ -58,6 +60,8 @@ export const Profile: FC<ProfileProps> = ({ username }) => {
           className={styles.badge}
         />
       )}
+
+      {isCurrentUser && <PrivacyToggle />}
 
       {isCurrentUser && (
         <button className={styles.logoutButton} onClick={logout}>

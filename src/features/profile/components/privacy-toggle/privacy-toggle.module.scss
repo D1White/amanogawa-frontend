@@ -1,0 +1,31 @@
+.wrapper {
+  @include flexCenteredVertically;
+  margin-top: 18px;
+  border-radius: 99px;
+  border: 1px solid $primary;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.item {
+  padding: 14px 20px 14px 24px;
+  font-size: 18px;
+  color: $white;
+
+  transition:
+    background-color 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+
+  &:not(&:first-child) {
+    padding: 14px 24px 14px 20px;
+    border-left: 1px solid $primary;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.checked {
+    background-color: $primary;
+  }
+}

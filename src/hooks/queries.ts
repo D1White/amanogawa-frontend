@@ -16,6 +16,7 @@ import {
   logout,
   removeFavorite,
   updateAnimeRating,
+  updateUser,
 } from '@/utils/api';
 
 export const useGetUser = () => {
@@ -62,6 +63,16 @@ export const useGetUserByUsername = (username: string): UseGetUserByUsername => 
     isFetching: isCurrentUser ? isFetching : isPublicUserFetching,
     isCurrentUser,
   };
+};
+
+export const useUpdateUserPrivacy = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ userId, isPublic }: { userId: string; isPublic: boolean }) =>
+      updateUser(userId, { isPublic }),
+    onSuccess: (data) => queryClient.setQueryData([QueryKeys.user], data),
+  });
 };
 
 export const useLogin = () => {

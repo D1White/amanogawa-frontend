@@ -5,6 +5,7 @@ import {
   IAnime,
   IAnimeFull,
   IEpisode,
+  IUser,
 } from '@/types';
 
 export enum AnimeSortField {
@@ -59,6 +60,11 @@ export interface LoginReq {
 export interface SignUpReq extends LoginReq {
   username: string;
 }
+
+// User
+
+export interface UpdateUserReq
+  extends Partial<Pick<IUser, 'username' | 'email' | 'password' | 'isPublic'>> {}
 
 // Other
 
