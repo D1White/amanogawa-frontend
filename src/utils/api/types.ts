@@ -66,6 +66,13 @@ export interface SignUpReq extends LoginReq {
 export interface UpdateUserReq
   extends Partial<Pick<IUser, 'username' | 'email' | 'password' | 'isPublic'>> {}
 
+// Search
+
+export interface SearchRes {
+  anime: IAnime[];
+  users: Pick<IUser, '_id' | 'username'>[];
+}
+
 // Other
 
 export interface ErrorRes {

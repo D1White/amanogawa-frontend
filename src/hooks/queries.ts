@@ -18,6 +18,7 @@ import {
   updateAnimeRating,
   updateUser,
 } from '@/utils/api';
+import { search } from '@/utils/api/search';
 
 export const useGetUser = () => {
   const accessToken = Cookie.get(ACCESS_TOKEN_COOKIE);
@@ -175,6 +176,6 @@ export const useAddFavorite = () => {
 export const useSearch = (value: string) =>
   useQuery({
     queryKey: [QueryKeys.search, value],
-    queryFn: () => getAnime({ search: value, limit: 5 }),
+    queryFn: () => search(value),
     enabled: !!value,
   });

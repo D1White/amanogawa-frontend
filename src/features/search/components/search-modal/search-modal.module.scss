@@ -25,97 +25,32 @@
 }
 
 .results {
-  max-width: calc(660px + 32px);
+  // max-width: calc(660px + 32px);
+  max-width: 900px;
   width: 100%;
   margin: 32px 0;
   display: flex;
-  flex-direction: column;
+  gap: 32px;
 
   @include md {
     margin: 0 0 32px 0;
   }
 }
 
-.result {
-  @include flexCenteredVertically;
-  border-radius: 20px;
-  padding: 16px;
-
-  transition: background-color 0.2s linear;
-
-  &:hover {
-    background-color: rgba($primary, 0.5);
-
-    @include sm {
-      background-color: initial;
-    }
-  }
-
-  @include sm {
-    padding: 8px 0;
-  }
-}
-
-.resultPoster {
-  @include square(122);
-  min-width: 122px;
-  border-radius: 20px;
-  object-fit: cover;
-
-  @include md {
-    @include square(100);
-    min-width: 100px;
-  }
-  @include sm {
-    @include square(50);
-    min-width: 50px;
-    height: 71px;
-    border-radius: 8px;
-  }
-}
-
-.resultInfo {
+.resultBlock {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
-
-  @include md {
-    margin-left: 24px;
-  }
-  @include sm {
-    margin-left: 16px;
-  }
 }
 
-.resultText {
-  font-size: 24px;
-  font-weight: 500;
+.resultContent {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background-color: $gray-dark;
+}
 
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-
-  &.subtitle {
-    color: $gray;
-    margin-top: 6px;
-    font-size: 18px;
-
-    @include md {
-      font-size: 16px;
-    }
-    @include sm {
-      font-size: 14px;
-    }
-  }
-
-  @include md {
-    font-size: 20px;
-  }
-  @include sm {
-    font-size: 16px;
-  }
+.resultGroup {
 }
 
 .noDataText {
