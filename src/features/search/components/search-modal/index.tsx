@@ -1,16 +1,15 @@
 'use client';
 
 import cn from 'classnames';
-import Link from 'next/link';
 import React, { ChangeEvent, FC, MouseEvent, useCallback, useRef, useState } from 'react';
-import ContentLoader from 'react-content-loader';
 
 import { SearchIcon } from '@/assets/jsx-icons';
+import { PageLoader } from '@/components/PageLoader';
 import { TextField } from '@/components/TextField';
 import { useDebounce, useSearch } from '@/hooks';
-import { contentLoaderDefaultProps, PagesPath } from '@/utils';
 
-import { SearchAnimeItem } from './components';
+import { SearchAnimeItem } from '../search-anime-item';
+import { SearchUserItem } from '../search-user-item';
 import styles from './search-modal.module.scss';
 
 interface SearchModalProps {
@@ -47,56 +46,40 @@ export const SearchModal: FC<SearchModalProps> = ({ onClose }) => {
 
       <div className={styles.results}>
         {isLoading ? (
-          <div>Loading...</div>
+          <PageLoader />
+        ) : debouncedSearch && !data?.anime?.length && !data?.users?.length ? (
+          <p className={styles.noDataText}>Нічого не знайдено ¯\(o_o)/¯</p>
         ) : (
           <>
-            <div className={styles.resultBlock}>
-              <p className={styles.resultGroup}>Аніме</p>
+            <div className={cn(styles.resultBlock, styles.resultBlock__anime)}>
+              {data?.anime && data?.anime?.length > 0 && (
+                <>
+                  <p className={styles.resultGroup}>Аніме</p>
 
-              <div className={styles.resultContent}>
-                {data?.anime?.map((anime) => <SearchAnimeItem anime={anime} key={anime._id} />)}
-              </div>
+                  <div className={styles.resultContent}>
+                    {data.anime.map((anime) => (
+                      <SearchAnimeItem key={anime._id} anime={anime} onClose={onClose} />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             <div className={styles.resultBlock}>
-              <p className={styles.resultGroup}>Користувачі</p>
+              {data?.users && data?.users?.length > 0 && (
+                <>
+                  <p className={styles.resultGroup}>Користувачі</p>
 
-              <div className={styles.resultContent}>
-                {data?.users?.map((user) => <div key={user._id}>{user.username}</div>)}
-              </div>
+                  <div className={styles.resultContent}>
+                    {data.users.map((user) => (
+                      <SearchUserItem key={user._id} username={user.username} onClose={onClose} />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           </>
         )}
-
-        {/* <>
-          {!!data?.items && (
-            <>
-              {data?.items?.length > 0 ? (
-                <>
-                  {data.items?.map((anime) => (
-                    <Link
-                      href={`${PagesPath.anime}/${anime.slug}`}
-                      onClick={onClose}
-                      className={styles.result}
-                      key={anime._id}
-                    >
-                      <img src={anime.image} alt="Аніме постер" className={styles.resultPoster} />
-
-                      <div className={styles.resultInfo}>
-                        <p className={styles.resultText}>{anime.title}</p>
-                        <p className={cn(styles.resultText, styles.subtitle)}>{`${
-                          anime.year
-                        } · ${anime.type.toUpperCase()}`}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </>
-              ) : (
-                <p className={styles.noDataText}>Нічого не знайдено ¯\(o_o)/¯</p>
-              )}
-            </>
-          )}
-        </> */}
       </div>
     </div>
   );

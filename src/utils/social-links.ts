@@ -10,7 +10,7 @@ export const socialLinks = [
     icon: FacebookIcon,
   },
   {
-    link: 'https://www.instagram.com/amanogawa_ukr/',
+    link: 'https://www.instagram.com/amanogawa_ua/',
     icon: InstagramIcon,
   },
   {

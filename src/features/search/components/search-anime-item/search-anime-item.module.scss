@@ -19,15 +19,11 @@
 }
 
 .resultPoster {
-  @include square(122);
-  min-width: 122px;
-  border-radius: 20px;
+  @include square(80);
+  min-width: 80px;
+  border-radius: 12px;
   object-fit: cover;
 
-  @include md {
-    @include square(100);
-    min-width: 100px;
-  }
   @include sm {
     @include square(50);
     min-width: 50px;
@@ -39,18 +35,15 @@
 .resultInfo {
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  margin-left: 20px;
 
-  @include md {
-    margin-left: 24px;
-  }
   @include sm {
     margin-left: 16px;
   }
 }
 
 .resultText {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
 
   overflow: hidden;
@@ -73,9 +66,11 @@
   }
 
   @include md {
-    font-size: 20px;
+    font-size: 18px;
   }
   @include sm {
     font-size: 16px;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
   }
 }
