@@ -137,11 +137,12 @@ export const NewAnimeSlider: FC<NewAnimeSliderProps> = ({ data }) => {
       </div>
 
       <div className={styles.socialLinks}>
-        {socialLinks.map(({ link, icon: Icon }) => (
+        {socialLinks.map(({ link, icon: Icon, name }) => (
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={name}
             className={styles.socialLink}
             key={link}
           >
