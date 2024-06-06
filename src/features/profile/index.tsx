@@ -8,7 +8,6 @@ import Blockies from 'react-blockies';
 import Skeleton from 'react-loading-skeleton';
 
 import { Badge } from '@/components';
-import { Select } from '@/components/Select';
 import { useGetUserByUsername, useLogout } from '@/hooks';
 import colors from '@/styles/variables/colors/colors.module.scss';
 import { IUser } from '@/types';

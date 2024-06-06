@@ -8,7 +8,7 @@ import { clearAuthCookie } from '../cookie';
 import { refreshAuthTokens } from './auth';
 import { UpdateUserReq } from './types';
 
-const axiosUserApiInstance = axios.create({
+export const axiosUserApiInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/user`,
 });
 

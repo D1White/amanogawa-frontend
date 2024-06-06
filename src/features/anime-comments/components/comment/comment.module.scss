@@ -1,0 +1,63 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  gap: 22px;
+
+  @include sm {
+    gap: 16px;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+
+  @include sm {
+    @include square(36, 'px', true);
+  }
+}
+
+.commentBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 18px;
+
+  @include sm {
+    padding-top: 0px;
+  }
+}
+
+.commentHeader {
+  @include flexCenteredVertically;
+  justify-content: space-between;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 500;
+
+  @include sm {
+    font-size: 18px;
+  }
+}
+
+.timestamp {
+  font-size: 14px;
+  font-weight: 400;
+  color: $gray-dark;
+}
+
+.timestampBlock {
+  @include flexCenteredVertically;
+  gap: 10px;
+}
+
+.comment {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 22px;
+
+  @include sm {
+    margin-top: 16px;
+  }
+}

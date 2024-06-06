@@ -1,0 +1,58 @@
+.commentBlock {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.button {
+  @include flexCenteredVertically;
+  padding: 10px 24px;
+  border-radius: 99px;
+  background-color: $primary;
+
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+
+  transition: background-color linear 0.2s;
+
+  &:hover {
+    background-color: darken($primary, 3);
+  }
+
+  &:disabled {
+    background: $gray;
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 76px;
+  max-height: 300px;
+  padding: 16px 18px;
+
+  border-radius: 12px;
+  border: 2px solid lighten($black, 5);
+  background: none;
+
+  font-family: $ff-f;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $white;
+
+  transition: border 0.2s linear;
+
+  &::placeholder {
+    color: $gray-light;
+  }
+
+  &:focus {
+    border: 2px solid $primary;
+  }
+}

@@ -1,3 +1,4 @@
+export { AnimeComments } from './anime-comments';
 export { AnimeGroup } from './anime-group';
 export { AnimeHero } from './anime-hero';
 export { Episodes } from './episodes';

@@ -39,7 +39,7 @@ export const FavoriteAnime: FC<FavoriteAnimeProps> = ({ anime }) => {
       <div className={blocksStyles.flexCentered} onClick={handleRemove}>
         <button className={styles.deleteButton}>
           <TrashIcon />
-          <span>Remove</span>
+          <span>Видалити</span>
         </button>
       </div>
     </div>

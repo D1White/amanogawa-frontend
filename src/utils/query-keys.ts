@@ -3,4 +3,5 @@ export const enum QueryKeys {
   rating = 'rating',
   search = 'search',
   favorites = 'favorites',
+  comments = 'comments',
 }

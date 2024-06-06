@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 60px auto 0;
+  max-width: 734px;
+  width: 100%;
+
+  @include sm {
+    margin: 36px auto 0;
+  }
+}
+
+.count {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $gray-dark;
+  margin: 22px 0;
+}
+
+.comments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

@@ -1,10 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Cookie from 'js-cookie';
 
-import { IAnime, IPublicUser, IRating, IUser } from '@/types';
+import { IAnime, IComment, IPublicUser, IRating, IUser } from '@/types';
 import { ACCESS_TOKEN_COOKIE, QueryKeys, REFRESH_TOKEN_COOKIE } from '@/utils';
 import {
+  addComment,
   addFavorite,
+  deleteComment,
   getAnime,
   getAnimeRating,
   getFavorites,
@@ -179,3 +181,17 @@ export const useSearch = (value: string) =>
     queryFn: () => search(value),
     enabled: !!value,
   });
+
+// Comments
+
+export const useAddComment = () => {
+  return useMutation({
+    mutationFn: (data: Pick<IComment, 'anime' | 'text'>) => addComment(data),
+  });
+};
+
+export const useDeleteComment = () => {
+  return useMutation({
+    mutationFn: (commentId: string) => deleteComment(commentId),
+  });
+};

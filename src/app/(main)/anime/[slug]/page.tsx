@@ -1,10 +1,10 @@
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { AnimeGroup, AnimeHero, Episodes } from '@/features';
+import { AnimeComments, AnimeGroup, AnimeHero, Episodes } from '@/features';
 import type { MetadataProps, PageParams } from '@/types';
 import { getMetaTitle } from '@/utils';
-import { getOneAnime } from '@/utils/api';
+import { getComments, getOneAnime } from '@/utils/api';
 
 export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
   const anime = await getOneAnime(params.slug);
@@ -24,6 +24,8 @@ export default async function AnimePage({ params }: PageParams) {
     notFound();
   }
 
+  const comments = await getComments(anime._id);
+
   return (
     <main className="container">
       <AnimeHero anime={anime} />
@@ -31,6 +33,8 @@ export default async function AnimePage({ params }: PageParams) {
       {anime?.group && <AnimeGroup groupName={anime.group} animeId={anime._id} />}
 
       {!!anime?.episodes && <Episodes data={anime.episodes} anime_slug={anime.slug} />}
+
+      {comments && <AnimeComments data={comments} animeId={anime._id} />}
     </main>
   );
 }
